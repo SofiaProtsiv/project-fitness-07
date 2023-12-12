@@ -3,16 +3,16 @@
   width: 100%;
   padding: 0 20px;
 
-  @media(min-width: 375px) {
+  @media(375px<=width) {
     max-width: var(--mobile);
   }
 
-  @media(min-width: 768px) {
+  @media(768px<=width) {
     max-width: var(--tablet);
     padding: 0 32px;
   }
 
-  @media(min-width: 1440) {
+  @media(1440px<=width) {
     max-width: var(--desktop);
   }
 }
