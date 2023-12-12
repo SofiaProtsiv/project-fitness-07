@@ -125,7 +125,7 @@
   border-radius: 30px;
   outline: none;
   border: 1px solid var(--primary-background-color);
-  transition-property: color;
+  transition-property: border-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
 }

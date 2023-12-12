@@ -1,5 +1,6 @@
 :root {
-  --primary-fontfont-family: Neue Montreal, sans-serif;
+  --primary-fontfont-family: 'DM Sans', sans-serif;
+  --secondary-fontfont-family: 'Neue Montreal', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
