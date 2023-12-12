@@ -1,0 +1,27 @@
+body {
+  color: var(--primary-black-color);
+  font-family: var(--primary-fontfont-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-black-color);
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #929292;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
