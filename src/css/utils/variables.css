@@ -7,13 +7,10 @@
   --primary-black-color: #242424;
   --primary-background-color: #F4F4F4;
   --primary-white-color: #f4f4f4;
-  --secondary-black-text-color: (36, 36, 36, 0.5);
-  /* #242424 opacity 0.4-0.6*/
-  --secondary-white-text-color: (244, 244, 244, 0.5)
-    /* #F4F4F4 opacity 0.4-0.6*/
-    --rating-color-active: #EEA10C;
-  --rating-color-inactive: (244, 244, 244, 0.2);
-  /* #F4F4F4 opacity 0.2*/
+  --secondary-black-text-color: rgba(36, 36, 36, 0.5);
+  --secondary-white-text-color: rgba(244, 244, 244, 0.5);
+  --rating-color-active: #EEA10C;
+  --rating-color-inactive: rgba(244, 244, 244, 0.2);
   --pagination-color-inactive: #D4D4D4;
   --error-color: rgb(255, 0, 0);
   --white-color: #ffffff;

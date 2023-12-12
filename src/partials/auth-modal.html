@@ -1,0 +1,49 @@
+<header class="header section">
+  <div class="header__container container">
+    <nav class="header__user">
+      <span class="header__username"></span>
+
+      <ul class="header_main_nav">
+        <li>Home</li>
+        <li>Favorites</li>
+      </ul>
+      <a class="header__user__icon user-icon">user</a>
+
+      <button class="button-logout" type="button">Log out</button>
+    </nav>
+  </div>
+</header>
+
+<div class="authModal__backdrop">
+  <div class="authModal__content">
+    <span class="authModal__button-close">&times;</span>
+    <p class="authForm__title">Registration</p>
+    <form class="authForm">
+      <div class="authForm__fieldset username">
+        <label for="name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="name" required />
+      </div>
+
+      <div class="authForm__fieldset">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required />
+      </div>
+
+      <div class="authForm__fieldset">
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          required
+        />
+      </div>
+
+      <button class="authForm__button-submit" type="submit">Submit</button>
+    </form>
+    <div class="action__container">
+      <p class="action__text">Already have account?</p>
+      <button class="action__button" data-action="reg">Log in</button>
+    </div>
+  </div>
+</div>
