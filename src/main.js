@@ -1,2 +1,1 @@
-// Приклад підключення
-import './js/example';
+import './js/auth-modal';
