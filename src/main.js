@@ -1,2 +1,3 @@
 import './js/auth-modal';
-import './js/createHashtagsList/'
+import './js/scrollup-btn';
+import './js/createHashtagsList'
