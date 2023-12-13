@@ -68,11 +68,16 @@
   box-sizing: border-box;
   background-color: transparent;
   color: var(--primary-white-color);
+  outline: none;
+  transition-property: border;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-effect);
 }
 
+.authForm input:hover,
 .authForm input:focus,
 .authForm input:active {
-  outline: 1px solid var(--rating-color-active);
+  border: 1px solid var(--rating-color-active);
 }
 
 .authForm__button-submit {
