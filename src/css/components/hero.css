@@ -82,7 +82,9 @@
   @media (1440px <= width) {
     position: absolute;
     top: 96px;
-    right: 0;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
   }
 }
 
