@@ -10,4 +10,5 @@
 @import url('./layout/footer.css');
 
 /* components */
+@import url('./components/hero.css');
 @import url('./components/auth-modal.css');
