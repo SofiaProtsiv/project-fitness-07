@@ -1,0 +1,47 @@
+.scrollup__btn {
+  position: fixed;
+  bottom: 50px;
+  right: calc((100vw - var(--mobile)) / 2 + 50px);
+  border-radius: 20px;
+  background-color: var(--primary-black-color);
+  font-size: 0px;
+  border: 1px solid var(--primary-background-color);
+  transition-property: border-color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-effect);
+
+  @media (768px<=width) {
+    right: calc((100vw - var(--tablet)) / 2 + 50px);
+  }
+
+  @media (1440px<=width) {
+    right: calc((100vw - var(--desktop)) / 2 + 50px);
+    border-radius: 50px;
+  }
+}
+
+.scrollup__btn:hover,
+.scrollup__btn:focus {
+  border-color: var(--rating-color-active);
+}
+
+.scrollup__btn:hover .scrollup__btn__icon,
+.scrollup__btn:focus .scrollup__btn__icon {
+  fill: var(--rating-color-active);
+}
+
+.scrollup__btn__icon {
+  height: 40px;
+  width: 40px;
+  padding: 13px;
+  fill: var(--primary-background-color);
+  transition-property: fill;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-effect);
+
+  @media (1440px<=width) {
+    height: 100px;
+    width: 100px;
+    padding: 33px;
+  }
+}
