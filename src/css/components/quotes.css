@@ -35,10 +35,22 @@
   }
 }
 
-.quotes__logo_icon {
+.quotes__icon_wrapper {
+  background-color: var(--primary-black-color);
+  border-radius: 50%;
   width: 34px;
   height: 32px;
-  border-radius: 50%;
+  fill: var(--primary-background-color);
+  background-color: var(--secondary-white-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.quotes__logo_icon {
+  width: 100%;
+  height: 100%;
 }
 
 .quotes__text_wrapper {
@@ -72,6 +84,7 @@
 .quotes__quote_icon {
   width: 20px;
   height: 20px;
+  fill: var(--primary-background-color);
 
   @media (768px<=width) {
     width: 24px;
@@ -153,6 +166,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: var(--primary-background-color);
 }
 
 .quotes__gym_icon {
