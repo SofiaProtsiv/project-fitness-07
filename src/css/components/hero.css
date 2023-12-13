@@ -51,11 +51,14 @@
 }
 
 .subtitle {
-  max-width: 335px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
   letter-spacing: -0.02em;
+
+  @media (width < 768px) {
+    max-width: 335px;
+  }
 
   @media (768px <= width) {
     width: 528px;
