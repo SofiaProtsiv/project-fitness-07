@@ -1,2 +1,2 @@
 import './js/auth-modal';
-import './js/heroImgResizer';
+import './js/createHashtagsList/'
