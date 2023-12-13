@@ -1,12 +1,12 @@
 const scrollupBtn = document.querySelector('.scrollup__btn');
 
-const scrollBtnDisplay = function () {
+const handlerScrollEvent = function () {
   !window.scrollY
     ? scrollupBtn.classList.add('visually-hidden')
     : scrollupBtn.classList.remove('visually-hidden');
 };
 
-window.addEventListener('scroll', scrollBtnDisplay);
+window.addEventListener('scroll', handlerScrollEvent);
 
 scrollupBtn.addEventListener('click', handlerScrollupBtnClick);
 
