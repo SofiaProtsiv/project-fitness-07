@@ -14,11 +14,6 @@
   margin-bottom: 32px;
 }
 
-/*.hero__title-wrap {*/
-/*  !*display: flex;*!*/
-/*  !*align-items: center;*!*/
-/*}*/
-
 .hero__icon {
   float: left;
   margin-top: 5px;
@@ -83,7 +78,7 @@
   border-radius: 25px;
 }
 
-.hero__hashthags-wrap {
+.hero__hashtags-wrap {
   @media (1440px <= width) {
     position: absolute;
     top: 96px;
@@ -124,12 +119,17 @@
 }
 
 .hashtags__item {
-  padding: 4px 16px;
-
+  padding: 4px 12px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
   border: 1px solid var(--primary-black-color);
   border-radius: 30px;
+
+  @media (768px < width) {
+    padding: 4px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
