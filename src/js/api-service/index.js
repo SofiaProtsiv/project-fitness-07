@@ -17,10 +17,11 @@ export default class ApiService {
     this.rating = null;
     this.email = '';
     this.review = '';
+    this.limit = 1;
   }
 
   async fetchMuscles() {
-    const URL = `filters?filter=Muscles&page=${this.pageCounter}&limit=12`;
+    const URL = `filters?filter=Muscles&page=${this.pageCounter}&limit=${this.limit}`;
     try {
       const response = await http.get(URL);
       this.maxPages = response.data.totalPages;
@@ -30,8 +31,20 @@ export default class ApiService {
       throw error;
     }
   }
+
+  async fetchExercise() {
+    const URL = `exercises/page=${this.pageCounter}&limit=${this.limit}`;
+    try {
+      const response = await http.get(URL);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching ExerciseById:', error);
+      throw error;
+    }
+  }
+
   async fetchExerciseById() {
-    const URL = `exercises/${this.exerciseId}`;
+    const URL = `exercises/${this.exerciseId}&limit=${this.limit}`;
     try {
       const response = await http.get(URL);
       return response.data;
@@ -51,7 +64,7 @@ export default class ApiService {
     }
   }
   async fetchFilteredExercises() {
-    const URL = `exercises?bodypart=${this.bodyPart}&muscles=${this.muscles}&equipment=${this.equipment}&keyword=${this.searchQuery}&page=${this.pageCounter}&limit=10`;
+    const URL = `exercises?bodypart=${this.bodyPart}&muscles=${this.muscles}&equipment=${this.equipment}&keyword=${this.searchQuery}&page=${this.pageCounter}&limit=${this.limit}`;
     try {
       const response = await http.get(URL);
       this.maxPages = response.data.totalPages;
@@ -143,6 +156,14 @@ export default class ApiService {
 
   set ratingFeature(newRating) {
     this.rating = newRating;
+  }
+  
+  get getLimitPerPage(){
+    return this.limit;
+  }
+
+  set setLimitPerPage(limit){
+    this.limit = limit;
   }
 }
 
