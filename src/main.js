@@ -6,3 +6,4 @@ import './js/header';
 import './js/filters';
 import './js/quotes';
 import './js/modal/exercise-modal'; // TODO: to be removed;
+import './js/cards-service/card-holder'
