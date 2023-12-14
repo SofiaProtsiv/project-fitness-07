@@ -21,9 +21,9 @@
     />
 
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/index-ec5fc783.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/quotes-e658b336.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/quotes-bcd47f17.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-c8bb0c53.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/quotes-c69208bf.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/quotes-ab59fe96.css">
   </head>
 
   <body>
@@ -394,7 +394,7 @@
       </div>
       <div class="footer_form__box">
         <h2 class="footer__main__header">
-          Transforming your body shape with us
+          Transforming your <span>body</span> shape with us
         </h2>
         <form class="footer__form" action="#" method="post">
           <h3 class="footer__form__header">
@@ -402,12 +402,14 @@
           </h3>
           <input
             class="footer__form__input"
-            type="email"
+            type="text"
+            formnovalidate=""
             name="email"
             id="email"
             placeholder="Email"
           />
-          <button class="footer__form__btn" type="submit">Send</button>
+          <p class="footer__form__message full_hidden"></p>
+          <button class="footer__form__btn" type="submit" disabled>Send</button>
         </form>
       </div>
     </div>
