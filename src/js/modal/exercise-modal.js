@@ -147,7 +147,7 @@ const closeModalExercise = () => {
   document.body.style.overflow = 'visible';
 };
 
-export const openModalExercise = exercise => {
+const openModalExercise = exercise => {
   renderModal(exercise);
   backdropRef.classList.add('open');
   modalRef.classList.add('open');
@@ -166,6 +166,8 @@ backdropRef.addEventListener('click', event => {
     closeModalExercise();
   }
 });
+
+export { openModalExercise };
 
 // TODO: remove lines
 // ! --------------------------------- Testing -------------------------------- */
