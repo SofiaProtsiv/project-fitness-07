@@ -11,10 +11,7 @@ export const mobileToggle = function () {
   refs.mobileMenuContent.addEventListener('click', function (event) {
     event.stopPropagation();
   });
-  refs.closeLink.forEach(link => {
-    link.addEventListener('click', toggleMobileMenu);
-  });
-
+  
   function toggleMobileMenu() {
     refs.bodyAddClass.classList.toggle('is-hidden');
     refs.mobileMenu.classList.toggle('is-hidden');

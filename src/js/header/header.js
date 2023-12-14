@@ -1,12 +1,14 @@
 export const getActiveLink = function () {
   const currentPage = window.location.pathname;
 
+  if (currentPage === "/") return;
+
   const navLinks = document.querySelectorAll('.header__nav__link');
-
+  
   navLinks.forEach(function (link) {
-    const linkHref = link.getAttribute('href');
+    const linkHref = link.getAttribute('href').split("../")[1];
 
-    if (linkHref === currentPage) {
+    if (currentPage.includes(linkHref)) {
       link.parentNode.classList.add('active');
     } else {
       link.parentNode.classList.remove('active');
