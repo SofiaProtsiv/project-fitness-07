@@ -62,20 +62,17 @@
   }
 }
 
-.hero__image-wrapper {
-  border-radius: 30px;
-  overflow: hidden;
-
-  @media (768px <= width) {
-    border-radius: 60px;
-  }
-}
-
 .hero__img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 25px;
+  border-radius: 30px;
+
+
+  @media (768px <= width) {
+    border-radius: 60px;
+  }
+
 }
 
 .hero__hashtags-wrap {
