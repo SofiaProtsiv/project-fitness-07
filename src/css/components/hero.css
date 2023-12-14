@@ -1,7 +1,6 @@
 .hero__container {
   display: flex;
   flex-direction: column;
-  padding-top: 96px;
   position: relative;
 }
 
@@ -21,7 +20,7 @@
   width: 32px;
   height: 32px;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     margin-right: 16px;
     width: 60px;
     height: 60px;
@@ -35,7 +34,7 @@
   line-height: 1.16;
   letter-spacing: -0.02em;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     font-size: 74px;
     line-height: 1;
   }
@@ -55,7 +54,7 @@
     max-width: 335px;
   }
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 528px;
     font-size: 18px;
     line-height: 1.33;
@@ -69,16 +68,15 @@
   border-radius: 30px;
 
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     border-radius: 60px;
   }
 
 }
 
 .hero__hashtags-wrap {
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     position: absolute;
-    top: 96px;
     right: 32px;
     display: flex;
     flex-direction: column;
@@ -89,7 +87,7 @@
   display: none;
   border-radius: 20px;
 
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     display: block;
   }
 }
@@ -112,7 +110,7 @@
     margin-top: 16px;
   }
 
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     width: 200px;
   }
 }
@@ -131,4 +129,3 @@
     line-height: 1.5;
   }
 }
-
