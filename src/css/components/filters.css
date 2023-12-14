@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
 
   @media (1440px<=width) {
     flex-direction: row;
@@ -18,7 +17,6 @@
   font-family: var(--primary-fontfont-family);
   font-size: 28px;
   font-weight: 400;
-  margin-bottom: 20px;
   line-height: 38px;
   letter-spacing: -0.02em;
   text-align: left;
@@ -90,6 +88,11 @@
 }
 
 .search__wrapper {
+  display: none;
+}
+
+.search__wrapper.active {
+  display: block;
   position: relative;
 }
 
@@ -112,6 +115,7 @@
   border-radius: 30px;
   border: 1px solid var(--primary-black-color);
   outline: none;
+  background-color: transparent;
   transition-property: border;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
