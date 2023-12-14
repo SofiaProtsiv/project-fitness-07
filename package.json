@@ -6,8 +6,8 @@
   "homepage": "https://sofiaprotsiv.github.io/project-fitness-07/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/project-fitness-07/",
-    "preview": "vite preview"
+    "build": "vite build --emptyOutDir --base=/project-fitness-07/",
+    "preview": "vite preview --base=/project-fitness-07/"
   },
   "devDependencies": {
     "glob": "^8.1.0",
