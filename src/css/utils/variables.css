@@ -10,6 +10,8 @@
   --primary-white-color: #f4f4f4;
   --secondary-black-text-color: rgba(36, 36, 36, 0.6);
   --secondary-white-text-color: rgba(244, 244, 244, 0.5);
+  --modal-black-color: rgba(36, 36, 36, 1);
+  --modal-alpha-background: rgba(4,4,4,0.4);
   --rating-color-active: #EEA10C;
   --rating-color-inactive: rgba(244, 244, 244, 0.2);
   --pagination-color-inactive: #D4D4D4;
