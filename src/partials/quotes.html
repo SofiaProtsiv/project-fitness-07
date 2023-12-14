@@ -1,8 +1,10 @@
 <aside class="quotes__wrapper">
   <div class="quotes__container">
-    <svg class="quotes__logo_icon" aria-label="running icon">
-      <use href="/images/icons-sprite.svg#icon-running-stick"></use>
-    </svg>
+    <div class="quotes__icon_wrapper">
+      <svg class="quotes__logo_icon" aria-label="running icon">
+        <use href="/images/icons-sprite.svg#icon-running-stick"></use>
+      </svg>
+    </div>
     <div class="quotes__text_wrapper">
       <div class="quotes__title_wrapper">
         <h3 class="quotes__title">Quote of the day</h3>
@@ -13,19 +15,11 @@
           ></use>
         </svg>
       </div>
-      <p class="quotes__text">
-        A lot of times I find that people who are blessed with the most talent
-        don't ever develop that attitude, and the ones who aren't blessed in
-        that way are the most competitive and have the biggest heart.
-      </p>
-      <span class="quotes__author">Tom Brady</span>
+      <p class="quotes__text" id="daily-quote"></p>
+      <span class="quotes__author" id="quote-author"></span>
     </div>
   </div>
   <div class="quotes__img">
-    <img
-      src="/images/sidebar/women-mobile.jpg"
-      alt="girls drinking water during workout"
-    />
     <picture>
       <source
         media="(min-width: 1440px)"
