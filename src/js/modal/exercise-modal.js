@@ -83,10 +83,11 @@ const markupDetails = ({ burnedCalories, time, ...rest }) => {
   for (const [key, value] of Object.entries(rest)) {
     const splitKey = strSplitCamelCase(key);
     const keyName = strCapitalizeSentence(splitKey);
+    const capValue = strCapitalizeSentence(value);
     markup.push(`
       <li class="exercise_details-item">
         <p class="detail-name">${keyName}</p>
-        <p class="detail-value">${value}</p>
+        <p class="detail-value">${capValue}</p>
       </li>
     `);
   }
