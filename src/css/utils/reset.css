@@ -45,3 +45,6 @@ fieldset {
   margin: 0;
   border: none;
 }
+body.is-hidden {
+  overflow: hidden;
+}
