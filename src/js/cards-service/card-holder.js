@@ -3,8 +3,7 @@ import {getData, checkExerciseParams, checkWorkoutParams} from "./cards-service"
 import { addWorkoutClass, deleteWorkoutClass } from "./class-changer";
 import ApiService from "../api-service";
 import { cleanerPages, showPages } from "../templates/pages";
-import { checkPage } from "./check-page";
-import { checkCard } from "./check-card";
+import { checkCard, checkWorkoutCard, checkPage } from "./checker";
 
 window.addEventListener('resize', cardsHandler);
 
@@ -21,11 +20,11 @@ let currentPage = 1;
 let endPoint = 3;
 
 async function cardsHandler(){
-
+    const element = document.querySelector('.exercise-cards__section');
+    element.offsetHeight;
     const fetch = new ApiService();
     let data;
     let connection;
-    console.log(endPoint);
     try{
         switch (endPoint){
             // If the endpoint has /favorites do the next
@@ -39,15 +38,15 @@ async function cardsHandler(){
                 addWorkoutClass();
 
                 connection = checkWorkoutParams(currentPage, endPoint, fetch, params, connection);
-                console.log(params);
                 data = await getData(connection);
+
                 cleanerCardWrapper();
                 cleanerPages();
                 showWorkoutCards(data);
                 showPages(currentPage, fetch.maxPages);
-
-                listenCards();
+ 
                 listenPages(endPoint);
+                listenWorkoutCards();
                 break;
             // If the endpoint has /filter do the next
             case 3:
@@ -73,27 +72,38 @@ async function cardsHandler(){
 }
 
 function listenCards(){
-    const cardsLinks = document.querySelector('.exercise-cards__wrapper');
+    const cardsLinks = document.querySelector('.js-cards');
     if (cardsLinks) {
         cardsLinks.addEventListener("click", targetHandler);
     } else {
-        console.error("Element with class 'exercise-cards__wrapper' not found.");
+        console.error("Element with class 'js-cards' not found.");
     }
 }
 
 function targetHandler(evt){
-    endPoint = 2;
-    params.muscles = checkCard(evt);
+    
+    if (params.filter === "Muscles"){
+        endPoint = 2;
+        params.muscles = checkCard(evt);
+    } else if (params.filter === "Bodypart"){
+        endPoint = 2;
+        params.bodypart = checkCard(evt);
+    } else if(params.filter === "Equipment"){
+        endPoint = 2;
+        params.equipment = checkCard(evt);
+    }
+    
+    currentPage = 1;
     cardsHandler();
 }
 
 
 function listenPages(){
-    const pageLinks = document.querySelector('.exercise-cards__guard');
+    const pageLinks = document.querySelector('.js-pages');
     if (pageLinks) {
         pageLinks.addEventListener("click", pagesHandler);
     } else {
-        console.error("Element with class 'exercise-cards__guard' not found.");
+        console.error("Element with class 'js-pages' not found.");
     }
 }
 
@@ -101,10 +111,23 @@ function pagesHandler(evt){
    const clickedPage = checkPage(evt);
     if (currentPage != clickedPage){
         currentPage = +clickedPage;
-
         cardsHandler();
     }
 
 }
+
+function listenWorkoutCards(){
+    const cardsLinks = document.querySelector('.js-cards');
+    if (cardsLinks) {
+        cardsLinks.addEventListener("click", workoutHandler);
+    } else {
+        console.error("Element with class 'js-cards' not found.");
+    }
+}
+
+function workoutHandler(evt){
+    checkWorkoutCard(evt);
+}
+
 
 cardsHandler();

@@ -21,23 +21,23 @@ function showInitialCards(data){
 function showWorkoutCards(data){
     const workoutCardsLayout = data.map(({_id, bodyPart, name, target, burnedCalories, time, rating}) =>     
     `
-        <a class="workout-cards__gallery-link" id="${_id}" href="">
-            <div class="workout-cards__gallery-card">
+        <a class="workout-cards__gallery-link" href="">
+            <div class="workout-cards__gallery-card" data-id="${_id}">
                 <div class="workout-cards__first-line-wrapper">
                     <p class="workout-cards__parag-workout">Workout</p>
                     <p class="workout-cards__parag-rating">${Math.round(rating * 10) / 10}</p>
                     <svg class="workout-cards__icon-star">
-                        <use href="./images/icons-sprite.svg#icon-star"></use>
+                        <use href="/images/icons-sprite.svg#icon-star"></use>
                     </svg>
                     <p class="workout-cards__parag-start">Start</p>
                     <svg class="workout-cards__icon-arrow-up">
-                        <use href="./images/icons-sprite.svg#icon-arrow-up"></use>
+                        <use href="/images/icons-sprite.svg#icon-arrow-up"></use>
                     </svg>
                 </div>
                 <div class="workout-cards__second-line-wrapper">
                     <div class="workout-cards__wrapper-icon-running-stick">
                         <svg class="workout-cards__icon-running-stick">
-                            <use href="./images/icons-sprite.svg#icon-running-stick"></use>
+                            <use href="/images/icons-sprite.svg#icon-running-stick"></use>
                         </svg>
                     </div>
                     <h3 class="workout-cards__head3-name">${name}</h3>
@@ -61,21 +61,21 @@ function showWorkoutCards(data){
 function showFavoriteCards(data){
     const favoriteCardsLayout = data.map(({_id, bodyPart, name, target, burnedCalories, time}) => 
         `
-        <a class="favori-cards__gallery-link" id="${_id}" href="">
-            <div class="favorite-cards__gallery-card">
+        <a class="favori-cards__gallery-link" href="">
+            <div class="favorite-cards__gallery-card" data-id="${_id}">
                 <div class="favorite-cards__first-line-wrapper">
                     <p class="favorite-cards__parag-workout">favorite</p>
                     <svg class="favorite-cards__icon-trash">
-                        <use href="./images/icons-sprite.svg#icon-trash"></use>
+                        <use href="/images/icons-sprite.svg#icon-trash"></use>
                     </svg>
                     <p class="favorite-cards__parag-start">Start</p>
                     <svg class="favorite-cards__icon-arrow-up">
-                        <use href="./images/icons-sprite.svg#icon-arrow-up"></use>
+                        <use href="/images/icons-sprite.svg#icon-arrow-up"></use>
                     </svg>
                 </div>
                 <div class="favorite-cards__second-line-wrapper">
                     <svg class="favorite-cards__icon-running-stick">
-                        <use href="./images/icons-sprite.svg#icon-running-stick"></use>
+                        <use href="/images/icons-sprite.svg#icon-running-stick"></use>
                     </svg>
                     <h3 class="favorite-cards__head3-name">${name}</h3>
                 </div>
