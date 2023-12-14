@@ -70,7 +70,7 @@
   color: var(--primary-background-color);
   font-family: var(--primary-fontfont-family);
   font-size: 38px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   line-height: 44px;
   letter-spacing: -0.76px;
@@ -81,6 +81,10 @@
     line-height: 60px;
     letter-spacing: -1.12px;
   }
+}
+
+.footer__main__header span {
+  font-style: italic;
 }
 
 .footer_form__box {
