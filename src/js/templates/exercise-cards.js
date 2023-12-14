@@ -1,11 +1,11 @@
-const cards = document.querySelector(".exercise-cards__wrapper");
+const cards = document.querySelector(".js-cards");
 
 function showInitialCards(data){
     const initialCardsLayout = data.map(({filter, name, imgURL}) => 
         `
-        <a class="exercise-cards__gallery-link" href="">
-            <div class="exercise-cards__gallery-card">
-                <img class="exercise-cards__gallery-image" src="${imgURL}" alt="${filter + " " + name}" loading="lazy" />
+        <a class="exercise-cards__gallery-link js-cards" href="">
+            <div class="exercise-cards__gallery-card" data-card-name="${name}">
+                <img class="exercise-cards__gallery-image"  src="${imgURL}" alt="${filter + "-" + name}" loading="lazy" />
                 <div class="exercise-cards__gallery-info">
                     <h3 class="exercise-cards__head3-name">${name}</h3>
                     <p class="exercise-cards__parag-filter">${filter}</p>

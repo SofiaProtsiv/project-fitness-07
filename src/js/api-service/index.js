@@ -18,10 +18,11 @@ export default class ApiService {
     this.email = '';
     this.review = '';
     this.limit = 1;
+    this.filter = "Muscles";
   }
 
   async fetchMuscles() {
-    const URL = `filters?filter=Muscles&page=${this.pageCounter}&limit=${this.limit}`;
+    const URL = `filters?filter=${this.filter}&page=${this.pageCounter}&limit=${this.limit}`;
     try {
       const response = await http.get(URL);
       this.maxPages = response.data.totalPages;
@@ -38,7 +39,7 @@ export default class ApiService {
       const response = await http.get(URL);
       return response.data;
     } catch (error) {
-      console.error('Error fetching ExerciseById:', error);
+      console.error('Error fetching Exercise:', error);
       throw error;
     }
   }
@@ -164,6 +165,14 @@ export default class ApiService {
 
   set setLimitPerPage(limit){
     this.limit = limit;
+  }
+
+  get getFilter(){
+    return this.filter;
+  }
+
+  set setFilter(filter){
+    this.filter = filter;
   }
 }
 

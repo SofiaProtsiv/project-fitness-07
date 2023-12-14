@@ -16,4 +16,4 @@ function deleteFavoriteClass(){
     cards.classList.remove("favorite-cards__wrapper");
 }
 
-export {addWorkoutClass, deleteWorkoutClass};
+export {addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass};

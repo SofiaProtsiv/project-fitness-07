@@ -1,96 +1,110 @@
 import {showFavoriteCards, showInitialCards, showWorkoutCards, cleanerCardWrapper} from "../templates/exercise-cards";
-import { updateViewPort } from "./update-view-port";
+import {getData, checkExerciseParams, checkWorkoutParams} from "./cards-service"
 import { addWorkoutClass, deleteWorkoutClass } from "./class-changer";
 import ApiService from "../api-service";
-import { cleanerPages, showPages } from "../templates/pagination";
+import { cleanerPages, showPages } from "../templates/pages";
+import { checkPage } from "./check-page";
+import { checkCard } from "./check-card";
 
-window.addEventListener('resize', cardsHadler);
+window.addEventListener('resize', cardsHandler);
 
-//Parameteres for future search
+//Default parameteres for search
 let params = {
     filter: "Muscles",
-    page: 1,
-    limit:9
-}
+    bodypart: "",
+    keyword: "",
+    muscles: "",
+    equipment: "",
+};
 
-async function cardsHadler(){
-    const endPoint = checkEndPoint();
+let currentPage = 1;
+let endPoint = 3;
+
+async function cardsHandler(){
+
+    const fetch = new ApiService();
     let data;
     let connection;
-    let fetch;
-    switch (endPoint){
-        case 1:
-            //Тут повинна бути логіка отримання даних з позначкою фейворітс
+    console.log(endPoint);
+    try{
+        switch (endPoint){
+            // If the endpoint has /favorites do the next
+            case 1:
+                //Тут повинна бути логіка отримання даних з позначкою фейворітс
+                
+                showFavoriteCards(data);
+                break;
+            // If the endpoint has /exercise do the next
+            case 2:
+                addWorkoutClass();
+
+                connection = checkWorkoutParams(currentPage, endPoint, fetch, params, connection);
+                console.log(params);
+                data = await getData(connection);
+                cleanerCardWrapper();
+                cleanerPages();
+                showWorkoutCards(data);
+                showPages(currentPage, fetch.maxPages);
+
+                listenCards();
+                listenPages(endPoint);
+                break;
+            // If the endpoint has /filter do the next
+            case 3:
+                deleteWorkoutClass();
+
+                connection = checkExerciseParams(currentPage, endPoint, fetch, params, connection);
+                data = await getData(connection);
+    
+                cleanerCardWrapper();
+                cleanerPages();
+
+                showInitialCards(data);
+                showPages(currentPage, fetch.maxPages);
+
+                listenCards();
+                listenPages(endPoint);
+                break;
             
-            showFavoriteCards();
-            break;
-        case 2:
-            addWorkoutClass();
-            fetch = new ApiService();
-            connection = getConnection(endPoint).fetchExercise();
-            data = await getData(connection);
-            showWorkoutCards(data);
-            showPages(fetch.pageCounter, fetch.maxPages);
-            break;
-        case 3:
-            deleteWorkoutClass();
-
-            fetch = new ApiService();
-            connection = getConnection(endPoint, fetch).fetchMuscles();
-            data = await getData(connection);
-            
-            cleanerCardWrapper();
-            cleanerPages();
-            showInitialCards(data);
-            showPages(fetch.pageCounter, fetch.maxPages);
-            break;
-    }
-}
-
-//It`s looking what end point and viewSize is, then give a number of cards to show
-function calculateObjects(endPoint, viewSize){
-    if (viewSize >= 768){
-        if (endPoint != 3){
-            return 10;
         }
-        return 12;
-    } else if (viewSize < 768){
-        if (endPoint == 1){
-            return 10;
-        } else if (endPoint == 2){
-            return 8
-        }
-        return 9;
+    } catch(error){
+        console.log("Error: ", error);
     }
 }
 
-//Check does end point has key words in url
-function checkEndPoint(url = window.location.href){
-    if (url.includes("/favorites")){
-        return 1;
-    } else if (url.includes("/exercises")){
-        return 2;
-    } else{
-        return 3;
+function listenCards(){
+    const cardsLinks = document.querySelector('.exercise-cards__wrapper');
+    if (cardsLinks) {
+        cardsLinks.addEventListener("click", targetHandler);
+    } else {
+        console.error("Element with class 'exercise-cards__wrapper' not found.");
     }
 }
 
-function getConnection(endPoint, fetch){
-    const viewSize = updateViewPort();
-    const perPage = calculateObjects(endPoint, viewSize);
-    fetch.limit = perPage;
-    return fetch;
+function targetHandler(evt){
+    endPoint = 2;
+    params.muscles = checkCard(evt);
+    cardsHandler();
 }
 
-function getData(promise){
-    return promise
-            .then(result => {
-                return result;
-            })
-            .catch(error => {
-                console.error('Error in getData:', error);
-                throw error;
-            });
+
+function listenPages(){
+    const pageLinks = document.querySelector('.exercise-cards__guard');
+    if (pageLinks) {
+        pageLinks.addEventListener("click", pagesHandler);
+    } else {
+        console.error("Element with class 'exercise-cards__guard' not found.");
+    }
 }
 
-cardsHadler();
+function pagesHandler(evt){
+   const clickedPage = checkPage(evt);
+    if (currentPage != clickedPage){
+        currentPage = +clickedPage;
+
+        cardsHandler();
+    }
+
+}
+
+cardsHandler();
