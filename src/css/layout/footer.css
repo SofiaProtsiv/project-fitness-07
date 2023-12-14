@@ -142,14 +142,38 @@
 .footer__form__input:-webkit-autofill,
 .footer__form__input:-webkit-autofill:hover,
 .footer__form__input:-webkit-autofill:focus {
-  /* border: 1px solid var(--rating-color-active); */
   -webkit-text-fill-color: var(--secondary-white-text-color);
   -webkit-box-shadow: 0 0 0px 1000px var(--primary-black-color) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.footer__form__btn {
+.footer__form__message {
+  font-family: var(--primary-fontfont-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+}
+
+.footer__form__message_warning {
+  color: var(--rating-color-active);
+}
+
+.footer__form__message_ok {
+  color: rgb(30, 180, 30);
+}
+
+.footer__form__btn:disabled,
+.footer__form__btn:hover:disabled {
   color: var(--secondary-white-text-color);
+  background-color: var(--primary-black-color);
+  border: 1px solid var(--secondary-white-text-color);
+  cursor: default;
+}
+
+.footer__form__btn {
+  color: var(--primary-background-color);
   background-color: var(--primary-black-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
@@ -158,7 +182,7 @@
   line-height: 18px;
   padding: 12px 14px;
   border-radius: 30px;
-  border: 1px solid #f4f4f4;
+  border: 1px solid var(--primary-background-color);
   transition-property: color, background-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
@@ -221,4 +245,8 @@
 .footer__privacy__link__box a:hover,
 .footer__privacy__link__box a:focus {
   color: var(--rating-color-active);
+}
+
+.full_hidden {
+  display: none;
 }
