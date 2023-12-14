@@ -30,6 +30,18 @@ export default class ApiService {
       throw error;
     }
   }
+
+  async fetchFilters() {
+        const URL = "filters";
+    try {
+      const response = await http.get(URL);
+      return response.data.results;
+    } catch (error) {
+      console.error('Error fetching filters:', error);
+      throw error;
+    }
+  }
+
   async fetchExerciseById() {
     const URL = `exercises/${this.exerciseId}`;
     try {
