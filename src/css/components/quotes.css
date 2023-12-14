@@ -1,5 +1,4 @@
 .quotes__wrapper {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,10 +19,10 @@
   background-color: var(--primary-black-color);
   padding: 20px;
   border-radius: 20px;
-  width: 336px;
+  width: 100%;
+  max-width: 336px;
   display: flex;
   gap: 16px;
-
 
   @media (768px<=width) {
     padding: 40px;
@@ -35,10 +34,22 @@
   }
 }
 
-.quotes__logo_icon {
+.quotes__icon_wrapper {
+  background-color: var(--primary-black-color);
+  border-radius: 50%;
   width: 34px;
   height: 32px;
-  border-radius: 50%;
+  fill: var(--primary-background-color);
+  background-color: var(--secondary-white-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.quotes__logo_icon {
+  width: 100%;
+  height: 100%;
 }
 
 .quotes__text_wrapper {
@@ -72,6 +83,7 @@
 .quotes__quote_icon {
   width: 20px;
   height: 20px;
+  fill: var(--primary-background-color);
 
   @media (768px<=width) {
     width: 24px;
@@ -109,16 +121,18 @@
 }
 
 .quotes__img {
-  width: 334px;
+  width: 100%;
+  max-width: 336px;
+  height: 100%;
 
   @media (768px<=width) {
     width: 288px;
-    height: 258px;
+    /* height: 258px; */
   }
 
   @media (1440px<=width) {
     width: 444px;
-    height: 242px;
+    /* height: 242px; */
   }
 }
 
@@ -130,7 +144,8 @@
   background-color: var(--white-color);
   padding: 20px;
   border-radius: 20px;
-  width: 334px;
+  width: 100%;
+  max-width: 336px;
   display: flex;
   gap: 16px;
 
@@ -153,6 +168,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: var(--primary-background-color);
 }
 
 .quotes__gym_icon {

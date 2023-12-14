@@ -24,19 +24,32 @@
   </head>
 
   <body>
-    <!-- <load ="partials/auth-modal.html" /> -->
+    <load ="partials/header.html" />
+    <load ="partials/mobileMenu.html" />
+    <load ="partials/auth-modal.html" />
 
-    <!-- <load ="partials/quotes.html" /> -->
-    <!-- Приклад підключення -->
-    <!-- <load ="partials/example.html" /> -->
-    
     <main>
-      <load ="partials/exercise-cards.html" />
+      <load ="partials/hero.html" />
 
+      <section class="exercises">
+        <div class="container">
+          <load ="partials/filters.html" />
+          <div class="exercises__wrapper">
+            <div class="exercises__container">
+              <load ="partials/exercises.html" />
+            </div>
+
+            <load ="partials/quotes.html" />
+          </div>
+        </div>
+      </section>
     </main>
 
     <load ="partials/footer.html" />
-
+    <load ="partials/scrollup.html" />
+    <div class="js-backdrop">
+      <load ="partials/modal-exercise.html" />
+    </div>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

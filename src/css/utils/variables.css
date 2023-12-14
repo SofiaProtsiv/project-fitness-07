@@ -6,21 +6,18 @@
   font-weight: 400;
 
   --primary-black-color: #242424;
-  --primary-background-color: #F4F4F4;
+  --primary-background-color: #f4f4f4;
   --primary-white-color: #f4f4f4;
   --secondary-black-text-color: (36, 36, 36, 0.5);
-  /* #242424 opacity 0.4-0.6*/
   --secondary-white-text-color: (244, 244, 244, 0.5);
   --black-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
   --white-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
-    /* #F4F4F4 opacity 0.4-0.6*/
-  --rating-color-active: #EEA10C;
-  --rating-color-inactive: (244, 244, 244, 0.2);
-  /* #F4F4F4 opacity 0.2*/
-  --pagination-color-inactive: #D4D4D4;
+  --rating-color-active: #eea10c;
+  --rating-color-inactive: rgba(244, 244, 244, 0.2);
+  --pagination-color-inactive: #d4d4d4;
   --error-color: rgb(255, 0, 0);
   --white-color: #ffffff;
-  --footer-text-color: #C6CDD1;
+  --footer-text-color: #c6cdd1;
 
   /* Backdrop */
   --background-color: rgba(18, 20, 23, 0.4);
@@ -28,6 +25,7 @@
   /* Transition properties */
   --transition-effect: linear;
   --transition-time: 300ms;
+  --transition-dur-and-func: 300ms linear;
 
   /* Breakpoints */
   --mobile: 375px;
@@ -43,4 +41,5 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body.dark {}
+body.dark {
+}
