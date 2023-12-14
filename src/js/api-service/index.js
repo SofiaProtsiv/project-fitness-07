@@ -40,6 +40,8 @@ export default class ApiService {
       return response.data;
     } catch (error) {
       console.error('Error fetching Exercise:', error);
+    }
+  }
   async fetchFilters() {
         const URL = "filters";
     try {

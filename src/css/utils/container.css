@@ -74,7 +74,7 @@
   }
 }
 
-.exercises__container {
+.exercise-cards__container {
   width: 100%;
   display: flex;
   flex-direction: column;

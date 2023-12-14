@@ -10,7 +10,6 @@
 @import url('./layout/footer.css');
 
 /* components */
-@import url('./components/exercise-cards.css');
 @import url('./components/modal.css');
 @import url('./components/auth-modal.css');
 @import url('./components/scrollup.css');
@@ -19,3 +18,4 @@
 @import url('./components/mobileMenu.css');
 @import url('./components/filters.css');
 @import url('./components/button.css');
+@import url('./components/exercises-cards.css');
