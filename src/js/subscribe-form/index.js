@@ -16,8 +16,6 @@ async function handlerFormSubmit(ev) {
   const email = ev.target.elements.email.value.trim().toLowerCase();
 
   if (isEmailRight(email)) {
-    subscribeForm.message.classList.add('full_hidden');
-
     try {
       const fetch = new ApiService();
       fetch.email = email;
