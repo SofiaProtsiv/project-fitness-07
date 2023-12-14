@@ -129,7 +129,7 @@ const markupGiveRatingBtn = () =>
 
 const markupButton = ({ text, iconId, className = '' }) => `
   <button type="button" class="js-favorites button ${className}">
-      <span>${text}</span>
+      <span class="text">${text}</span>
       ${
         iconId
           ? `<svg class="btn-icon">
