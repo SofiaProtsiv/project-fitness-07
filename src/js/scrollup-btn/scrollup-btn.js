@@ -1,7 +1,7 @@
 const scrollupBtn = document.querySelector('.scrollup__btn');
 
 const handlerScrollEvent = function () {
-  !window.scrollY
+  window.scrollY < 300
     ? scrollupBtn.classList.add('visually-hidden')
     : scrollupBtn.classList.remove('visually-hidden');
 };
