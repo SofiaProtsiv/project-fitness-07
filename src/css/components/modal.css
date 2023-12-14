@@ -24,7 +24,6 @@
 .modalExercise {
   display: none;
   position: relative;
-  width: 335px;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 20px;
@@ -32,18 +31,39 @@
   color: var(--primary-white-color);
   background-color: var(--primary-black-color);
   border-radius: 20px;
+  z-index: 500;
   transform: scale(0, 0);
   transition: transform var(--transition-dur-and-func),
     opacity var(--transition-dur-and-func);
+
+  @media (768px <= width) {
+    padding: 32px;
+  }
+
+  @media (1440px <= width) {
+    width: 708px;
+  }
 }
 
 .modalExercise.open {
   display: block;
-  justify-content: center;
-  align-items: center;
   visibility: visible;
   transform: scale(1, 1);
   opacity: 1;
+
+  @media (width < 768px) {
+    max-width: 335px;
+  }
+
+  @media (768px <= width) {
+    width: 704px;
+    display: flex;
+    column-gap: 32px;
+  }
+
+  @media (1440px <= width) {
+    width: 708px;
+  }
 }
 
 .x-button {
@@ -59,12 +79,30 @@
   cursor: pointer;
   transition: transform var(--transition-time) var(--transition-effect),
     color var(--transition-time) var(--transition-effect);
+
+  @media (768px <= width) {
+    width: 28px;
+    font-size: 24px;
+  }
 }
 
 .x-button:hover {
   transform: rotate(-90deg) scale(1.5, 1.5);
-
   color: var(--rating-color-active);
+}
+
+.modalExercise__content {
+  @media (768px <= width) {
+    width: 338px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.exercise-content {
+  @media (768px <= width) {
+    margin-bottom: 64px;
+  }
 }
 
 .modalExercise__img-wrapper {
@@ -88,6 +126,11 @@
 }
 
 .rating__item {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-svg {
   width: 18px;
   height: 18px;
 }

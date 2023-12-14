@@ -58,12 +58,12 @@ const markupRating = rating => {
   const markup = [];
   const value = Math.round(rating * 10) / 10;
   markup.push(`<li class="rating__item value">${value}</li>`);
-
+  const iconStar = '/images/icons-sprite.svg#icon-star';
   for (let i = 1; i <= MAX_RATING; i++) {
     markup.push(`
     <li class="rating__item">
-      <svg class=" icon-star_filled">
-        <use shref="/images/icons-sprite.svg#icon-star" />
+      <svg class="icon-star_filled icon-svg">
+        <use href=${iconStar} />
       </svg>
     </li>
     `);
@@ -140,14 +140,14 @@ const markupButton = ({ text, iconId, className = '' }) => `
     </button>
 `;
 
-export const closeModalExercise = () => {
+const closeModalExercise = () => {
   backdropRef.classList.remove('open');
   modalRef.classList.remove('open');
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 };
 
-const openModalExercise = exercise => {
+export const openModalExercise = exercise => {
   renderModal(exercise);
   backdropRef.classList.add('open');
   modalRef.classList.add('open');
