@@ -91,15 +91,26 @@
   color: var(--rating-color-active);
 }
 
+.x-button:active {
+  transition-property: none;
+  transform: scale(1, 1);
+}
+
 .modalExercise__content {
   @media (768px <= width) {
     width: 338px;
     display: flex;
     flex-direction: column;
   }
+
+  @media (1440px <= width) {
+    width: 342px;
+  }
 }
 
 .exercise-content {
+  margin-bottom: 40px;
+
   @media (768px <= width) {
     margin-bottom: 64px;
   }
@@ -191,12 +202,7 @@
 }
 
 .exercise_description {
-  margin-bottom: 40px;
   color: var(--secondary-white-text-color);
   font-size: 14px;
   line-height: 1.286;
-
-  @media (768px <= width) {
-    margin-bottom: 64px;
-  }
 }
