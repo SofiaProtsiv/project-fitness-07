@@ -3,8 +3,8 @@ const cards = document.querySelector(".js-cards");
 function showInitialCards(data){
     const initialCardsLayout = data.map(({filter, name, imgURL}) => 
         `
-        <a class="exercise-cards__gallery-link js-cards" href="">
-            <div class="exercise-cards__gallery-card" data-card-name="${name}">
+        <a class="exercise-cards__gallery-link js-card" data-card-name="${name}" href="">
+            <div class="exercise-cards__gallery-card">
                 <img class="exercise-cards__gallery-image"  src="${imgURL}" alt="${filter + "-" + name}" loading="lazy" />
                 <div class="exercise-cards__gallery-info">
                     <h3 class="exercise-cards__head3-name">${name}</h3>
@@ -21,8 +21,8 @@ function showInitialCards(data){
 function showWorkoutCards(data){
     const workoutCardsLayout = data.map(({_id, bodyPart, name, target, burnedCalories, time, rating}) =>     
     `
-        <a class="workout-cards__gallery-link" href="">
-            <div class="workout-cards__gallery-card" data-id="${_id}">
+        <a class="workout-cards__gallery-link js-workout-card" data-id="${_id}"  href="">
+            <div class="workout-cards__gallery-card" >
                 <div class="workout-cards__first-line-wrapper">
                     <p class="workout-cards__parag-workout">Workout</p>
                     <p class="workout-cards__parag-rating">${Math.round(rating * 10) / 10}</p>
