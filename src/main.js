@@ -7,3 +7,4 @@ import './js/filters';
 import './js/quotes';
 import './js/modal/exercise-modal'; // TODO: to be removed;
 import './js/exercises-cards-service/card-holder'
+import './js/loader'

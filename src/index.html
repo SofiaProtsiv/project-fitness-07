@@ -24,29 +24,32 @@
   </head>
 
   <body>
-    <load ="partials/header.html" />
-    <load ="partials/mobileMenu.html" />
-    <load ="partials/auth-modal.html" />
+    <div class='content-wrapper hide'>
+      <load ="partials/header.html" />
+      <load ="partials/mobileMenu.html" />
+      <load ="partials/auth-modal.html" />
 
-    <main>
-      <load ="partials/hero.html" />
+      <main>
+        <load ="partials/hero.html" />
 
-      <section class="exercises">
-        <div class="container">
-          <load ="partials/filters.html" />
-          <div class="exercises__wrapper">
-            <load ="partials/exercises-cards.html" />
-            <load ="partials/quotes.html" />
+        <section class="exercises">
+          <div class="container">
+            <load ="partials/filters.html" />
+            <div class="exercises__wrapper">
+              <load ="partials/exercises-cards.html" />
+              <load ="partials/quotes.html" />
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <load ="partials/footer.html" />
-    <load ="partials/scrollup.html" />
-    <div class="js-backdrop">
-      <load ="partials/modal-exercise.html" />
+      <load ="partials/footer.html" />
+      <load ="partials/scrollup.html" />
+      <div class="js-backdrop">
+        <load ="partials/modal-exercise.html" />
+      </div>
     </div>
+    <load ="partials/loader.html" />
     <script type="module" src="./main.js"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@
 @import url('./utils/reset.css');
 @import url('./utils/common.css');
 @import url('./utils/container.css');
+@import url('./utils/loader.css');
 
 /* layout */
 @import url('./layout/header.css');
@@ -21,3 +22,4 @@
 
 @import url('./components/button.css');
 @import url('./components/exercises-cards.css');
+@import url('utils/skeleton-exercises.css');
