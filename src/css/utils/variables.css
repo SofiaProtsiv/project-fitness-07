@@ -8,8 +8,8 @@
   --primary-black-color: #242424;
   --primary-background-color: #f4f4f4;
   --primary-white-color: #f4f4f4;
-  --secondary-black-text-color: (36, 36, 36, 0.5);
-  --secondary-white-text-color: (244, 244, 244, 0.5);
+  --secondary-black-text-color: rgba(36, 36, 36, 0.5);
+  --secondary-white-text-color: rgba(244, 244, 244, 0.5);
   --black-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
   --white-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
   --rating-color-active: #eea10c;
@@ -41,5 +41,4 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body.dark {
-}
+body.dark {}
