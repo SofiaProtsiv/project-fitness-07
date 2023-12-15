@@ -25,10 +25,7 @@ async function handlerFormSubmit(ev) {
         rating => rating.dataset.dataChecked
       );
 
-      console.log(ratingCheckedEl);
-      console.log(subscribeForm.ratings);
       fetch.rating = parseInt(ratingCheckedEl.value);
-      console.log(fetch.rating);
       fetch.email = email;
       fetch.review = subscribeForm.validateEmailMessage.value;
       fetch.exerciseId = ratingWindow.modalConfig.exersiseId;
