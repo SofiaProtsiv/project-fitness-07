@@ -1,21 +1,22 @@
 import { toggleFavoriteStatus } from '.';
-
-const BASE_URL = import.meta.env.BASE_URL;
+import { btnBoxRender } from '../modal/exercise-modal';
 
 // Приклад виклику функції
 export const toggleFavorit = exercise => {
   const toggleClass = 'js-toggle-favorit';
   const toggleBtn = document.getElementById(toggleClass);
 
-  toggleBtn.addEventListener('click', async event => {
-    const isOK = await toggleFavoriteStatus(exercise);
-    console.log(isOK);
-    const text = !isOK ? 'Add to favorites' : 'Remove from favorites';
-    const iconId = !isOK ? 'icon-heart' : 'icon-trash';
+  toggleBtn.addEventListener('click', handleToggleFavorite);
+};
 
-    toggleBtn.innerHTML = `<span>${text}</span>
-       <svg class="btn-icon">
-            <use href="${BASE_URL}images/icons-sprite.svg#${iconId}" />
-          </svg>`;
-  });
+const handleToggleFavorite = async event => {
+  try {
+    const isFavorite = await toggleFavoriteStatus(exercise);
+    console.log(isFavorite);
+    if (isFavorite) {
+      btnBoxRender(isFavorite);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
