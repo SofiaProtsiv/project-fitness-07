@@ -4,9 +4,11 @@ import {
   strSplitCamelCase,
 } from '../helpers/stringHelper';
 
+
 import { starRating } from '../star-rating';
 
 import { toggleFavorit, favoritesDB } from '../favoritesDB'; //+
+
 
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
@@ -137,7 +139,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
   }
 
   return `
-    <button type="button" class="js-favorites button ${className}">
+    <button id="js-toggle-favorit" type="button" class="js-favorites button ${className}">
       <span class="text">${text}</span>
       ${iconId ? iconMarkup : ''}
     </button>

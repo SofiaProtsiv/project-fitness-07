@@ -13,8 +13,8 @@ export const toggleFavorit = exercise => {
     const text = !isOK ? 'Add to favorites' : 'Remove from favorites';
     const iconId = !isOK ? 'icon-heart' : 'icon-trash';
 
-    toggleBtn.innerHTML = `<span id="js-toggle-favorit-text">${text}</span>
-       <svg id="js-toggle-favorit-image" class="btn-icon">
+    toggleBtn.innerHTML = `<span>${text}</span>
+       <svg class="btn-icon">
             <use href="${BASE_URL}images/icons-sprite.svg#${iconId}" />
           </svg>`;
   });
