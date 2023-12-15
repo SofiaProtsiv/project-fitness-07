@@ -13,6 +13,9 @@
   --black-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
   --white-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
   --rating-color-active: #eea10c;
+  --modal-black-color: rgba(36, 36, 36, 1);
+  --modal-alpha-background: rgba(4,4,4,0.4);
+  --rating-color-active: #EEA10C;
   --rating-color-inactive: rgba(244, 244, 244, 0.2);
   --pagination-color-inactive: #d4d4d4;
   --error-color: rgb(255, 0, 0);
