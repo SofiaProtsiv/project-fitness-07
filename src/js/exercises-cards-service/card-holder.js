@@ -39,6 +39,7 @@ const listen = {
 };
 
 //There are 3 endpoints: 1 - favorites, 2 - exercises (target of search), 3 - filter
+
 async function cardsHandler() {
   const element = document.querySelector('.exercise-cards__section');
   element.offsetHeight;

@@ -1,5 +1,5 @@
 import ApiService from "../api-service";
-import { params, pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
+import {  pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
 
 const inputEl = document.querySelector(".search__input");
 const categoriesListEl = document.querySelector(".filters__list")
@@ -22,6 +22,7 @@ async function setCategoriesIntoMarkup() {
   }).join("")
 
   categoriesListEl.insertAdjacentHTML("afterbegin", categoriesItemsMarkup)
+  cardsHandler();
 }
 
 function handleInput(e) {
@@ -38,7 +39,7 @@ function handleCategories(e) {
   })
   
   categoryEl.classList.add("active")
-  params.filter = categoryId.includes("-") ? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1)).replace("-", '%20') : categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
+  
   pageFilter.currentPage = 1;
   cardsHandler();
 }

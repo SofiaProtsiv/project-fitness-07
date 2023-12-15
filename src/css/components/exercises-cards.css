@@ -59,6 +59,20 @@
 
 }
 
+.exercise-cards__gradient{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    background-image: linear-gradient(
+        0deg, 
+        rgba(17, 17, 17, 0.50) 0%, 
+        rgba(17, 17, 17, 0.50) 100%
+    );
+}
+
 .exercise-cards__gallery-image {
     border-radius: 12px;
     object-fit: cover;
@@ -476,10 +490,10 @@
     display: flex;
     height: 32px;
     width: 32px;
-    padding: 0 auto;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    margin-left: 8px;
     font-family: var(--primary-fontfont-family);
     color: var(--black-text-opacity-fourty-color);
     font-size: 20px;
@@ -489,14 +503,12 @@
     letter-spacing: 0.04em;
 
     @media (width >=768px) and (width < 1440px) {
-        gap: 10px;
         font-size: 24px;
         line-height: 1.33;
         letter-spacing: 0.04em;
     }
 
     @media (width >=1440px) {
-        gap: 10px;
         font-size: 24px;
         line-height: 1.33;
         letter-spacing: 0.04em;
