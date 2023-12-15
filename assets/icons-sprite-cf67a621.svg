@@ -82,5 +82,9 @@
         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M15.7498 15.75L12.4873 12.4875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
+      <symbol id="email" viewBox="0 0 18 18">
+    <path d="M16.313 2.25h-14.625c-0.928 0-1.688 0.759-1.688 1.688v11.25c0 0.928 0.759 1.688 1.688 1.688h14.625c0.928 0 1.688-0.759 1.688-1.688v-11.25c0-0.928-0.759-1.688-1.688-1.688zM7.009 9.675l-4.759 3.707v-8.818l4.759 5.111zM3.1 4.5h11.799l-5.9 4.43-5.9-4.43zM7.195 9.874l1.805 1.939 1.805-1.939 3.701 4.751h-11.013l3.701-4.751zM10.991 9.675l4.759-5.111v8.818l-4.759-3.707z"></path>
+    </symbol>
+    </symbol>
   </defs>
 </svg>
