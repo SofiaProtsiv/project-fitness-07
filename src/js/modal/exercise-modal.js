@@ -4,6 +4,8 @@ import {
   strSplitCamelCase,
 } from '../helpers/stringHelper';
 
+import { toggleFavorit, favoritesDB } from '../favoritesDB'; //+
+
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
 const closeButtonRef = modalRef.querySelector('.x-button');
@@ -15,7 +17,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
 const renderModal = exercise => {
-  const { gifUrl, name, rating, isFavorite, description } = exercise;
+  const { gifUrl, name, rating, _id, isFavorite, description } = exercise;
   const details = getDetails(exercise);
   // media
   imgWrapperRef.innerHTML = '';
@@ -34,6 +36,7 @@ const renderModal = exercise => {
   );
   // buttons
   buttonBoxRef.innerHTML = '';
+
   isFavorite
     ? buttonBoxRef.insertAdjacentHTML('beforeend', markupRemoveFavoritesBtn())
     : buttonBoxRef.insertAdjacentHTML('beforeend', markupAddFavoritesBtn());
@@ -202,11 +205,15 @@ const exercise = {
   burnedCalories: 220,
   time: 3,
   popularity: 8322,
-  isFavorite: true,
+  isFavorite: false,
 };
 
-export const showModal = () => {
-  openModalExercise(exercise);
+export const showModal = async function () {
+  const { _id } = exercise;
+  const isFavoriteValue = await favoritesDB.idIsFavorite(_id);
+  console.log(isFavoriteValue, _id);
+  openModalExercise({ ...exercise, isFavorite: isFavoriteValue });
+  toggleFavorit(exercise);
 };
 
 btnOpenModalExerciseRef.addEventListener('click', event => {
