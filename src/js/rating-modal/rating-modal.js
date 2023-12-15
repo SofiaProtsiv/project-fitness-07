@@ -2,7 +2,11 @@ const modalConfig = {
     ratingText : "Rating",
     iconStar : '/images/icons-sprite.svg#icon-star',
     ratingMax : 5,
-    closeKeyBoardBtn : "Escape"
+    closeKeyBoardBtn : "Escape",
+    beforeOpen : null,
+    afterOpen : null,
+    beforeClose : null,
+    afterClose : null,
 }
 
 const feedbackForm = document.querySelector("form.feedback");
@@ -49,6 +53,9 @@ const ratingInputs = document.querySelectorAll('.rating-stars input');
 const ratingCount = document.querySelector('.rating-count');
 
 const closeRatingModal = () => {
+    if (modalConfig.beforeClose) {
+        modalConfig.beforeClose();
+    }
     ratingInputs.forEach(input => {
         input.removeEventListener('change', handleRatingChange);
     });
@@ -56,6 +63,9 @@ const closeRatingModal = () => {
     rootRatingModal.classList.remove('open');
     document.body.style.overflow = 'visible';
     document.removeEventListener('keydown', handleClose);
+    if (modalConfig.afterClose) {
+        modalConfig.afterClose();
+    }
 }
   
 const openRatingModal = () => {
@@ -75,4 +85,8 @@ rootRatingModal.addEventListener('click', e => {
     }
 });
 
-openRatingModal();
+export const ratingWindow = {
+    modalConfig,
+    openRatingModal,
+    closeRatingModal
+}
