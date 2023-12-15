@@ -16,6 +16,7 @@
 @import url('./components/hero.css');
 @import url('./components/quotes.css');
 @import url('./components/mobileMenu.css');
-
+@import url('./components/filters.css');
 @import url('./components/button.css');
+@import url('./components/exercises-cards.css');
 @import url('./components/rating-modal.css');
