@@ -1,18 +1,24 @@
 import { updateViewPort } from "./update-view-port";
+import { addMarkupToHtml, createCardsSkeleton } from '../createSkeleton.js';
 
+const list = document.querySelector('.js-cards');
 //It`s looking what endpoint and viewSize is, then give a number of cards to show
 function calculateObjects(endPoint, viewSize){
     if (viewSize >= 768){
         if (endPoint != 3){
-            return 10;
+          addMarkupToHtml(list, createCardsSkeleton(10));
+          return 10;
         }
+        addMarkupToHtml(list, createCardsSkeleton(12));
         return 12;
     } else if (viewSize < 768){
         if (endPoint == 1){
-            return 10;
+          return 10;
         } else if (endPoint == 2){
-            return 8
+          addMarkupToHtml(list, createCardsSkeleton(8));
+          return 8
         }
+        addMarkupToHtml(list, createCardsSkeleton(9));
         return 9;
     }
 }
@@ -43,7 +49,7 @@ function checkWorkoutParams(currentPage, endPoint, fetch, params, connection){
         fetch.equipment = params.equipment;
         connection = getConnection(currentPage, endPoint, fetch).fetchFilteredExercises();
     } else{
-        
+
         connection = getConnection(currentPage, endPoint, fetch).fetchExercise();
     }
     return connection;
