@@ -1,5 +1,4 @@
 .quotes__wrapper {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,14 +19,15 @@
   background-color: var(--primary-black-color);
   padding: 20px;
   border-radius: 20px;
-  width: 336px;
+  width: 100%;
+  max-width: 336px;
   display: flex;
   gap: 16px;
-
 
   @media (768px<=width) {
     padding: 40px;
     width: 400px;
+    max-width: 100%;
   }
 
   @media (1440px<=width) {
@@ -122,16 +122,19 @@
 }
 
 .quotes__img {
-  width: 334px;
+  width: 100%;
+  max-width: 336px;
+  height: auto;
 
   @media (768px<=width) {
     width: 288px;
-    height: 258px;
+    max-width: 100%;
+    /* height: 258px; */
   }
 
   @media (1440px<=width) {
     width: 444px;
-    height: 242px;
+    /* height: 242px; */
   }
 }
 
@@ -143,13 +146,15 @@
   background-color: var(--white-color);
   padding: 20px;
   border-radius: 20px;
-  width: 334px;
+  width: 100%;
+  max-width: 336px;
   display: flex;
   gap: 16px;
 
   @media (768px<=width) {
     padding: 40px;
     width: 400px;
+    max-width: 100%;
   }
 
   @media (1440px<=width) {

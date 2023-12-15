@@ -5,6 +5,8 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 1.29;
+  background-color: var(--primary-white-color);
+  ;
 }
 
 body::-webkit-scrollbar {

@@ -6,7 +6,7 @@ const closeButton = document.querySelector('.authModal__button-close');
 const authForm = document.querySelector('.authForm');
 const actionText = document.querySelector('.action__text');
 const btnChangeForm = document.querySelector('.action__button');
-const usernameFieldset = document.querySelector(".authForm__fieldset.username")
+const usernameFieldset = document.querySelector('.authForm__fieldset.username');
 const title = document.querySelector('.authForm__title');
 const userName = document.querySelector('.header__username');
 const headerGroup = document.querySelector('.header_main_nav');
@@ -32,7 +32,7 @@ const resetForm = () => {
   authForm.reset();
 };
 
-const handleSubmit = async (event) => {
+const handleSubmit = async event => {
   event.preventDefault();
 
   const formData = [...authForm.elements].reduce((formData, element) => {
@@ -71,10 +71,11 @@ const changeForm = () => {
     resetForm();
     isRegMode = true;
   }
+  authForm.elements.name.toggleAttribute('required');
 };
 
 const checkCurrentUser = async () => {
-  await db.auth().onAuthStateChanged((user) => {
+  await db.auth().onAuthStateChanged(user => {
     if (user) {
       userName.textContent = user.displayName;
       userName.classList.remove('hidden');
@@ -100,17 +101,16 @@ authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
 btnLogOut.addEventListener('click', handleSignOut);
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     closeModal();
   }
 });
 
-authModal.addEventListener('click', (event) => {
+authModal.addEventListener('click', event => {
   if (event.target === authModal) {
     closeModal();
   }
 });
-
 
 checkCurrentUser();
