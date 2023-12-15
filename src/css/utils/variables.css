@@ -37,6 +37,10 @@
   --table-max: 1399.98px;
   --desktop: 1440px;
 
+  /*Skeleton*/
+  --loader-background-color: #EEEEEE;
+  --loader-highlight-color: #DEDEDE;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
