@@ -18,6 +18,13 @@ let params = {
 
 let currentPage = 1;
 let endPoint = 3;
+const listen = {
+    cardsLinks: null,
+    pageLinks: null,
+    workoutLinks: null,
+    
+}
+
 
 async function cardsHandler(){
     const element = document.querySelector('.exercise-cards__section');
@@ -72,36 +79,39 @@ async function cardsHandler(){
 }
 
 function listenCards(){
-    const cardsLinks = document.querySelector('.js-cards');
-    if (cardsLinks) {
-        cardsLinks.addEventListener("click", targetHandler);
+    listen.cardsLinks = document.querySelector('.js-cards');
+    if (listen.cardsLinks) {
+        listen.cardsLinks.addEventListener("click", targetHandler);
     } else {
         console.error("Element with class 'js-cards' not found.");
     }
+   
 }
 
 function targetHandler(evt){
-    
+    const result = checkCard(evt);
+    if (result != null || undefined || NaN)
     if (params.filter === "Muscles"){
         endPoint = 2;
-        params.muscles = checkCard(evt);
+        params.muscles = result;
     } else if (params.filter === "Bodypart"){
         endPoint = 2;
-        params.bodypart = checkCard(evt);
+        params.bodypart = result;
     } else if(params.filter === "Equipment"){
         endPoint = 2;
-        params.equipment = checkCard(evt);
+        params.equipment = result;
     }
-    
+    listen.cardsLinks.removeEventListener("click", targetHandler);
     currentPage = 1;
     cardsHandler();
+   
 }
 
 
 function listenPages(){
-    const pageLinks = document.querySelector('.js-pages');
-    if (pageLinks) {
-        pageLinks.addEventListener("click", pagesHandler);
+    listen.pageLinks = document.querySelector('.js-pages');
+    if (listen.pageLinks) {
+        listen.pageLinks.addEventListener("click", pagesHandler);
     } else {
         console.error("Element with class 'js-pages' not found.");
     }
@@ -109,7 +119,7 @@ function listenPages(){
 
 function pagesHandler(evt){
    const clickedPage = checkPage(evt);
-    if (currentPage != clickedPage){
+    if (currentPage != clickedPage && clickedPage != null || undefined || NaN){
         currentPage = +clickedPage;
         cardsHandler();
     }
@@ -117,16 +127,19 @@ function pagesHandler(evt){
 }
 
 function listenWorkoutCards(){
-    const cardsLinks = document.querySelector('.js-cards');
-    if (cardsLinks) {
-        cardsLinks.addEventListener("click", workoutHandler);
+    listen.workoutLinks = document.querySelector('.js-cards');
+    if (listen.workoutLinks) {
+        listen.workoutLinks.addEventListener("click", workoutHandler);
     } else {
-        console.error("Element with class 'js-cards' not found.");
+        console.error("Element with class 'js-cards' not found for workout.");
     }
 }
 
 function workoutHandler(evt){
-    checkWorkoutCard(evt);
+    const clickedWorkoutCards = checkWorkoutCard(evt);
+    if (clickedWorkoutCards != null || undefined || NaN){
+        //Here must be some logic for modul that get key
+    }
 }
 
 
