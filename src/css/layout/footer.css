@@ -118,7 +118,7 @@
 }
 
 .footer__form__input {
-  color: var(--secondary-white-text-color);
+  color: var(--white-color);
   background-color: var(--primary-black-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
@@ -139,13 +139,13 @@
   border-color: var(--rating-color-active);
 }
 
-.footer__form__input:-webkit-autofill,
+/* .footer__form__input:-webkit-autofill,
 .footer__form__input:-webkit-autofill:hover,
 .footer__form__input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--secondary-white-text-color);
   -webkit-box-shadow: 0 0 0px 1000px var(--primary-black-color) inset;
   transition: background-color 5000s ease-in-out 0s;
-}
+} */
 
 .footer__form__message {
   font-family: var(--primary-fontfont-family);
@@ -166,15 +166,12 @@
 
 .footer__form__btn:disabled,
 .footer__form__btn:hover:disabled {
-  color: var(--secondary-white-text-color);
-  background-color: var(--primary-black-color);
-  border: 1px solid var(--secondary-white-text-color);
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .footer__form__btn {
-  color: var(--primary-background-color);
-  background-color: var(--primary-black-color);
+  color: var(--secondary-white-text-color);
+  background-color: var(--primary-white-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;
@@ -188,11 +185,11 @@
   transition-timing-function: var(--transition-effect);
 }
 
-.footer__form__btn:hover,
+/* .footer__form__btn:hover,
 .footer__form__btn:focus {
   color: var(--primary-black-color);
   background-color: var(--primary-background-color);
-}
+} */
 
 .footer__privacy__box {
   display: flex;

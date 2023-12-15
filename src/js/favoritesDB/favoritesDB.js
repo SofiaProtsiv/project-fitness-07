@@ -3,28 +3,51 @@
 import { store, db } from '../firebase-service';
 
 export const favoritesDB = {
-  add: async function (key, value) {
+  add: function (key, value) {
     return new Promise((resolve, reject) => {
       try {
         store.addData(key, value);
         resolve(true);
       } catch (error) {
-        // reject(error);
-        console.log(error);
+        // console.error(error);
+        reject(false);
       }
     });
   },
 
-  get: async function () {
-    return new Promise((resolve, reject) => {
+  get: function () {
+    return new Promise(async (resolve, reject) => {
       try {
-        const res = store.getData();
-        resolve(res);
+        const res = await store.getData();
+        resolve(Object.values(res));
       } catch (error) {
-        // reject(error);
-        console.error(error);
+        // console.error(error);
+        reject([]);
       }
     });
+  },
+
+  idIsFavorite: async function (id) {
+    try {
+      const get = await this.get();
+
+      return get.some(obj => obj._id === id);
+    } catch (error) {
+      // console.error(error);
+      return false;
+    }
+  },
+
+  getObjectById: async function (id) {
+    try {
+      const get = await this.get();
+      const foundObject = get.find(obj => obj._id === id) || null;
+
+      return foundObject ? { ...foundObject, isFavorite: true } : null;
+    } catch (error) {
+      // console.error(error);
+      return null;
+    }
   },
 
   addAndGet: async function (key, value) {
@@ -33,11 +56,12 @@ export const favoritesDB = {
         await store.addData(key, value);
 
         setTimeout(async () => {
-          resolve(await store.getData());
+          const res = await store.getData();
+          resolve(Object.values(res));
         }, 200);
       } catch (error) {
-        console.error(error);
-        reject(error);
+        // console.error(error);
+        reject([]);
       }
     });
   },
@@ -48,8 +72,8 @@ export const favoritesDB = {
         store.removeData(key);
         resolve(true);
       } catch (error) {
-        // reject(error);
-        console.error(error);
+        // console.error(error);
+        reject(false);
       }
     });
   },

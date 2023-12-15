@@ -16,9 +16,19 @@ let params = {
     equipment: "",
 };
 
-let currentPage = 1;
-let endPoint = 3;
+const pageFilter = {
+    currentPage: 1,
+    endPoint: 3,
+}
 
+const listen = {
+    cardsLinks: null,
+    pageLinks: null,
+    workoutLinks: null,
+    
+}
+
+//There are 3 endpoints: 1 - favorites, 2 - exercises (target of search), 3 - filter
 async function cardsHandler(){
     const element = document.querySelector('.exercise-cards__section');
     element.offsetHeight;
@@ -26,7 +36,7 @@ async function cardsHandler(){
     let data;
     let connection;
     try{
-        switch (endPoint){
+        switch (pageFilter.endPoint){
             // If the endpoint has /favorites do the next
             case 1:
                 //Тут повинна бути логіка отримання даних з позначкою фейворітс
@@ -36,33 +46,30 @@ async function cardsHandler(){
             // If the endpoint has /exercise do the next
             case 2:
                 addWorkoutClass();
-
-                connection = checkWorkoutParams(currentPage, endPoint, fetch, params, connection);
+                connection = checkWorkoutParams(pageFilter.currentPage, pageFilter.endPoint, fetch, params, connection);
                 data = await getData(connection);
 
                 cleanerCardWrapper();
                 cleanerPages();
                 showWorkoutCards(data);
-                showPages(currentPage, fetch.maxPages);
+                showPages(pageFilter.currentPage, fetch.maxPages);
  
-                listenPages(endPoint);
+                listenPages(pageFilter.endPoint);
                 listenWorkoutCards();
                 break;
             // If the endpoint has /filter do the next
             case 3:
                 deleteWorkoutClass();
-
-                connection = checkExerciseParams(currentPage, endPoint, fetch, params, connection);
+                connection = checkExerciseParams(pageFilter.currentPage, pageFilter.endPoint, fetch, params, connection);
                 data = await getData(connection);
-    
                 cleanerCardWrapper();
                 cleanerPages();
 
                 showInitialCards(data);
-                showPages(currentPage, fetch.maxPages);
+                showPages(pageFilter.currentPage, fetch.maxPages);
 
                 listenCards();
-                listenPages(endPoint);
+                listenPages(pageFilter.endPoint);
                 break;
             
         }
@@ -72,36 +79,39 @@ async function cardsHandler(){
 }
 
 function listenCards(){
-    const cardsLinks = document.querySelector('.js-cards');
-    if (cardsLinks) {
-        cardsLinks.addEventListener("click", targetHandler);
+    listen.cardsLinks = document.querySelector('.js-cards');
+    if (listen.cardsLinks) {
+        listen.cardsLinks.addEventListener("click", targetHandler);
     } else {
         console.error("Element with class 'js-cards' not found.");
     }
+   
 }
 
 function targetHandler(evt){
-    
+    const result = checkCard(evt);
+    if (result != null || undefined || NaN)
     if (params.filter === "Muscles"){
-        endPoint = 2;
-        params.muscles = checkCard(evt);
-    } else if (params.filter === "Bodypart"){
-        endPoint = 2;
-        params.bodypart = checkCard(evt);
+        pageFilter.endPoint = 2;
+        params.muscles = result;
+    } else if (params.filter === "Body%20parts"){
+        pageFilter.endPoint = 2;
+        params.bodypart = result;
     } else if(params.filter === "Equipment"){
-        endPoint = 2;
-        params.equipment = checkCard(evt);
+        pageFilter.endPoint = 2;
+        params.equipment = result;
     }
-    
-    currentPage = 1;
+    listen.cardsLinks.removeEventListener("click", targetHandler);
+    pageFilter.currentPage = 1;
     cardsHandler();
+   
 }
 
 
 function listenPages(){
-    const pageLinks = document.querySelector('.js-pages');
-    if (pageLinks) {
-        pageLinks.addEventListener("click", pagesHandler);
+    listen.pageLinks = document.querySelector('.js-pages');
+    if (listen.pageLinks) {
+        listen.pageLinks.addEventListener("click", pagesHandler);
     } else {
         console.error("Element with class 'js-pages' not found.");
     }
@@ -109,25 +119,30 @@ function listenPages(){
 
 function pagesHandler(evt){
    const clickedPage = checkPage(evt);
-    if (currentPage != clickedPage){
-        currentPage = +clickedPage;
+    if (pageFilter.currentPage != clickedPage && clickedPage != null || undefined || NaN){
+        pageFilter.currentPage = +clickedPage;
         cardsHandler();
     }
 
 }
 
 function listenWorkoutCards(){
-    const cardsLinks = document.querySelector('.js-cards');
-    if (cardsLinks) {
-        cardsLinks.addEventListener("click", workoutHandler);
+    listen.workoutLinks = document.querySelector('.js-cards');
+    if (listen.workoutLinks) {
+        listen.workoutLinks.addEventListener("click", workoutHandler);
     } else {
-        console.error("Element with class 'js-cards' not found.");
+        console.error("Element with class 'js-cards' not found for workout.");
     }
 }
 
 function workoutHandler(evt){
-    checkWorkoutCard(evt);
+    const clickedWorkoutCards = checkWorkoutCard(evt);
+    if (clickedWorkoutCards != null || undefined || NaN){
+        //Here must be some logic for modul that get key
+    }
 }
 
 
 cardsHandler();
+
+export{params, pageFilter, cardsHandler};

@@ -4,6 +4,12 @@ import {
   strSplitCamelCase,
 } from '../helpers/stringHelper';
 
+
+import { starRating } from '../star-rating';
+
+import { toggleFavorit, favoritesDB } from '../favoritesDB'; //+
+
+
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
 const closeButtonRef = modalRef.querySelector('.x-button');
@@ -11,10 +17,11 @@ const imgWrapperRef = modalRef.querySelector('.modalExercise__img-wrapper');
 const contentWrapperRef = modalRef.querySelector('.exercise-content');
 const buttonBoxRef = modalRef.querySelector('.button-box');
 
+const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
 const renderModal = exercise => {
-  const { gifUrl, name, rating, isFavorite, description } = exercise;
+  const { gifUrl, name, rating, _id, isFavorite, description } = exercise;
   const details = getDetails(exercise);
   // media
   imgWrapperRef.innerHTML = '';
@@ -33,6 +40,7 @@ const renderModal = exercise => {
   );
   // buttons
   buttonBoxRef.innerHTML = '';
+
   isFavorite
     ? buttonBoxRef.insertAdjacentHTML('beforeend', markupRemoveFavoritesBtn())
     : buttonBoxRef.insertAdjacentHTML('beforeend', markupAddFavoritesBtn());
@@ -58,16 +66,9 @@ const markupRating = rating => {
   const markup = [];
   const value = Math.round(rating * 10) / 10;
   markup.push(`<li class="rating__item value">${value}</li>`);
-  const iconStar = '/images/icons-sprite.svg#icon-star';
-  for (let i = 1; i <= MAX_RATING; i++) {
-    markup.push(`
-    <li class="rating__item">
-      <svg class="icon-star_filled icon-svg">
-        <use href=${iconStar} />
-      </svg>
-    </li>
-    `);
-  }
+  const percent = Math.round((rating / MAX_RATING) * 100);
+  const iconStar = `${BASE_URL}images/icons-sprite.svg#icon-star`;
+  markup.push(`<li ${starRating(percent)}</li>`);
 
   return `<ul class="rating">${markup.join('')}</ul>`;
 };
@@ -127,18 +128,23 @@ const markupGiveRatingBtn = () =>
     className: 'ghost',
   });
 
-const markupButton = ({ text, iconId, className = '' }) => `
-  <button type="button" class="js-favorites button ${className}">
-      <span>${text}</span>
-      ${
-        iconId
-          ? `<svg class="btn-icon">
-            <use href="/images/icons-sprite.svg#${iconId}" />
-          </svg>`
-          : ''
-      }
+const markupButton = ({ text, iconId, className = '' }) => {
+  let iconMarkup;
+  if (iconId) {
+    iconMarkup = `
+      <svg class="btn-icon">
+        <use href=${BASE_URL}images/icons-sprite.svg#${iconId} />
+      </svg>
+    `;
+  }
+
+  return `
+    <button id="js-toggle-favorit" type="button" class="js-favorites button ${className}">
+      <span class="text">${text}</span>
+      ${iconId ? iconMarkup : ''}
     </button>
-`;
+  `;
+};
 
 const closeModalExercise = () => {
   backdropRef.classList.remove('open');
@@ -196,11 +202,15 @@ const exercise = {
   burnedCalories: 220,
   time: 3,
   popularity: 8322,
-  isFavorite: true,
+  isFavorite: false,
 };
 
-export const showModal = () => {
-  openModalExercise(exercise);
+export const showModal = async function () {
+  const { _id } = exercise;
+  const isFavoriteValue = await favoritesDB.idIsFavorite(_id);
+  console.log(isFavoriteValue, _id);
+  openModalExercise({ ...exercise, isFavorite: isFavoriteValue });
+  toggleFavorit(exercise);
 };
 
 btnOpenModalExerciseRef.addEventListener('click', event => {
