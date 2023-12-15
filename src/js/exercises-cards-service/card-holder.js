@@ -92,13 +92,13 @@ function targetHandler(evt){
     const result = checkCard(evt);
     if (result != null || undefined || NaN)
     if (params.filter === "Muscles"){
-        endPoint = 2;
+        pageFilter.endPoint = 2;
         params.muscles = result;
     } else if (params.filter === "Body%20parts"){
-        endPoint = 2;
+        pageFilter.endPoint = 2;
         params.bodypart = result;
     } else if(params.filter === "Equipment"){
-        endPoint = 2;
+        pageFilter.endPoint = 2;
         params.equipment = result;
     }
     listen.cardsLinks.removeEventListener("click", targetHandler);
