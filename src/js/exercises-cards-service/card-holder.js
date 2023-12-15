@@ -1,5 +1,5 @@
 import {showFavoriteCards, showInitialCards, showWorkoutCards, cleanerCardWrapper} from "../templates/exercise-cards";
-import {getData, checkExerciseParams, checkWorkoutParams} from "./cards-service"
+import {getData, checkExerciseParams, checkWorkoutParams, getFiltersFromPage} from "./cards-service"
 import { addWorkoutClass, deleteWorkoutClass } from "./class-changer";
 import ApiService from "../api-service";
 import { cleanerPages, showPages } from "../templates/pages";
@@ -35,6 +35,8 @@ async function cardsHandler(){
     const fetch = new ApiService();
     let data;
     let connection;
+    getFiltersFromPage(params);
+
     try{
         switch (pageFilter.endPoint){
             // If the endpoint has /favorites do the next
@@ -67,7 +69,6 @@ async function cardsHandler(){
 
                 showInitialCards(data);
                 showPages(pageFilter.currentPage, fetch.maxPages);
-
                 listenCards();
                 listenPages(pageFilter.endPoint);
                 break;
@@ -142,7 +143,5 @@ function workoutHandler(evt){
     }
 }
 
-
-cardsHandler();
 
 export{params, pageFilter, cardsHandler};

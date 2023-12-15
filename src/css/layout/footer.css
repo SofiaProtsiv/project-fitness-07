@@ -170,7 +170,6 @@
 }
 
 .footer__form__btn {
-  color: var(--secondary-white-text-color);
   background-color: var(--primary-white-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;

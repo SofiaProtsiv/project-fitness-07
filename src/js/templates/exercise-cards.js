@@ -8,6 +8,7 @@ function showInitialCards(data) {
         `
         <a class="exercise-cards__gallery-link js-card" data-card-name="${name}" href="">
             <div class="exercise-cards__gallery-card">
+                <div class="exercise-cards__gradient"></div>
                 <img class="exercise-cards__gallery-image"  src="${imgURL}" alt="${
           filter + '-' + name
         }" loading="lazy" />
