@@ -110,11 +110,7 @@
 
 /* WORKOUT LAYOUT*/
 .workout-cards__wrapper {
-    @media (width < 768px) {
-        width: 335px;
-        height: 141px;
-    }
-
+    
     @media (width >=768px) and (width < 1440px) {
         grid-template-columns: repeat(auto-fit, minmax(344px, 1fr));
         grid-auto-rows: 141px;
@@ -131,7 +127,6 @@
 }
 
 .workout-cards__gallery-link {
-    position: relative;
     text-decoration: none;
     font-family: var(--primary-fontfont-family);
     border-radius: 15px;
@@ -225,19 +220,24 @@
 .workout-cards__third-line-wrapper {
     display: flex;
     margin-top: 16px;
-
-    @media (width >=1440px) {
-        width: 100%;
-    }
-}
-
-.workout-cards__third-line-wrapper {
     width: 312px;
     color: var(--black-text-opacity-fourty-color);
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+
+    @media (width >=1440px) {
+        width: 100%;
+    }
+}
+
+.workout-cards__parag-burned-calories{
+    width: 95px;
+}
+
+.workout-cards__parag-body-part{
+    width: 65px;
 }
 
 .workout-cards__parag-burned-calories,
@@ -245,6 +245,18 @@
 .workout-cards__parag-target {
     margin-right: 4px;
 
+}
+
+.workout-cards__parag-body-part,
+.workout-cards__parag-target {
+    margin-left: 10px;
+}
+
+.workout-cards__parag-burned-calories-result,
+.workout-cards__parag-body-part-result,
+.workout-cards__parag-target-result {
+    color: var(--primary-black-color);
+    
     @media (width < 768px) {
         width: 32px;
         white-space: nowrap;
@@ -261,18 +273,6 @@
 
 }
 
-.workout-cards__parag-body-part,
-.workout-cards__parag-target {
-    margin-left: 10px;
-}
-
-.workout-cards__parag-burned-calories-result,
-.workout-cards__parag-body-part-result,
-.workout-cards__parag-target-result {
-    color: var(--primary-black-color);
-
-}
-
 .workout-cards__parag-target-result {
     margin-right: 0;
 }
@@ -285,6 +285,46 @@
 
 
 /* FAVORITE LAYOUT*/
+.favorite-cards__wrapper {
+    
+    @media (width >=768px) and (width < 1440px) {
+        grid-template-columns: repeat(auto-fit, minmax(344px, 1fr));
+        grid-auto-rows: 141px;
+        row-gap: 32px;
+        column-gap: 16px;
+    }
+
+    @media (width >=1440px) {
+        grid-template-columns: repeat(auto-fit, minmax(442px, 1fr));
+        grid-auto-rows: 141px;
+        row-gap: 32px;
+        column-gap: 16px;
+    }
+}
+
+.favorite-cards__gallery-link {
+    text-decoration: none;
+    font-family: var(--primary-fontfont-family);
+    border-radius: 15px;
+    padding: 16px;
+    background-color: var(--white-color);
+
+    @media (width < 768px) {
+        width: 335px;
+        height: 141px;
+    }
+
+    @media (width >=768px) and (width < 1440px) {
+        width: 344px;
+        height: 141px;
+    }
+
+    @media (width >=1440px) {
+        width: 442px;
+        height: 141px;
+    }
+}
+
 .favorite-cards__first-line-wrapper {
     display: flex;
     align-items: center;
@@ -304,7 +344,7 @@
     margin-right: 16px;
 }
 
-.favorite-cards__icon-trash {
+.favorite-cards__icon-star {
     margin-left: 2px;
     max-width: 18px;
     max-height: 18px;
@@ -356,19 +396,24 @@
 .favorite-cards__third-line-wrapper {
     display: flex;
     margin-top: 16px;
-
-    @media (width >=1440px) {
-        width: 100%;
-    }
-}
-
-.favorite-cards__third-line-wrapper {
     width: 312px;
     color: var(--black-text-opacity-fourty-color);
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+
+    @media (width >=1440px) {
+        width: 100%;
+    }
+}
+
+.favorite-cards__parag-burned-calories{
+    width: 95px;
+}
+
+.favorite-cards__parag-body-part{
+    width: 65px;
 }
 
 .favorite-cards__parag-burned-calories,
@@ -376,6 +421,18 @@
 .favorite-cards__parag-target {
     margin-right: 4px;
 
+}
+
+.favorite-cards__parag-body-part,
+.favorite-cards__parag-target {
+    margin-left: 10px;
+}
+
+.favorite-cards__parag-burned-calories-result,
+.favorite-cards__parag-body-part-result,
+.favorite-cards__parag-target-result {
+    color: var(--primary-black-color);
+    
     @media (width < 768px) {
         width: 32px;
         white-space: nowrap;
@@ -392,18 +449,6 @@
 
 }
 
-.favorite-cards__parag-body-part,
-.favorite-cards__parag-target {
-    margin-left: 10px;
-}
-
-.favorite-cards__parag-burned-calories-result,
-.favorite-cards__parag-body-part-result,
-.favorite-cards__parag-target-result {
-    color: var(--primary-black-color);
-
-}
-
 .favorite-cards__parag-target-result {
     margin-right: 0;
 }
@@ -417,16 +462,23 @@
 /* PAGES LAYOUT*/
 .exercise-cards__guard {
     display: flex;
+    margin-top: 20px;
+    @media (width >=768px) and (width < 1440px) {
+        margin-top: 32px;
+    }
+
+    @media (width >=1440px) {
+        margin-top: 32px;
+    }
 }
 
 .exercise-cards__wrapper-page {
     display: flex;
     height: 32px;
     width: 32px;
-    margin-top: 20px;
-    padding: 6px 9px;
+    padding: 0 auto;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     font-family: var(--primary-fontfont-family);
     color: var(--black-text-opacity-fourty-color);
@@ -437,8 +489,6 @@
     letter-spacing: 0.04em;
 
     @media (width >=768px) and (width < 1440px) {
-        margin-top: 32px;
-        padding: 0 9px;
         gap: 10px;
         font-size: 24px;
         line-height: 1.33;
@@ -446,8 +496,6 @@
     }
 
     @media (width >=1440px) {
-        margin-top: 32px;
-        padding: 0 9px;
         gap: 10px;
         font-size: 24px;
         line-height: 1.33;
