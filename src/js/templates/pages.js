@@ -6,8 +6,8 @@ function showPages(currentPage, totalPages) {
         const pageClass = i === currentPage ? "exercise-cards__wrapper-page exercise-cards__current-page" : "exercise-cards__wrapper-page js-pages";
         pages.push(`
 
-        <div class="${pageClass}" data-page="${i}">
-            <a class="exercise-cards__page" href="" >
+        <div class="${pageClass}" >
+            <a class="exercise-cards__page js-page" data-page="${i}" href="" >
                 ${i}
             </a>
         </div>

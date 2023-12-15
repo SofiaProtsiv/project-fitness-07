@@ -10,7 +10,6 @@ export const store = {
     return new Promise((resolve, reject) => {
       db.auth().onAuthStateChanged(user => {
         if (user) {
-          console.log('store USER.uid: ', user.uid);
           resolve(user.uid);
         } else {
           reject('User not authenticated');
@@ -31,7 +30,7 @@ export const store = {
         { merge: true }
       )
       .then(() => {
-        console.log('Document successfully written!');
+        // console.log('Document successfully written!');
         return true;
       })
       .catch(error => {
@@ -53,7 +52,7 @@ export const store = {
         { merge: true }
       )
       .then(() => {
-        console.log('Document successfully removed!');
+        // console.log('Document successfully removed!');
         return true;
       })
       .catch(error => {
@@ -70,7 +69,7 @@ export const store = {
     if (dataSnapshot.exists()) {
       return dataSnapshot.data();
     } else {
-      console.log('No such document');
+      console.error('No such document');
     }
   },
 };
