@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon.svg"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team | Your Energy</title>
 
-  <title>Team | Your Energy</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script type="module" crossorigin src="/project-fitness-07/assets/team-8bafa401.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-5964c57d.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-fea27591.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-c42c0c97.css">
+  </head>
 
-  
-  <script type="module" crossorigin src="/project-fitness-07/assets/team-ebd55413.js"></script>
-  <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-7ebbfa40.js">
-  <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-4600b39f.js">
-  <link rel="stylesheet" href="/project-fitness-07/assets/index-a009eb4d.css">
-</head>
-
-<body>
-  <header class="header container">
+  <body>
+    <header class="header container">
   <div>
-    <a href="/">
+    <a href="./index.html">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="132"
@@ -76,10 +84,14 @@
   <nav class="header__nav">
     <ul class="header__nav__list">
       <li class="header__nav__item active">
-        <a class="header__nav__link" href="/">Home</a>
+        <a class="header__nav__link active" id="home" href="./index.html"
+          >Home</a
+        >
       </li>
       <li class="header__nav__item">
-        <a class="header__nav__link" href="./favorites.html">Favorites</a>
+        <a class="header__nav__link" id="favorites" href="./favorites.html"
+          >Favorites</a
+        >
       </li>
     </ul>
   </nav>
@@ -128,9 +140,65 @@
   </div>
 </header>
 
-  <main>
-    <!-- ENOENT: no such file or directory, open '/home/runner/work/project-fitness-07/project-fitness-07/src/partials/modal.html' -->
-    <section class="section team__section appear">
+    <div class="backdrop is-hidden" data-mobile-menu>
+  <div data-mobile-menu-content class="mobile__menu">
+    <div></div>
+    <nav class="mobile__nav">
+      <ul class="mobile__nav__list">
+        <li class="mobile__nav__item">
+          <a class="mobile__nav__link is-active-link" href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li class="mobile__nav__item">
+          <a class="mobile__nav__link is-active-link" href="./favorites.html"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <ul class="mobile__menu__social__list">
+      <li>
+        <a
+          href="https://www.facebook.com/goITclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mobile__menu__social__icon" aria-label="Facebook icon">
+            <use href="/project-fitness-07/images/icons-sprite.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/goitclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mobile__menu__social__icon" aria-label="Instagram icon">
+            <use href="/project-fitness-07/images/icons-sprite.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.youtube.com/c/GoIT"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mobile__menu__social__icon" aria-label="Youtube icon">
+            <use href="/project-fitness-07/images/icons-sprite.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <main>
+      <!-- ENOENT: no such file or directory, open '/home/runner/work/project-fitness-07/project-fitness-07/src/partials/modal.html' -->
+      <section class="section team__section appear">
   <div class="container team__wrapper">
     <div class="team__wrapper">
       <h1 class="team__title">Meet our team</h1>
@@ -143,8 +211,8 @@
   </div>
 </section>
 
-  </main>
-  <footer class="page__footer">
+    </main>
+    <footer class="page__footer">
   <div class="container footer__box">
     <div class="footer__content__box">
       <div>
@@ -226,14 +294,13 @@
   </div>
 </footer>
 
-  <button class="scrollup__btn visually-hidden" type="button">
+    <button class="scrollup__btn visually-hidden" type="button">
   <svg class="scrollup__btn__icon" aria-label="Scroll up icon">
     <use href="/project-fitness-07/images/icons-sprite.svg#icon-arrow-up"></use>
   </svg>
 </button>
 
 
-  
-</body>
-
+    
+  </body>
 </html>
