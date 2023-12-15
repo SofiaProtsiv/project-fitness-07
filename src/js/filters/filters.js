@@ -1,4 +1,5 @@
 import ApiService from "../api-service";
+import { params, pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
 
 const inputEl = document.querySelector(".search__input");
 const categoriesListEl = document.querySelector(".filters__list")
@@ -37,7 +38,10 @@ function handleCategories(e) {
   })
   
   categoryEl.classList.add("active")
-  console.log(categoryId)
+  params.filter = categoryId.includes("-") ? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1)).replace("-", '%20') : categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
+  pageFilter.currentPage = 1;
+  cardsHandler();
 }
+
 inputEl.addEventListener("input", handleInput)
 categoriesListEl.addEventListener("click", handleCategories)
