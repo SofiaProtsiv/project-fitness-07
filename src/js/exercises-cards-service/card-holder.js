@@ -47,7 +47,7 @@ async function cardsHandler() {
   const fetch = new ApiService();
   let data;
   let connection;
-  getFiltersFromPage(params);
+  getFiltersFromPage(params, pageFilter);
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
@@ -113,6 +113,7 @@ function listenCards() {
 
 function targetHandler(evt) {
   const result = checkCard(evt);
+  changeToValidUrl(result);
   if (result != null || undefined || NaN)
     if (params.filter === 'Muscles') {
       pageFilter.endPoint = 2;
@@ -127,6 +128,10 @@ function targetHandler(evt) {
   listen.cardsLinks.removeEventListener('click', targetHandler);
   pageFilter.currentPage = 1;
   cardsHandler();
+}
+
+function changeToValidUrl(string){
+  return string.includes(" ") ? string.replace(" ", "%20") : string;
 }
 
 function listenPages() {
