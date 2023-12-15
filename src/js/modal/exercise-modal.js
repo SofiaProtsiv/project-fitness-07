@@ -4,11 +4,9 @@ import {
   strSplitCamelCase,
 } from '../helpers/stringHelper';
 
-
 import { starRating } from '../star-rating';
 
-import { toggleFavorit, favoritesDB } from '../favoritesDB'; //+
-
+import { toggleFavorit, favoritesDB } from '../favoritesDB';
 
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
@@ -39,12 +37,7 @@ const renderModal = exercise => {
     markupDescription(description)
   );
   // buttons
-  buttonBoxRef.innerHTML = '';
-
-  isFavorite
-    ? buttonBoxRef.insertAdjacentHTML('beforeend', markupRemoveFavoritesBtn())
-    : buttonBoxRef.insertAdjacentHTML('beforeend', markupAddFavoritesBtn());
-  buttonBoxRef.insertAdjacentHTML('beforeend', markupGiveRatingBtn());
+  btnBoxRender(true);
 };
 
 const getDetails = exercise => ({
@@ -55,6 +48,15 @@ const getDetails = exercise => ({
   time: exercise.time,
   popular: exercise.popularity,
 });
+
+const btnBoxRender = (isFavorite = false) => {
+  buttonBoxRef.innerHTML = '';
+
+  isFavorite
+    ? buttonBoxRef.insertAdjacentHTML('beforeend', markupRemoveFavoritesBtn())
+    : buttonBoxRef.insertAdjacentHTML('beforeend', markupAddFavoritesBtn());
+  buttonBoxRef.insertAdjacentHTML('beforeend', markupGiveRatingBtn());
+};
 
 const markupTitle = title => {
   return `
@@ -114,18 +116,20 @@ const markupAddFavoritesBtn = () =>
   markupButton({
     text: 'Add to favorites',
     iconId: 'icon-heart',
+    className: 'js-toggle-favorite',
   });
 
 const markupRemoveFavoritesBtn = () =>
   markupButton({
     text: 'Remove from favorites',
     iconId: 'icon-trash',
+    className: 'js-toggle-favorite',
   });
 
 const markupGiveRatingBtn = () =>
   markupButton({
     text: 'Give a rating',
-    className: 'ghost',
+    className: 'js-give-rating ghost',
   });
 
 const markupButton = ({ text, iconId, className = '' }) => {
@@ -139,7 +143,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
   }
 
   return `
-    <button id="js-toggle-favorit" type="button" class="js-favorites button ${className}">
+    <button id="js-toggle-favorit" type="button" class="button ${className}">
       <span class="text">${text}</span>
       ${iconId ? iconMarkup : ''}
     </button>
@@ -173,7 +177,7 @@ backdropRef.addEventListener('click', event => {
   }
 });
 
-export { openModalExercise };
+export { openModalExercise, btnBoxRender };
 
 // TODO: remove lines
 // ! --------------------------------- Testing -------------------------------- */
@@ -202,15 +206,16 @@ const exercise = {
   burnedCalories: 220,
   time: 3,
   popularity: 8322,
-  isFavorite: false,
+  isFavorite: true,
 };
 
 export const showModal = async function () {
-  const { _id } = exercise;
-  const isFavoriteValue = await favoritesDB.idIsFavorite(_id);
-  console.log(isFavoriteValue, _id);
-  openModalExercise({ ...exercise, isFavorite: isFavoriteValue });
-  toggleFavorit(exercise);
+  // const { _id } = exercise;
+  // const isFavoriteValue = await favoritesDB.idIsFavorite(_id);
+  // console.log(isFavoriteValue, _id);
+  // openModalExercise({ ...exercise, isFavorite: isFavoriteValue });
+  // toggleFavorit(exercise);
+  openModalExercise(exercise);
 };
 
 btnOpenModalExerciseRef.addEventListener('click', event => {

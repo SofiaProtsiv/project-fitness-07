@@ -206,3 +206,8 @@
   font-size: 14px;
   line-height: 1.286;
 }
+
+.modalExercise .button {
+  padding-right: 12px;
+  padding-left: 12px;
+}
