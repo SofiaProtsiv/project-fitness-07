@@ -5,7 +5,6 @@ export function handleShowLoader() {
 }
 
 export function handleHideLoader() {
-  console.log(loader);
   loader.classList.add('hide');
   content.classList.remove('hide');
 }
