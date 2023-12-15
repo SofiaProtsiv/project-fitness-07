@@ -1,4 +1,4 @@
-import { toggleFavoriteStatus } from '../favoritesDB';
+import { toggleFavoriteStatus } from '.';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
