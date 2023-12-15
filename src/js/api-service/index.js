@@ -43,7 +43,7 @@ export default class ApiService {
     }
   }
   async fetchFilters() {
-        const URL = "filters";
+    const URL = 'filters';
     try {
       const response = await http.get(URL);
       return response.data.results;
@@ -54,7 +54,7 @@ export default class ApiService {
   }
 
   async fetchExerciseById() {
-    const URL = `exercises/${this.exerciseId}&limit=${this.limit}`;
+    const URL = `exercises/${this.exerciseId}`;
     try {
       const response = await http.get(URL);
       return response.data;
@@ -167,20 +167,20 @@ export default class ApiService {
   set ratingFeature(newRating) {
     this.rating = newRating;
   }
-  
-  get getLimitPerPage(){
+
+  get getLimitPerPage() {
     return this.limit;
   }
 
-  set setLimitPerPage(limit){
+  set setLimitPerPage(limit) {
     this.limit = limit;
   }
 
-  get getFilter(){
+  get getFilter() {
     return this.filter;
   }
 
-  set setFilter(filter){
+  set setFilter(filter) {
     this.filter = filter;
   }
 }
