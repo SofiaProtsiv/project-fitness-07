@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://sofiaprotsiv.github.io/project-fitness-07/",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --base=/project-fitness-07/",
     "build": "vite build --emptyOutDir --base=/project-fitness-07/",
     "preview": "vite preview --base=/project-fitness-07/"
   },
