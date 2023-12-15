@@ -29,6 +29,13 @@
   color: var(--primary-background-color);
 }
 
+.button .text {
+  @media (768px <= width) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
 .button.ghost {
   background-color: transparent;
   color: var(--primary-background-color);
@@ -44,11 +51,16 @@
 }
 
 .btn-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   fill: transparent;
   stroke: var(--primary-black-color);
   transition: stroke var(--transition-dur-and-func);
+
+  @media (768px <= width) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .button:hover .btn-icon,

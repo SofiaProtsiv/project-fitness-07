@@ -13,6 +13,7 @@ const imgWrapperRef = modalRef.querySelector('.modalExercise__img-wrapper');
 const contentWrapperRef = modalRef.querySelector('.exercise-content');
 const buttonBoxRef = modalRef.querySelector('.button-box');
 
+const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
 const renderModal = exercise => {
@@ -61,7 +62,7 @@ const markupRating = rating => {
   const markup = [];
   const value = Math.round(rating * 10) / 10;
   markup.push(`<li class="rating__item value">${value}</li>`);
-  const iconStar = '/images/icons-sprite.svg#icon-star';
+  const iconStar = `${BASE_URL}images/icons-sprite.svg#icon-star`;
   for (let i = 1; i <= MAX_RATING; i++) {
     markup.push(`
     <li class="rating__item">
@@ -130,18 +131,23 @@ const markupGiveRatingBtn = () =>
     className: 'ghost',
   });
 
-const markupButton = ({ text, iconId, className = '' }) => `
-  <button id="js-toggle-favorit" type="button" class="js-favorites button ${className}">
-      <span>${text}</span>
-      ${
-        iconId
-          ? `<svg  class="btn-icon">
-            <use href="/images/icons-sprite.svg#${iconId}" />
-          </svg>`
-          : ''
-      }
+const markupButton = ({ text, iconId, className = '' }) => {
+  let iconMarkup;
+  if (iconId) {
+    iconMarkup = `
+      <svg class="btn-icon">
+        <use href=${BASE_URL}images/icons-sprite.svg#${iconId} />
+      </svg>
+    `;
+  }
+
+  return `
+    <button type="button" class="js-favorites button ${className}">
+      <span class="text">${text}</span>
+      ${iconId ? iconMarkup : ''}
     </button>
-`;
+  `;
+};
 
 const closeModalExercise = () => {
   backdropRef.classList.remove('open');

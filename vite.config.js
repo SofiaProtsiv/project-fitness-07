@@ -8,6 +8,7 @@ export default defineConfig({
     _global: {},
   },
   root: 'src',
+  base: '/project-fitness-07/',
   build: {
     rollupOptions: {
       input: glob.sync('./src/*.html'),
