@@ -1,0 +1,102 @@
+// import iconGithub from './img/team/github.svg';
+// import iconEmail from './img/team/email.svg';
+// import iconLinkedin from './img/team/linkedin.svg';
+
+export const icons = {
+  // iconGithub,
+  // iconEmail,
+  // iconLinkedin,
+};
+
+export const team = [
+  {
+    name: 'Sofia Protsiv',
+    role: 'Team Lead',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:prochivsofia@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/sofia-protsiv-9743a6201/',
+    github: 'https://github.com/SofiaProtsiv',
+  },
+  {
+    name: 'Nikita Zeleniak',
+    role: 'Scrum Master',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:Zelenyaknikita0927@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/zeleniak-nikita/',
+    github: 'https://github.com/NikitaZelenyak',
+  },
+  {
+    name: 'Mykhailo Startsev',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:m.a.startsev@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/m-startsev/',
+    github: 'https://github.com/MStartsev',
+  },
+  {
+    name: 'Ilya Bondarchuk',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:hmlbond@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/ilyabondarchuk/',
+    github: 'https://github.com/cod3provider',
+  },
+  {
+    name: 'Alex Smagin',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:alexsmagin1@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/alex-smagin29/',
+    github: 'https://github.com/Alexandrbig1',
+  },
+  {
+    name: 'Artur Didur',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:didur.art@gmail.com',
+    linkedin: '',
+    github: 'https://github.com/Art-of-D',
+  },
+  {
+    name: 'Yuriy Staynov',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:yuriystaynov@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/yuriy-staynov-8a2832219/',
+    github: 'https://github.com/Yuriy-St',
+  },
+  {
+    name: 'Galamaga Yevgen',
+    role: 'Front-End Developer',
+    desc: 'Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:evgeniygal@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/yevgen-galamaga-964481187/',
+    github: 'https://github.com/EvgeniyGal',
+  },
+  {
+    name: 'Vladyslav Mykhalytsky',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:vmykhali666@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/vladyslav-mykhalytskyi-b42250185/',
+    github: 'https://github.com/vmykhali666',
+  },
+  {
+    name: 'Olga Lukianets',
+    role: 'Front-End Developer',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:olgalukianets7@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/olga-lukianets/',
+    github: 'https://github.com/Liasique',
+  },
+];

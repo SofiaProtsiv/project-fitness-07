@@ -1,0 +1,417 @@
+.team__title {
+  color: var(--primary-black-color);
+  font-family: var(--primary-fontfont-family);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: -0.88px;
+  text-align: center;
+
+  @media (768px<=width) {
+    font-size: 44px;
+    line-height: 48px;
+  }
+
+  /* @media (1440px<=width) {
+    justify-content: start;
+    gap: 520px;
+  } */
+}
+
+.team__subtile {
+  color: var(---secondary-black-text-color);
+  font-family: var(--primary-fontfont-family);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.4px;
+  text-align: center;
+  margin-top: 10px;
+
+  @media (768px<=width) {
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 20px;
+  }
+}
+
+.team__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0 20px 0;
+}
+
+.team__list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 20px;
+  background: var(--primary-black-color);
+}
+
+.team__list__item__img {
+  width: 295px;
+  height: 258px;
+  border-radius: 12px;
+
+  object-fit: cover;
+}
+
+.team__social__list {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.team__social__icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--primary-background-color);
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--rating-color-inactive);
+  transition-property: fill, background-color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-effect);
+}
+
+.team__social__icon:hover,
+.team__social__icon:focus {
+  background-color: var(--primary-background-color);
+  fill: var(--primary-black-color);
+}
+
+/* 
+
+
+
+
+
+@media screen and (max-width: 767.98px) {
+  .team__cards-container {
+    max-width: 375px;
+    width: 100%;
+  }
+}
+.team__cards-container 
+.team__cards-container .team__cards__card-container:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 20px 40px -20px var(--input-border-color);
+  top: 0px;
+  z-index: -1;
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container .card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--box-bg-color);
+}
+.team__cards-container .team__cards__card-container .card .bg {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  border-radius: 4px 4px 0px 0px;
+  transition: all var(--transition-time) var(--transition-effect);
+  background: var(--accent-color);
+  z-index: 1;
+}
+.team__cards-container .team__cards__card-container .card .more {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: all var(--transition-time) var(--transition-effect);
+  border-radius: 100%;
+}
+.team__cards-container .team__cards__card-container .card .more:before,
+.team__cards-container .team__cards__card-container .card .more:after {
+  width: 20px;
+  height: 2px;
+  background-color: var(--white-color);
+  content: '';
+  position: absolute;
+  border-radius: 4px;
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container .card .more:after {
+  transform: rotate(90deg);
+}
+@media screen and (max-width: 767.98px) {
+  .team__cards-container .team__cards__card-container .card .more {
+    padding: 10px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .team__cards-container .team__cards__card-container .card .more:hover {
+    transform: scale(1);
+    background-color: transparent;
+  }
+}
+.team__cards-container .team__cards__card-container .card .photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container .card .photo:before,
+.team__cards-container .team__cards__card-container .card .photo:after {
+  width: 100%;
+  height: 100px;
+  border-radius: 4px;
+  content: '';
+  position: absolute;
+  transition: all var(--transition-time) var(--transition-effect);
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+.team__cards-container .team__cards__card-container .card .photo:after {
+  background: linear-gradient(
+    140deg,
+    var(--accent-color),
+    var(--highlight-color)
+  );
+  z-index: 2;
+}
+.team__cards-container .team__cards__card-container .card .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team__cards-container .team__cards__card-container .card .text {
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 16px;
+  transform: translateY(50px);
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container .card .text .name {
+  font-size: 20px;
+  color: var(--primary-text-color);
+  font-weight: 500;
+}
+.team__cards-container .team__cards__card-container .card .text .role {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+  letter-spacing: 0.8px;
+  margin-top: 5px;
+}
+.team__cards-container .team__cards__card-container .card .text .desc {
+  color: var(--white-color);
+  display: none;
+  margin-top: 20px;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  text-align: center;
+  padding: 0 40px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.team__cards-container .team__cards__card-container .card .social {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: 0px 0px 4px 4px;
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container .card .social .icons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.team__cards-container .team__cards__card-container .card .social .icons .icon {
+  width: 25%;
+  height: 24px;
+  opacity: 0.5;
+
+  cursor: pointer;
+  transition: opacity var(--transition-time) var(--transition-effect);
+}
+body.dark
+  .team__cards-container
+  .team__cards__card-container
+  .card
+  .social
+  .icons
+  .icon {
+  filter: brightness(2);
+}
+.team__cards-container
+  .team__cards__card-container
+  .card
+  .social
+  .icons
+  .icon:hover {
+  opacity: 1;
+}
+.team__cards-container
+  .team__cards__card-container
+  .card
+  .social
+  .icons
+  .icon
+  img {
+  width: 100%;
+  height: 100%;
+}
+.team__cards-container
+  .team__cards__card-container
+  .card
+  .social:hover
+  .pointer {
+  opacity: 1;
+  bottom: 45px;
+}
+.team__cards-container .team__cards__card-container:hover {
+  transform: translateY(3px);
+}
+.team__cards-container .team__cards__card-container:hover:before {
+  box-shadow: 0px 10px 10px -10px var(--input-border-color);
+}
+@media screen and (max-width: 767.98px) {
+  .team__cards-container .team__cards__card-container:hover {
+    transform: translateY(0px);
+  }
+  .team__cards-container .team__cards__card-container:hover:before {
+    box-shadow: 0px 20px 40px -20px var(--input-border-color);
+  }
+}
+.team__cards-container .team__cards__card-container:hover .card .photo {
+  transform: translateY(-5px);
+}
+@media screen and (max-width: 767.98px) {
+  .team__cards-container .team__cards__card-container:hover .card .photo {
+    transform: translateY(0px);
+  }
+}
+.team__cards-container .team__cards__card-container.show-more .card {
+  overflow: hidden;
+}
+.team__cards-container .team__cards__card-container.show-more .card .more {
+  transform: rotate(45deg) scale(1);
+}
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .more:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+@media screen and (max-width: 767.98px) {
+  .team__cards-container
+    .team__cards__card-container.show-more
+    .card
+    .more:hover {
+    transform: rotate(45deg) scale(1);
+  }
+}
+.team__cards-container .team__cards__card-container.show-more .card .social {
+  transform: translateY(55px);
+}
+.team__cards-container .team__cards__card-container.show-more .card .text {
+  color: var(--white-color);
+  transform: translateY(0px);
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container .team__cards__card-container.show-more .card .text .name,
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .text
+  .role {
+  color: var(--white-color);
+}
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .text
+  .desc {
+  display: block;
+}
+.team__cards-container .team__cards__card-container.show-more .card .photo {
+  width: 100%;
+  height: 100%;
+  top: -16px;
+  border: solid 0px transparent;
+  border-radius: 4px;
+  transform: translateY(0px);
+  transition: all var(--transition-time) var(--transition-effect);
+}
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .photo:before {
+  height: 100%;
+  opacity: 0.5;
+}
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .photo:after {
+  height: 100%;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+.team__cards-container .team__cards__card-container.show-more .card .photo img {
+  filter: grayscale(100%);
+}
+.team__cards-container
+  .team__cards__card-container.show-more
+  .card
+  .photo:hover {
+  transform: translateY(0px);
+}
+.team__cards-container .team__cards__card-container.show-more .card .bg {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+.team__cards-container .team__cards__card-container.show-more .card .bg:before {
+  opacity: 0.5;
+}
+.team__cards-container .team__cards__card-container.show-more .card .bg:after {
+  opacity: 0.8;
+} */
