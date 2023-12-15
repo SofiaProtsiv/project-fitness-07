@@ -18,7 +18,7 @@ export default class ApiService {
     this.email = '';
     this.review = '';
     this.limit = 1;
-    this.filter = "Muscles";
+    this.filter = "Body%20parts";
   }
 
   async fetchMuscles() {

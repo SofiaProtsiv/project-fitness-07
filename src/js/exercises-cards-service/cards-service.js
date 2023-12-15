@@ -20,7 +20,7 @@ function calculateObjects(endPoint, viewSize){
 
 function areParamsDifferent(params) {
     const defaultParams = {
-        filter: "Muscles",
+        filter: "Body%20parts",
         bodypart: "",
         keyword: "",
         muscles: "",
@@ -78,4 +78,16 @@ function getData(promise){
             });
 }
 
-export {getData, getConnection, checkExerciseParams, checkWorkoutParams, areParamsDifferent, calculateObjects};
+function getFiltersFromPage(params){
+    const filters = document.querySelector(".filters__list .active");
+
+    if (filters) {
+        const id = filters.id;
+        params.filter = id.includes("-") ? (id.charAt(0).toUpperCase()
+         + id.slice(1)).replace("-", '%20') 
+        : id.charAt(0).toUpperCase() + id.slice(1);
+    } else {
+        console.error("No child elements found in filters.");
+    }
+}
+export {getData, getConnection, checkExerciseParams, checkWorkoutParams, areParamsDifferent, calculateObjects, getFiltersFromPage};
