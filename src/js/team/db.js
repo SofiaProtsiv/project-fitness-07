@@ -1,14 +1,4 @@
-// import iconGithub from './img/team/github.svg';
-// import iconEmail from './img/team/email.svg';
-// import iconLinkedin from './img/team/linkedin.svg';
-
-export const icons = {
-  // iconGithub,
-  // iconEmail,
-  // iconLinkedin,
-};
-
-export const team = [
+export default [
   {
     name: 'Sofia Protsiv',
     role: 'Team Lead',
@@ -19,8 +9,18 @@ export const team = [
     github: 'https://github.com/SofiaProtsiv',
   },
   {
-    name: 'Nikita Zeleniak',
+    name: 'Olga Lukianets',
     role: 'Scrum Master',
+    desc: '',
+    photo: '../../images/team/teammate1.jpg',
+    email: 'mailto:olgalukianets7@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/olga-lukianets/',
+    github: 'https://github.com/Liasique',
+  },
+
+  {
+    name: 'Nikita Zeleniak',
+    role: 'Front-End Developer',
     desc: '',
     photo: '../../images/team/teammate1.jpg',
     email: 'mailto:Zelenyaknikita0927@gmail.com',
@@ -75,8 +75,8 @@ export const team = [
   {
     name: 'Galamaga Yevgen',
     role: 'Front-End Developer',
-    desc: 'Far far away, behind the world mountains, far from the countries Vokalia and Consonantia, theres live the blind texts.',
-    photo: '../../images/team/teammate1.jpg',
+    desc: 'Responsible for creating: footer, team page, scroll up button, subscription form and adjustment sending request to server.',
+    photo: '../../images/team/teammate-galamaga.jpg',
     email: 'mailto:evgeniygal@gmail.com',
     linkedin: 'https://www.linkedin.com/in/yevgen-galamaga-964481187/',
     github: 'https://github.com/EvgeniyGal',
@@ -89,14 +89,5 @@ export const team = [
     email: 'mailto:vmykhali666@gmail.com',
     linkedin: 'https://www.linkedin.com/in/vladyslav-mykhalytskyi-b42250185/',
     github: 'https://github.com/vmykhali666',
-  },
-  {
-    name: 'Olga Lukianets',
-    role: 'Front-End Developer',
-    desc: '',
-    photo: '../../images/team/teammate1.jpg',
-    email: 'mailto:olgalukianets7@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/olga-lukianets/',
-    github: 'https://github.com/Liasique',
   },
 ];
