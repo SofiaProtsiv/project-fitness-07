@@ -38,9 +38,6 @@ body::-webkit-scrollbar-track {
   border-radius: 15px;
   resize: none;
   outline: none;
-  box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
   border: 1px solid var(--primary-background-color);
   transition-property: border-color;
   transition-duration: var(--transition-time);
@@ -63,16 +60,13 @@ body::-webkit-scrollbar-track {
   padding: 12px 14px;
   border-radius: 30px;
   outline: none;
-  box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
   border: 1px solid var(--primary-background-color);
   transition-property: border-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
 
   @media (768px<=width) {
-		padding: 16px;
+		font-size: 16px;
     line-height: 1.5em;
 	}
 }
@@ -88,16 +82,13 @@ body::-webkit-scrollbar-track {
   padding: 12px 14px;
   border-radius: 30px;
   border: 1px solid #f4f4f4;
-  box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
   transition-property: color, background-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
 
   @media (768px<=width) {
-		padding: 16px;
-    line-height: 18px;
+		font-size: 16px;
+    line-height: 1.5em;
 	}
 }
 

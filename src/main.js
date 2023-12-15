@@ -4,4 +4,5 @@ import './js/createHashtagsList';
 import './js/subscribe-form';
 import './js/header';
 import './js/quotes';
+import './js/rating-modal'
 import './js/modal/exercise-modal'; // TODO: to be removed;
