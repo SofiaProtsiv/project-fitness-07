@@ -36,7 +36,7 @@
   }
 }
 
-.feedback {
+.modal-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -141,4 +141,21 @@
 
 .rating-close::before {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.footer__form__message {
+  font-family: var(--primary-fontfont-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+}
+
+.footer__form__message_warning {
+  color: var(--rating-color-active);
+}
+
+.footer__form__message_ok {
+  color: rgb(30, 180, 30);
 }
