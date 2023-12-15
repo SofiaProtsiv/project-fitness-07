@@ -9,6 +9,9 @@ export const getActiveLink = function () {
     const linkHref = link.getAttribute('href').split('./')[1];
     if (currentPage.includes(linkHref)) {
       link.classList.add('active');
+    } else if (currentPage === '/project-fitness-07/') {
+      const home = document.querySelector('#home');
+      home.classList.add('active');
     } else {
       link.classList.remove('active');
     }
@@ -17,7 +20,7 @@ export const getActiveLink = function () {
 export const addTeamLink = function () {
   const currentPage = window.location.pathname;
 
-  if (currentPage === '/team.html') {
+  if (currentPage === '/project-fitness-07/team.html') {
     const navList = document.querySelector('.header__nav__list');
     const teamListItem = document.createElement('li');
     teamListItem.classList.add('header__nav__item');
