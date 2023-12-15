@@ -5,9 +5,9 @@
   "type": "module",
   "homepage": "https://sofiaprotsiv.github.io/project-fitness-07/",
   "scripts": {
-    "dev": "vite --base=/project-fitness-07/",
-    "build": "vite build --emptyOutDir --base=/project-fitness-07/",
-    "preview": "vite preview --base=/project-fitness-07/"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "glob": "^8.1.0",
