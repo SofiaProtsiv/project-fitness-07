@@ -4,6 +4,8 @@ import {
   strSplitCamelCase,
 } from '../helpers/stringHelper';
 
+import { starRating } from '../star-rating';
+
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
 const closeButtonRef = modalRef.querySelector('.x-button');
@@ -59,16 +61,9 @@ const markupRating = rating => {
   const markup = [];
   const value = Math.round(rating * 10) / 10;
   markup.push(`<li class="rating__item value">${value}</li>`);
+  const percent = Math.round((rating / MAX_RATING) * 100);
   const iconStar = `${BASE_URL}images/icons-sprite.svg#icon-star`;
-  for (let i = 1; i <= MAX_RATING; i++) {
-    markup.push(`
-    <li class="rating__item">
-      <svg class="icon-star_filled icon-svg">
-        <use href=${iconStar} />
-      </svg>
-    </li>
-    `);
-  }
+  markup.push(`<li ${starRating(percent)}</li>`);
 
   return `<ul class="rating">${markup.join('')}</ul>`;
 };
