@@ -1,6 +1,6 @@
 import ApiService from "../api-service";
 import { params, pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
-
+import _ from 'lodash';
 const inputEl = document.querySelector(".search__input");
 const categoriesListEl = document.querySelector(".filters__list")
 
@@ -8,13 +8,6 @@ const fetch = new ApiService();
 
 setCategoriesIntoMarkup()
 
-function debounce(func, timeout = 500) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
-}
 async function setCategoriesIntoMarkup() {
   const data = await fetch.fetchFilters()
 
@@ -49,8 +42,7 @@ function handleCategories(e) {
   pageFilter.currentPage = 1;
   cardsHandler();
 }
-
-const debouncedHandleInput = debounce(handleInput);
+const debouncedHandleInput = _.debounce(handleInput, 500);
 
 inputEl.addEventListener("input", debouncedHandleInput);
 categoriesListEl.addEventListener("click", handleCategories)
