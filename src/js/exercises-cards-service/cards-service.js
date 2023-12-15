@@ -52,7 +52,7 @@ function checkWorkoutParams(currentPage, endPoint, fetch, params, connection){
 function checkExerciseParams(currentPage, endPoint,fetch, params, connection){
     if (areParamsDifferent(params)){
         fetch.filter = params.filter;
-        connection = getConnection(currentPage, endPoint, fetch).fetchFilteredExercises();
+        connection = getConnection(currentPage, endPoint, fetch).fetchMuscles();
     } else{
         connection = getConnection(currentPage, endPoint, fetch).fetchMuscles();
     }
