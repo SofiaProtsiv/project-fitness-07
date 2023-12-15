@@ -8,6 +8,7 @@ import {
   getData,
   checkExerciseParams,
   checkWorkoutParams,
+  getFiltersFromPage
 } from './cards-service';
 import { addWorkoutClass, deleteWorkoutClass } from './class-changer';
 import ApiService from '../api-service';
@@ -46,6 +47,7 @@ async function cardsHandler() {
   const fetch = new ApiService();
   let data;
   let connection;
+  getFiltersFromPage(params);
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
@@ -179,7 +181,5 @@ async function workoutHandler(evt) {
     console.error(error);
   }
 }
-
-cardsHandler();
 
 export { params, pageFilter, cardsHandler };

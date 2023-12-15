@@ -99,7 +99,7 @@ function getData(promise) {
 
 function getFiltersFromPage(params){
     const filters = document.querySelector(".filters__list .active");
-
+    console.log(filters);
     if (filters) {
         const id = filters.id;
         params.filter = id.includes("-") ? (id.charAt(0).toUpperCase()
