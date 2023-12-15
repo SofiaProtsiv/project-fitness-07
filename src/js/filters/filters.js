@@ -8,6 +8,13 @@ const fetch = new ApiService();
 
 setCategoriesIntoMarkup()
 
+function debounce(func, timeout = 500) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
 async function setCategoriesIntoMarkup() {
   const data = await fetch.fetchFilters()
 
@@ -36,12 +43,14 @@ function handleCategories(e) {
 [...categoriesListEl.children].forEach((item) => {
   item.classList.remove("active")
   })
-  
+
   categoryEl.classList.add("active")
   params.filter = categoryId.includes("-") ? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1)).replace("-", '%20') : categoryId.charAt(0).toUpperCase() + categoryId.slice(1);
   pageFilter.currentPage = 1;
   cardsHandler();
 }
 
-inputEl.addEventListener("input", handleInput)
+const debouncedHandleInput = debounce(handleInput);
+
+inputEl.addEventListener("input", debouncedHandleInput);
 categoriesListEl.addEventListener("click", handleCategories)
