@@ -37,7 +37,7 @@ const renderModal = exercise => {
     markupDescription(description)
   );
   // buttons
-  btnBoxRender(true);
+  btnBoxRender();
 };
 
 const getDetails = exercise => ({
