@@ -9,7 +9,7 @@ const fetch = new ApiService();
 setCategoriesIntoMarkup()
 
 async function setCategoriesIntoMarkup() {
-  const data = await fetch.fetchFilters()
+  const data = await fetch.fetchFilters();
 
   const categories = [...new Set(data.map(({ filter }) => filter))]
 
@@ -22,13 +22,13 @@ async function setCategoriesIntoMarkup() {
   }).join("")
 
   categoriesListEl.insertAdjacentHTML("afterbegin", categoriesItemsMarkup)
-
 }
 
 function handleInput(e) {
   const query = e.target.value.toLowerCase().trim();
   console.log(query)
 }
+
 function handleCategories(e) {
   const categoryEl = e.target;
   const categoryId = e.target.id;
