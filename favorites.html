@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favourites</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon.svg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-61aab56d.js"></script>
+    <script type="module" crossorigin src="/project-fitness-07/assets/quotes-fb06b661.js"></script>
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-3bf39d61.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favourites</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.svg" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <script type="module" crossorigin src="/project-fitness-07/assets/index-4cd4f1ec.js"></script>
-  <script type="module" crossorigin src="/project-fitness-07/assets/quotes-16f863e8.js"></script>
-  <link rel="stylesheet" href="/project-fitness-07/assets/index-896ac083.css">
-</head>
-
-<body>
-  <div class='loader'>
-  <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="loader__wrap">
-    <div class="wheel"></div>
-    <div class="hamster">
-      <div class="hamster__body">
-        <div class="hamster__head">
-          <div class="hamster__ear"></div>
-          <div class="hamster__eye"></div>
-          <div class="hamster__nose"></div>
-        </div>
-        <div class="hamster__limb hamster__limb--fr"></div>
-        <div class="hamster__limb hamster__limb--fl"></div>
-        <div class="hamster__limb hamster__limb--br"></div>
-        <div class="hamster__limb hamster__limb--bl"></div>
-        <div class="hamster__tail"></div>
-      </div>
-    </div>
-    <div class="spoke"></div>
-  </div>
-</div>
-
-  <div class='content-wrapper hide'>
+  <body>
     <header class="header container">
   <div>
     <a href="./index.html">
@@ -208,7 +194,83 @@
 </div>
 
 
-    <main></main>
+    <main>
+      <section class="exercises">
+        <div class="container">
+          <div class="exercises__wrapper">
+            <aside class="favorites__quotes__wrapper">
+  <div class="favorites__quotes__container">
+    <div class="favorites__quotes__icon_wrapper">
+      <svg class="favorites__quotes__logo_icon" aria-label="running icon">
+        <use href="/project-fitness-07/images/icons-sprite.svg#icon-running-stick"></use>
+      </svg>
+    </div>
+    <div class="favorites__quotes__text_wrapper">
+      <div class="favorites__quotes__title_wrapper">
+        <h3 class="favorites__quotes__title">Quote of the day</h3>
+        <svg class="favorites__quotes__quote_icon">
+          <use
+            href="/project-fitness-07/images/icons-sprite.svg#icon-quotes"
+            aria-label="quotes"
+          ></use>
+        </svg>
+      </div>
+      <div class="favorites__quotes__text_wrapper">
+        <p class="favorites__quotes__text" id="daily-quote"></p>
+        <span class="favorites__quotes__author" id="quote-author"></span>
+      </div>
+    </div>
+  </div>
+  <div class="favorites__quotes_img_wrapper">
+    <div class="favorites__quotes__workout_container">
+      <div class="favorites__quotes__gym_icon_wrapper">
+        <svg class="favorites__quotes__gym_icon" aria-label="running icon">
+          <use href="/project-fitness-07/images/icons-sprite.svg#icon-dumbbell"></use>
+        </svg>
+      </div>
+      <div class="favorites__quotes__workout_text_wrapper">
+        <div class="favorites__quotes__workout_title_wrapper">
+          <h3 class="favorites__quotes__workout_title">110 min</h3>
+          <span class="favorites__quotes__workout_sub"
+            >Daily norm of sports</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="favorites__quotes__img">
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          height="242"
+          srcset="/project-fitness-07/images/favorites/women-outdoors.jpg 1x, /project-fitness-07/images/favorites/women-outdoors@2x.jpg 2x"
+          type="image/jpg"
+        />
+        <source
+          media="(min-width: 768px)"
+          height="258"
+          srcset="/project-fitness-07/images/favorites/women-outdoors-tab.jpg 1x, /project-fitness-07/images/favorites/women-outdoors-tab@2x.jpg 2x"
+          type="image/jpg"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="/project-fitness-07/images/favorites/women-outdoors-mob.jpg 1x, /project-fitness-07/images/favorites/women-outdoors-mob@2x.jpg 2x"
+          type="image/jpg"
+        />
+        <img
+          class="favorites__quotes__img_img"
+          src="/project-fitness-07/images/favorites/women-outdoors-mob.jpg"
+          alt="girls drinking water during workout"
+          height="242"
+        />
+      </picture>
+    </div>
+  </div>
+</aside>
+
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="page__footer">
   <div class="container footer__box">
@@ -298,9 +360,8 @@
   </svg>
 </button>
 
-  </div>
 
-  
-</body>
-
+    
+  </body>
 </html>
+
