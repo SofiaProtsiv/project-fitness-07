@@ -116,7 +116,7 @@ export const handleSignOut = async () => {
     el.classList.add('hidden');
   })
 
-  window.location.pathname = '/'
+  window.location.pathname = '/project-fitness-07/'
   // userName.classList.add('hidden');
 };
 
