@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favourites</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon.svg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favourites</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.svg" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
+  <body>
+    <load ="partials/header.html" />
+    <load ="partials/mobileMenu.html" />
 
-<body>
-  <load="partials/header.html" />
-  <load="partials/mobileMenu.html" />
+    <main>
+      <section class="exercises">
+        <div class="container">
+          <div class="exercises__wrapper">
+            <load ="partials/favorites-quotes.html" />
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <main></main>
+    <load ="partials/footer.html" />
+    <load ="partials/scrollup.html" />
 
-  <load="partials/footer.html" />
-  <load="partials/scrollup.html" />
-
-  <script type="module" src="./favorites.js"></script>
-</body>
-
+    <script type="module" src="./favorites.js"></script>
+  </body>
 </html>
