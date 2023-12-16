@@ -1,6 +1,5 @@
 import { updateViewPort } from './update-view-port';
-import { addMarkupToHtml, createCardsSkeleton } from '../createSkeleton/index.js';
-
+import { createCardsSkeleton, addMarkupToHtml } from '../createSkeleton/index.js';
 
 const list = document.querySelector('.js-cards');
 
@@ -8,48 +7,38 @@ const list = document.querySelector('.js-cards');
 function calculateObjects(endPoint, viewSize) {
   if (viewSize >= 768) {
     if (endPoint != 3) {
-      if (!list.classList.contains('workout-cards__wrapper')) {
-        addMarkupToHtml(list, createCardsSkeleton(10));
-      }
+      addMarkupToHtml(list, createCardsSkeleton(10, list));
       return 10;
     }
-    if (!list.classList.contains('workout-cards__wrapper')) {
-      addMarkupToHtml(list, createCardsSkeleton(12));
-    }
+    addMarkupToHtml(list, createCardsSkeleton(12, list));
     return 12;
   } else if (viewSize < 768) {
     if (endPoint == 1) {
-      if (!list.classList.contains('workout-cards__wrapper')) {
-        addMarkupToHtml(list, createCardsSkeleton(10));
-      }
+      addMarkupToHtml(list, createCardsSkeleton(10, list));
       return 10;
     } else if (endPoint == 2) {
-      if (!list.classList.contains('workout-cards__wrapper')) {
-        addMarkupToHtml(list, createCardsSkeleton(8));
-      }
+      addMarkupToHtml(list, createCardsSkeleton(8, list));
       return 8;
     }
   }
-  if (!list.classList.contains('workout-cards__wrapper')) {
-    addMarkupToHtml(list, createCardsSkeleton(9));
-  }
+  addMarkupToHtml(list, createCardsSkeleton(9, list));
   return 9;
 }
 
 
 function areParamsDifferent(params) {
-    const defaultParams = {
-        filter: "Body%20parts",
-        bodypart: "",
-        keyword: "",
-        muscles: "",
-        equipment: "",
-    };
-    for (const key in params) {
-        if (params.hasOwnProperty(key) && params[key] !== defaultParams[key]) {
-            return true;
-        }
+  const defaultParams = {
+    filter: 'Body%20parts',
+    bodypart: '',
+    keyword: '',
+    muscles: '',
+    equipment: '',
+  };
+  for (const key in params) {
+    if (params.hasOwnProperty(key) && params[key] !== defaultParams[key]) {
+      return true;
     }
+  }
 
   return false;
 }
@@ -97,28 +86,38 @@ function getData(promise) {
   });
 }
 
-function getFiltersFromPage(params, pageFilter){
-  const filters = document.querySelector(".filters__list .active");
+function getFiltersFromPage(params, pageFilter) {
+  const filters = document.querySelector('.filters__list .active');
 
   if (filters) {
-      const id = filters.id.includes("-") ? (filters.id.charAt(0).toUpperCase()
-      + filters.id.slice(1)).replace("-", '%20')
-     : filters.id.charAt(0).toUpperCase() + filters.id.slice(1);;
-      if (id != params.filter || params.filter === ""){
-        params.filter = id;
-        for (const key in params) {
-          if (key !== 'filter') {
-              params[key] = "";
-          }
+    const id = filters.id.includes('-') ? (filters.id.charAt(0).toUpperCase()
+        + filters.id.slice(1)).replace('-', '%20')
+      : filters.id.charAt(0).toUpperCase() + filters.id.slice(1);
+    ;
+    if (id != params.filter || params.filter === '') {
+      params.filter = id;
+      for (const key in params) {
+        if (key !== 'filter') {
+          params[key] = '';
+        }
       }
-        pageFilter.currentPage = 1;
-        pageFilter.endPoint = 3;
-      }
+      pageFilter.currentPage = 1;
+      pageFilter.endPoint = 3;
+    }
   } else {
+    console.error('No child elements found in filters.');
       if (pageFilter.endPoint != 1){
         console.error("No child elements found in filters.");
       }
   }
 }
 
-export {getData, getConnection, checkExerciseParams, checkWorkoutParams, areParamsDifferent, calculateObjects, getFiltersFromPage};
+export {
+  getData,
+  getConnection,
+  checkExerciseParams,
+  checkWorkoutParams,
+  areParamsDifferent,
+  calculateObjects,
+  getFiltersFromPage,
+};
