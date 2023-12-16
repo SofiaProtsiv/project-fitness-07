@@ -9,14 +9,13 @@ const btnChangeForm = document.querySelector('.action__button');
 const usernameFieldset = document.querySelector('.authForm__fieldset.username');
 const title = document.querySelector('.authForm__title');
 
-const headerGroup = document.querySelector('.header__nav-authorized');
-const authLinkEl = document.querySelector(".header__nav__item.auth")
-const btnLogOut = document.querySelector('.header__logout_btn');
+const headerGroup = document.querySelectorAll('.header__nav-authorized');
+const authLinkEl = document.querySelectorAll(".header__nav__item.auth")
+const btnLogOut = document.querySelectorAll('.header__logout_btn');
 
-const headerGroupMobile = document.querySelector(".mobile__nav-authorized")
-const authLinkMobileEl = document.querySelector('.mobile__nav__item.auth')
-const btnLogOutMobile = document.querySelector('.mobile__nav__logout_btn');
-
+// const headerGroupMobile = document.querySelector(".mobile__nav-authorized")
+// const authLinkMobileEl = document.querySelector('.mobile__nav__item.auth')
+// const btnLogOutMobile = document.querySelector('.mobile__nav__logout_btn');
 // const userName = document.querySelector('.header__username');
 
 let isRegMode = true;
@@ -86,20 +85,37 @@ export const checkCurrentUser = async () => {
     if (user) {
       // userName.textContent = user.displayName;
       // userName.classList.remove('hidden');
-      authLinkEl.classList.add('hidden');
-      headerGroup.classList.add('visible');
-      btnLogOut.classList.add('visible');
+      authLinkEl.forEach(el => {
+        el.classList.add('hidden');
+      })
+      btnLogOut.forEach(el => {
+        el.classList.add('visible');
+      })
+      headerGroup.forEach(el => {
+        el.classList.add('visible');
+      })
+
+
     } else {
-      authLinkEl.classList.remove('hidden');
-      btnLogOut.classList.remove('visible');
-      headerGroup.classList.remove('visible');
+      authLinkEl.forEach(el => {
+        el.classList.remove('hidden');
+      })
+      btnLogOut.forEach(el => {
+        el.classList.remove('visible');
+      })
+      headerGroup.forEach(el => {
+        el.classList.remove('visible');
+      })
     }
   });
 };
 
 export const handleSignOut = async () => {
   await signOut();
-  btnLogOut.classList.add('hidden');
+  btnLogOut.forEach(el => {
+    el.classList.add('hidden');
+  })
+
   window.location.replace('/')
   // userName.classList.add('hidden');
 };
@@ -107,7 +123,9 @@ export const handleSignOut = async () => {
 userButton.addEventListener('click', openModal);
 authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
-btnLogOut.addEventListener('click', handleSignOut);
+btnLogOut.forEach(el => {
+  el.addEventListener('click', handleSignOut);
+})
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
