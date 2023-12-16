@@ -1,9 +1,11 @@
 import ApiService from "../api-service";
-import { params, pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
+import { params, pageFilter, cardsHandler } from "../exercises-cards-service/card-holder";
 import _ from 'lodash';
 
+const searchEl = document.querySelector(".search__wrapper")
 const inputEl = document.querySelector(".search__input");
 const categoriesListEl = document.querySelector(".filters__list")
+const currentCategoryEl = document.querySelector(".filters__category")
 
 const fetch = new ApiService();
 
@@ -26,21 +28,42 @@ async function setCategoriesIntoMarkup() {
   cardsHandler();
 }
 
-function handleInput(e) {
+export function setActiveCategory(category) {
+  const formatedCategory = category.charAt(0).toUpperCase() + category.slice(1, category.length);
+
+  currentCategoryEl.innerHTML = `<div>/</div>${formatedCategory}`
+
+  currentCategoryEl.classList.add("active")
+  searchEl.classList.add("active")
+}
+
+function removeActiveCategory() {
+  currentCategoryEl.classList.remove("active")
+  searchEl.classList.remove("active")
+}
+
+async function handleInput(e) {
   const query = e.target.value.toLowerCase().trim();
-  console.log(query)
+  params.keyword = query;
+
+  cardsHandler();
 }
 
 function handleCategories(e) {
   const categoryEl = e.target;
   const categoryId = e.target.id;
 
-[...categoriesListEl.children].forEach((item) => {
-  item.classList.remove("active")
+  if (categoryEl.classList.contains("active")) return;
+  
+  [...categoriesListEl.children].forEach((item) => {
+    item.classList.remove("active")
   })
 
   categoryEl.classList.add("active")
-  
+
+
+  removeActiveCategory();
+
   pageFilter.currentPage = 1;
   cardsHandler();
 }

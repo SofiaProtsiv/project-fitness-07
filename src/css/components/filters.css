@@ -43,6 +43,7 @@
 }
 
 .filters__category.active {
+  width: max-content;
   display: flex;
   gap: 8px;
   color: var(--secondary-black-text-color);
