@@ -33,4 +33,4 @@ function addStringFavoriteParagEmpty(){
 function addStringEmptyParag(){
     emptyParag.innerHTML = DEFAULT_STRING;
 }
-export {addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag};
+export {addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag, emptyParag};
