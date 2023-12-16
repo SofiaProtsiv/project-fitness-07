@@ -90,6 +90,7 @@ function getFiltersFromPage(params, pageFilter) {
   const filters = document.querySelector('.filters__list .active');
 
   if (filters) {
+    console.log(filters);
     const id = filters.id.includes('-') ? (filters.id.charAt(0).toUpperCase()
         + filters.id.slice(1)).replace('-', '%20')
       : filters.id.charAt(0).toUpperCase() + filters.id.slice(1);
@@ -104,11 +105,6 @@ function getFiltersFromPage(params, pageFilter) {
       pageFilter.currentPage = 1;
       pageFilter.endPoint = 3;
     }
-  } else {
-    console.error('No child elements found in filters.');
-      if (pageFilter.endPoint != 1){
-        console.error("No child elements found in filters.");
-      }
   }
 }
 

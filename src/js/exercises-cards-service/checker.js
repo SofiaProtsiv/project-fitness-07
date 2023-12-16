@@ -25,7 +25,6 @@ function checkWorkoutCard(evt){
         return;
     }
     const cardElement = target.closest('.js-workout-card');
-    console.log(cardElement);
     return cardElement.dataset.id;
 }
 

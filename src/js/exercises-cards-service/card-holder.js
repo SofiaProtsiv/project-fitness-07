@@ -17,8 +17,10 @@ import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
+import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
-import { setActiveCategory } from '../filters';
+import { setActiveCategory, filterOn} from '../filters';
+import { startFavorite} from './favorites-engine.js';
 
 window.addEventListener('resize', cardsHandler);
 
@@ -42,6 +44,8 @@ const listen = {
   workoutLinks: null,
 };
 
+
+
 //There are 3 endpoints: 1 - favorites, 2 - exercises (target of search), 3 - filter
 
 async function cardsHandler() {
@@ -61,6 +65,8 @@ async function cardsHandler() {
         addFavoriteClass();
         deleteWorkoutClass();
         data = await favoritesDB.get();
+        cleanerCardWrapper();
+        cleanerPages();
         showFavoriteCards(data);
         break;
       // If the endpoint has /exercise do the next
@@ -75,6 +81,9 @@ async function cardsHandler() {
           connection
         );
         data = await getData(connection);
+        if (data.length === 0){
+          throw new Error("No data");
+        }
         cleanerCardWrapper();
         cleanerPages();
         showWorkoutCards(data);
@@ -107,7 +116,7 @@ async function cardsHandler() {
     }
   } catch (error) {
     console.log('Error: ', error);
-    if (pageFilter.endPoint === 1) {
+    if (pageFilter.endPoint === 1){
       addStringFavoriteParagEmpty();
     } else {
       addStringEmptyParag();
@@ -127,7 +136,7 @@ function listenCards() {
 
 function targetHandler(evt) {
   const result = checkCard(evt);
-  setActiveCategory(result)
+  setActiveCategory(result);
   changeToValidUrl(result);
   if (result != null || undefined || NaN)
     if (params.filter === 'Muscles') {
@@ -201,5 +210,8 @@ async function workoutHandler(evt) {
     console.error(error);
   }
 }
+
+startFavorite();
+filterOn();
 
 export { params, pageFilter, cardsHandler, workoutHandler };

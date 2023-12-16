@@ -78,7 +78,7 @@ function showFavoriteCards(data) {
         <li class="favorite-cards__gallery-link" data-id="${_id}">
             <div class="favorite-cards__gallery-card">
                 <div class="favorite-cards__first-line-wrapper">
-                    <p class="favorite-cards__parag-workout">favorite</p>
+                    <p class="favorite-cards__parag-workout">Workout</p>
                     <svg class="favorite-cards__icon-trash">
                         <use href="${BASE_URL}images/icons-sprite.svg#icon-trash"></use>
                     </svg>
@@ -88,18 +88,20 @@ function showFavoriteCards(data) {
                     </svg>
                 </div>
                 <div class="favorite-cards__second-line-wrapper">
-                    <svg class="favorite-cards__icon-running-stick">
-                        <use href="${BASE_URL}images/icons-sprite.svg#icon-running-stick"></use>
-                    </svg>
+                    <div class="workout-cards__wrapper-icon-running-stick">
+                      <svg class="favorite-cards__icon-running-stick">
+                          <use href="${BASE_URL}images/icons-sprite.svg#icon-running-stick"></use>
+                      </svg>
+                    </div>
                     <h3 class="favorite-cards__head3-name">${name}</h3>
                 </div>
                 <div class="favorite-cards__third-line-wrapper">
-                    <p class="favorite-cards__parag-burned-calories">
-                    Burned calories: <span class="favorite-cards__span-text">${burnedCalories} / ${time} min<span></p>
-                    <p class="favorite-cards__parag-body-part">
-                    Body part: <span class="favorite-cards__span-text">${bodyPart} min<span></p>
-                    <p class="favorite-cards__parag-target">
-                    Target: <span class="favorite-cards__span-text">${target} min<span></p>
+                  <p class="favorite-cards__parag-burned-calories">Burned calories:</p>
+                  <p class="favorite-cards__parag-burned-calories-result">${burnedCalories} / ${time} min<p>
+                  <p class="favorite-cards__parag-body-part">Body part:</p>
+                  <p class="favorite-cards__parag-body-part-result">${bodyPart}<p>
+                  <p class="favorite-cards__parag-target">Target:</p>
+                  <p class="favorite-cards__parag-target-result">${target}<p>
                 </div>
             </div>
           </li>
@@ -111,7 +113,7 @@ function showFavoriteCards(data) {
 }
 
 function cleanerCardWrapper() {
-  cards.innerHTML = '';
+  cards.innerHTML = "";
 }
 
 export {
