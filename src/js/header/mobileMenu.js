@@ -5,11 +5,13 @@ export const mobileToggle = function () {
     mobileMenu: document.querySelector('[data-mobile-menu]'),
     mobileMenuContent: document.querySelector('[data-mobile-menu-content]'),
     loginBTN: document.querySelector('[data-login-btn]'),
+    closeLogFormEL: document.querySelector('.authModal__button-close'),
   };
 
   refs.toggleMobileMenuBTN.addEventListener('click', toggleMobileMenu);
   refs.mobileMenu.addEventListener('click', toggleMobileMenu);
   refs.loginBTN.addEventListener('click', closeMobileMenuOpenLogForm);
+  refs.closeLogFormEL.addEventListener('click', closeMobileLoginForm);
   refs.mobileMenuContent.addEventListener('click', function (event) {
     event.stopPropagation();
   });
@@ -21,6 +23,10 @@ export const mobileToggle = function () {
     refs.mobileMenu.classList.add('is-hidden');
     burger.classList.remove('active');
     loginForm.classList.add('open');
+  }
+  function closeMobileLoginForm() {
+    const loginForm = document.querySelector('.authModal__backdrop');
+    loginForm.classList.remove('open');
   }
 
   function toggleMobileMenu() {
