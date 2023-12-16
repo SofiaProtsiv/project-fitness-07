@@ -8,11 +8,26 @@ export const getActiveLink = function () {
   navLinks.forEach(function (link) {
     const linkHref = link.getAttribute('href').split('./')[1];
     if (currentPage.includes(linkHref)) {
-      link.parentNode.classList.add('active');
+      link.classList.add('active');
     } else {
-      link.parentNode.classList.remove('active');
+      link.classList.remove('active');
     }
   });
+};
+export const addTeamLink = function () {
+  const currentPage = window.location.pathname;
+
+  if (currentPage === '/team.html') {
+    const navList = document.querySelector('.header__nav__list');
+    const teamListItem = document.createElement('li');
+    teamListItem.classList.add('header__nav__item');
+    const teamLink = document.createElement('a');
+    teamLink.classList.add('header__nav__link', 'active');
+    teamLink.setAttribute('href', './team.html');
+    teamLink.textContent = 'Team';
+    teamListItem.appendChild(teamLink);
+    navList.appendChild(teamListItem);
+  }
 };
 
 export const toggleMobileMenu = function () {
