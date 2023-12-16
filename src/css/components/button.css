@@ -1,9 +1,14 @@
 .button-box {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: end;
   column-gap: 8px;
   row-gap: 8px;
+
+  @media (768px <= width) {
+    flex-direction: row;
+  }
 }
 
 .button {
