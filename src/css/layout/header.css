@@ -3,12 +3,11 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 0 !important;
   position: relative;
 
   @media (width > 768px) {
     padding-top: 28px;
-    padding-bottom: 28px;
   }
 }
 
@@ -21,16 +20,68 @@
   }
 }
 
+.header__nav-authorized {
+  display: none;
+}
+
+.header__nav-authorized.visible {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media (768px<=width) {
+    flex-direction: row;
+  }
+}
+
+.header__nav__link.auth {
+  display: none;
+}
+
+.header__nav__link.auth.visible {
+  display: block;
+}
+
 .header__nav__list {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 14px 32px;
 }
+
 .header__nav__link.active {
   color: var(--primary-black-color);
   background-color: var(--primary-white-color);
 }
+
+.header__nav__item button {
+  background-color: transparent;
+  color: var(--primary-white-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 6px 12px;
+  margin-top: 10px;
+
+  @media (768px<=width) {
+    margin-top: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    line-height: 1.5;
+    transition-property: color, background-color;
+    transition-duration: var(--transition-time);
+    transition-timing-function: var(--transition-effect);
+  }
+}
+
+.header__nav__item button:hover,
+.header__nav__item button:focus {
+  @media (768px<=width) {
+    color: var(--primary-black-color);
+    background-color: var(--primary-white-color);
+  }
+}
+
 .header__nav__link {
   border-radius: 30px;
   cursor: pointer;
@@ -46,8 +97,11 @@
 
 .header__nav__link:hover,
 .header__nav__link:focus {
-  color: var(--primary-black-color);
-  background-color: var(--primary-white-color);
+  @media (768px<=width) {
+    color: var(--primary-black-color);
+    background-color: var(--primary-white-color);
+  }
+
 }
 
 .header__social__list {
@@ -82,6 +136,7 @@
   fill: var(--primary-white-color);
   border: transparent;
 }
+
 /* Mobile BTN Css */
 
 .header__mobil__btn {
@@ -97,6 +152,7 @@
     display: none;
   }
 }
+
 .bar-top,
 .bar-middle,
 .bar-bottom {
@@ -107,14 +163,17 @@
   transform-origin: left;
   transition: all 0.4s;
 }
+
 .header__mobil__btn.active .bar-top {
   transform: rotate(45deg);
   background: var(--primary-white-color);
 }
+
 .header__mobil__btn.active .bar-middle {
   transform: translateX(1rem);
   opacity: 0;
 }
+
 .header__mobil__btn.active .bar-bottom {
   transform: rotate(-45deg);
   background: var(--primary-white-color);

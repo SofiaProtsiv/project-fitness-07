@@ -19,6 +19,7 @@ import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter-js';
 import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
+import { setActiveCategory } from '../filters';
 
 window.addEventListener('resize', cardsHandler);
 
@@ -74,7 +75,6 @@ async function cardsHandler() {
           connection
         );
         data = await getData(connection);
-
         cleanerCardWrapper();
         cleanerPages();
         showWorkoutCards(data);
@@ -127,6 +127,7 @@ function listenCards() {
 
 function targetHandler(evt) {
   const result = checkCard(evt);
+  setActiveCategory(result)
   changeToValidUrl(result);
   if (result != null || undefined || NaN)
     if (params.filter === 'Muscles') {

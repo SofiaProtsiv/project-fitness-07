@@ -57,7 +57,7 @@ function areParamsDifferent(params) {
 function checkWorkoutParams(currentPage, endPoint, fetch, params, connection) {
   if (areParamsDifferent(params)) {
     fetch.bodyPart = params.bodypart;
-    fetch.keyword = params.keyword;
+    fetch.searchQuery = params.keyword;
     fetch.muscles = params.muscles;
     fetch.equipment = params.equipment;
     connection = getConnection(currentPage, endPoint, fetch).fetchFilteredExercises();
@@ -99,6 +99,7 @@ function getData(promise) {
 
 function getFiltersFromPage(params, pageFilter){
   const filters = document.querySelector(".filters__list .active");
+
   if (filters) {
       const id = filters.id.includes("-") ? (filters.id.charAt(0).toUpperCase()
       + filters.id.slice(1)).replace("-", '%20')

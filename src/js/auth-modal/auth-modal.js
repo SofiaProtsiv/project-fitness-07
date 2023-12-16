@@ -1,6 +1,6 @@
 import { createUser, signIn, signOut, db } from '../firebase-service';
 
-const userButton = document.querySelector('.user-icon');
+const userButton = document.querySelector('.header__auth_btn');
 const authModal = document.querySelector('.authModal__backdrop');
 const closeButton = document.querySelector('.authModal__button-close');
 const authForm = document.querySelector('.authForm');
@@ -8,9 +8,15 @@ const actionText = document.querySelector('.action__text');
 const btnChangeForm = document.querySelector('.action__button');
 const usernameFieldset = document.querySelector('.authForm__fieldset.username');
 const title = document.querySelector('.authForm__title');
-const userName = document.querySelector('.header__username');
-const headerGroup = document.querySelector('.header_main_nav');
-const btnLogOut = document.querySelector('.button-logout');
+
+const headerGroup = document.querySelectorAll('.header__nav-authorized');
+const authLinkEl = document.querySelectorAll(".header__nav__item.auth")
+const btnLogOut = document.querySelectorAll('.header__logout_btn');
+
+// const headerGroupMobile = document.querySelector(".mobile__nav-authorized")
+// const authLinkMobileEl = document.querySelector('.mobile__nav__item.auth')
+// const btnLogOutMobile = document.querySelector('.mobile__nav__logout_btn');
+// const userName = document.querySelector('.header__username');
 
 let isRegMode = true;
 
@@ -49,7 +55,7 @@ const handleSubmit = async event => {
   await signIn(formData);
   resetForm();
   const currentUserName = (await db.auth().currentUser)?.displayName;
-  userName.textContent = currentUserName;
+  // userName.textContent = currentUserName;
   closeModal();
 };
 
@@ -74,32 +80,52 @@ const changeForm = () => {
   authForm.elements.name.toggleAttribute('required');
 };
 
-const checkCurrentUser = async () => {
+export const checkCurrentUser = async () => {
   await db.auth().onAuthStateChanged(user => {
     if (user) {
-      userName.textContent = user.displayName;
-      userName.classList.remove('hidden');
-      userButton.classList.add('hidden');
-      headerGroup.classList.add('visible');
-      btnLogOut.classList.add('visible');
+      // userName.textContent = user.displayName;
+      // userName.classList.remove('hidden');
+      authLinkEl.forEach(el => {
+        el.classList.add('hidden');
+      })
+      btnLogOut.forEach(el => {
+        el.classList.add('visible');
+      })
+      headerGroup.forEach(el => {
+        el.classList.add('visible');
+      })
+
+
     } else {
-      userButton.classList.remove('hidden');
-      btnLogOut.classList.remove('visible');
-      headerGroup.classList.remove('visible');
+      authLinkEl.forEach(el => {
+        el.classList.remove('hidden');
+      })
+      btnLogOut.forEach(el => {
+        el.classList.remove('visible');
+      })
+      headerGroup.forEach(el => {
+        el.classList.remove('visible');
+      })
     }
   });
 };
 
-const handleSignOut = async () => {
+export const handleSignOut = async () => {
   await signOut();
-  btnLogOut.classList.add('hidden');
-  userName.classList.add('hidden');
+  btnLogOut.forEach(el => {
+    el.classList.add('hidden');
+  })
+
+  window.location.pathname = '/'
+  // userName.classList.add('hidden');
 };
 
 userButton.addEventListener('click', openModal);
 authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
-btnLogOut.addEventListener('click', handleSignOut);
+btnLogOut.forEach(el => {
+  el.addEventListener('click', handleSignOut);
+})
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
