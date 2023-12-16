@@ -21,10 +21,10 @@
     />
 
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/index-ab4fc681.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-a55b2bd8.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/card-holder-a6e54a50.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-9f70aade.js">
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-6b84291e.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-6e151baa.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/card-holder-ee005971.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-5f13aa76.js">
     <link rel="stylesheet" href="/project-fitness-07/assets/index-007fcd26.css">
   </head>
 
@@ -115,40 +115,56 @@
     <div></div>
     <nav class="mobile__nav">
       <ul class="mobile__nav__list">
-        <li class="mobile__nav__item">
-          <a class="mobile__nav__link is-active-link" href="./index.html">Home</a>
+        <li class="header__nav__item active">
+          <a class="header__nav__link active" id="home" href="./index.html"
+            >Home</a
+          >
         </li>
         <div class="header__nav-authorized">
           <li class="header__nav__item">
-            <a class="header__nav__link is-active-link" id="favorites" href="./favorites.html">Favorites</a>
+            <a class="header__nav__link" id="favorites" href="./favorites.html"
+              >Favorites</a
+            >
           </li>
           <li class="header__nav__item">
             <button class="header__logout_btn" type="button">Log out</button>
           </li>
         </div>
-        <li class="header__nav__item auth">
-          <button class="header__logout_btn">Log in</button>
+        <li data-login-btn class="header__nav__item auth">
+          <button class="header__auth_btn">Log in</button>
         </li>
       </ul>
     </nav>
 
     <ul class="mobile__menu__social__list">
       <li>
-        <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.facebook.com/goITclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg class="mobile__menu__social__icon" aria-label="Facebook icon">
             <use href="/project-fitness-07/images/icons-sprite.svg#icon-facebook"></use>
           </svg>
         </a>
       </li>
       <li>
-        <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.instagram.com/goitclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg class="mobile__menu__social__icon" aria-label="Instagram icon">
             <use href="/project-fitness-07/images/icons-sprite.svg#icon-instagram"></use>
           </svg>
         </a>
       </li>
       <li>
-        <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.youtube.com/c/GoIT"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg class="mobile__menu__social__icon" aria-label="Youtube icon">
             <use href="/project-fitness-07/images/icons-sprite.svg#icon-youtube"></use>
           </svg>
@@ -157,6 +173,7 @@
     </ul>
   </div>
 </div>
+
       <div class="authModal__backdrop">
   <div class="authModal__content">
     <span class="authModal__button-close">&times;</span>
