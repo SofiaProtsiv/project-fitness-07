@@ -54,7 +54,7 @@ const handleSubmit = async event => {
 
   await signIn(formData);
   resetForm();
-  const currentUserName = (await db.auth().currentUser)?.displayName;
+  // const currentUserName = (await db.auth().currentUser)?.displayName;
   // userName.textContent = currentUserName;
   closeModal();
 };
@@ -94,8 +94,6 @@ const checkCurrentUser = async () => {
       headerGroup.forEach(el => {
         el.classList.add('visible');
       })
-
-
     } else {
       authLinkEl.forEach(el => {
         el.classList.remove('hidden');

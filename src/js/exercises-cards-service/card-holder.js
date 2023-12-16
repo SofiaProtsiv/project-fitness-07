@@ -21,6 +21,8 @@ import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory, filterOn} from '../filters';
 import { startFavorite} from './favorites-engine.js';
+import scrollUpToSection from '../helpers/scroll-up.js';
+
 
 window.addEventListener('resize', cardsHandler);
 
@@ -73,6 +75,7 @@ async function cardsHandler() {
       case 2:
         addWorkoutClass();
         deleteFavoriteClass();
+        scrollUpToSection(".exercises")
         connection = checkWorkoutParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -169,6 +172,7 @@ function listenPages() {
 
 function pagesHandler(evt) {
   const clickedPage = checkPage(evt);
+  scrollUpToSection(".exercises")
   if (
     (pageFilter.currentPage != clickedPage && clickedPage != null) ||
     undefined ||
@@ -211,7 +215,9 @@ async function workoutHandler(evt) {
   }
 }
 
+
 startFavorite();
 filterOn();
 
 export { params, pageFilter, cardsHandler, workoutHandler };
+

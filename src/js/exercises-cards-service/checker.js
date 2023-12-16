@@ -19,8 +19,9 @@ function checkPage(evt){
 }
 
 function checkWorkoutCard(evt){
-    // evt.preventDefault();
-    const {target} = evt;
+    evt.preventDefault();
+    const { target } = evt;
+
     if (target.classList.contains("js-cards")){
         return;
     }

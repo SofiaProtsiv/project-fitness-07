@@ -193,4 +193,4 @@ backdropRef.addEventListener('click', event => {
   }
 });
 
-export { openModalExercise, btnBoxRender };
+export { openModalExercise, btnBoxRender, closeModalExercise };
