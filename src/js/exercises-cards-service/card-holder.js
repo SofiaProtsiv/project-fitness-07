@@ -95,9 +95,6 @@ async function cardsHandler() {
           viewPort
         );
         data = await getData(connection);
-        if (data.length === 0) {
-          throw new Error('No data');
-        }
         cleanerCardWrapper();
         cleanerPages();
         showWorkoutCards(data);
@@ -230,7 +227,6 @@ async function workoutHandler(evt) {
     console.error(error);
   }
 }
-
 
 export function startEngine(){
   if (window.location.href.includes("/favorite")){
