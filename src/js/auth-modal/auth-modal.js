@@ -54,7 +54,7 @@ const handleSubmit = async event => {
 
   await signIn(formData);
   resetForm();
-  const currentUserName = (await db.auth().currentUser)?.displayName;
+  // const currentUserName = (await db.auth().currentUser)?.displayName;
   // userName.textContent = currentUserName;
   closeModal();
 };
@@ -80,7 +80,7 @@ const changeForm = () => {
   authForm.elements.name.toggleAttribute('required');
 };
 
-export const checkCurrentUser = async () => {
+const checkCurrentUser = async () => {
   await db.auth().onAuthStateChanged(user => {
     if (user) {
       // userName.textContent = user.displayName;
@@ -94,8 +94,6 @@ export const checkCurrentUser = async () => {
       headerGroup.forEach(el => {
         el.classList.add('visible');
       })
-
-
     } else {
       authLinkEl.forEach(el => {
         el.classList.remove('hidden');
@@ -110,13 +108,13 @@ export const checkCurrentUser = async () => {
   });
 };
 
-export const handleSignOut = async () => {
+const handleSignOut = async () => {
   await signOut();
   btnLogOut.forEach(el => {
     el.classList.add('hidden');
   })
 
-  window.location.pathname = '/'
+  window.location.pathname = '/project-fitness-07/'
   // userName.classList.add('hidden');
 };
 

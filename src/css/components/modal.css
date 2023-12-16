@@ -36,11 +36,11 @@
   transition: transform var(--transition-dur-and-func),
     opacity var(--transition-dur-and-func);
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     padding: 32px;
   }
 
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     width: 708px;
   }
 }
@@ -55,13 +55,13 @@
     max-width: 335px;
   }
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 704px;
     display: flex;
     column-gap: 32px;
   }
 
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     width: 708px;
   }
 }
@@ -80,7 +80,7 @@
   transition: transform var(--transition-time) var(--transition-effect),
     stroke var(--transition-time) var(--transition-effect);
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 28px;
     height: 28px;
     font-size: 28px;
@@ -99,13 +99,13 @@
 }
 
 .modalExercise__content {
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 338px;
     display: flex;
     flex-direction: column;
   }
 
-  @media (1440px <= width) {
+  @media (1440px <=width) {
     width: 342px;
   }
 }
@@ -113,17 +113,18 @@
 .exercise-content {
   margin-bottom: 40px;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     margin-bottom: 64px;
   }
 }
+
 .modalExercise__img-wrapper {
   height: 258px;
   border-radius: 12px;
   margin-bottom: 20px;
   overflow: hidden;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 270px;
     height: 260px;
   }
@@ -135,7 +136,7 @@
   font-weight: 500;
   line-height: 1;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     margin-bottom: 8px;
     font-size: 24px;
     line-height: 1.33;
@@ -185,7 +186,7 @@
   column-gap: 20px;
   row-gap: 20px;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     margin-bottom: 16px;
   }
 }

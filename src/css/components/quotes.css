@@ -4,7 +4,7 @@
   gap: 20px;
 
   @media (768px<=width) {
-    gap: 32px;
+    gap: 16px;
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -26,12 +26,13 @@
 
   @media (768px<=width) {
     padding: 40px;
-    width: 400px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
   }
 
   @media (1440px<=width) {
-    width: 444px;
+    width: 100%;
+    max-width: 444px;
   }
 }
 
@@ -126,12 +127,13 @@
   height: auto;
 
   @media (768px<=width) {
-    width: 288px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 288px;
   }
 
   @media (1440px<=width) {
-    width: 444px;
+    width: 100%;
+    max-width: 444px;
   }
 }
 
@@ -150,12 +152,15 @@
 
   @media (768px<=width) {
     padding: 40px;
-    width: 400px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 16px;
   }
 
   @media (1440px<=width) {
-    width: 444px;
+    width: 100%;
+    max-width: 444px;
+    margin-top: 0;
   }
 }
 
