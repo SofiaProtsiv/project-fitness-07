@@ -1,6 +1,7 @@
 import ApiService from "../api-service";
 import { params, pageFilter, cardsHandler } from "../exercises-cards-service/card-holder";
 import _ from 'lodash';
+import { getFiltersFromPage } from "../exercises-cards-service/cards-service";
 
 const searchEl = document.querySelector(".search__wrapper")
 const inputEl = document.querySelector(".search__input");
@@ -53,8 +54,18 @@ function handleCategories(e) {
   const categoryEl = e.target;
   const categoryId = e.target.id;
 
-  if (categoryEl.classList.contains("active")) return;
-  
+  if (categoryEl.classList.contains("active")) {
+    const params = {
+      filter: categoryId,
+      bodypart: '',
+      keyword: '',
+      muscles: '',
+      equipment: '',
+    };
+    getFiltersFromPage(params, pageFilter);
+    cardsHandler()
+  };
+
   [...categoriesListEl.children].forEach((item) => {
     item.classList.remove("active")
   })

@@ -19,6 +19,7 @@ import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory } from '../filters';
+import scrollUpToSection from '../helpers/scroll-up.js';
 
 window.addEventListener('resize', cardsHandler);
 
@@ -67,6 +68,7 @@ async function cardsHandler() {
       case 2:
         addWorkoutClass();
         deleteFavoriteClass();
+        scrollUpToSection(".exercises")
         connection = checkWorkoutParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -160,6 +162,7 @@ function listenPages() {
 
 function pagesHandler(evt) {
   const clickedPage = checkPage(evt);
+  scrollUpToSection(".exercises")
   if (
     (pageFilter.currentPage != clickedPage && clickedPage != null) ||
     undefined ||
@@ -202,4 +205,4 @@ async function workoutHandler(evt) {
   }
 }
 
-export { params, pageFilter, cardsHandler, workoutHandler };
+export { params, pageFilter, cardsHandler };

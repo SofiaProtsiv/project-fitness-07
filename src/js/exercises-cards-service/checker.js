@@ -19,13 +19,13 @@ function checkPage(evt){
 }
 
 function checkWorkoutCard(evt){
-    // evt.preventDefault();
-    const {target} = evt;
+    evt.preventDefault();
+    const { target } = evt;
+
     if (target.classList.contains("js-cards")){
         return;
     }
     const cardElement = target.closest('.js-workout-card');
-    console.log(cardElement);
     return cardElement.dataset.id;
 }
 

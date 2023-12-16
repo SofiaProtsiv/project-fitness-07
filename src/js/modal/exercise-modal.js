@@ -158,7 +158,7 @@ const closeModalExercise = () => {
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 
-  const toggleID = 'js-toggle-favorit';
+  const toggleID = 'modalExercise';
   try {
     const toggleBtn = document.getElementById(toggleID);
     toggleBtn.removeEventListener('click', toggleFavoritEvent);
