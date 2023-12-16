@@ -16,6 +16,9 @@ import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
+import adaptHeight from './height-adapter-js';
+import { update } from 'lodash';
+import { updateViewPort } from './update-view-port';
 
 window.addEventListener('resize', cardsHandler);
 
@@ -49,6 +52,7 @@ async function cardsHandler() {
   let connection;
   getFiltersFromPage(params, pageFilter);
   hiddenEmptyParag();
+  adaptHeight(pageFilter.endPoint, updateViewPort());
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
