@@ -18,6 +18,8 @@ const buttonBoxRef = modalRef.querySelector('.button-box');
 const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
+let toggleFavoritEvent;
+
 const renderModal = exercise => {
   const { gifUrl, name, rating, _id, isFavorite, description } = exercise;
   const details = getDetails(exercise);
@@ -37,7 +39,7 @@ const renderModal = exercise => {
     markupDescription(description)
   );
   // buttons
-  btnBoxRender();
+  btnBoxRender(isFavorite);
 };
 
 const getDetails = exercise => ({
@@ -144,7 +146,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
 
   return `
     <button id="js-toggle-favorit" type="button" class="button ${className}">
-      <span class="text">${text}</span>
+      <span>${text}</span>
       ${iconId ? iconMarkup : ''}
     </button>
   `;
@@ -155,6 +157,14 @@ const closeModalExercise = () => {
   modalRef.classList.remove('open');
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
+
+  const toggleID = 'js-toggle-favorit';
+  try {
+    const toggleBtn = document.getElementById(toggleID);
+    toggleBtn.removeEventListener('click', toggleFavoritEvent);
+  } catch (error) {
+    console.error(`${toggleID} not found!`);
+  }
 };
 
 const openModalExercise = async exercise => {
@@ -168,7 +178,7 @@ const openModalExercise = async exercise => {
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
 
-  toggleFavorit(exercise);
+  toggleFavoritEvent = toggleFavorit(exercise);
 };
 
 document.addEventListener('keydown', event => {
