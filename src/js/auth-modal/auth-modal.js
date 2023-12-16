@@ -116,7 +116,7 @@ export const handleSignOut = async () => {
     el.classList.add('hidden');
   })
 
-  window.location.replace('/')
+  window.location.pathname = '/'
   // userName.classList.add('hidden');
 };
 
