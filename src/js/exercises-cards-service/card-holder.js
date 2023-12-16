@@ -17,10 +17,9 @@ import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
-import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory, filterOn} from '../filters';
-import { startFavorite} from './favorites-engine.js';
+// import { startFavorite} from './favorites-engine.js';
 import scrollUpToSection from '../helpers/scroll-up.js';
 
 
@@ -216,7 +215,7 @@ async function workoutHandler(evt) {
 }
 
 
-startFavorite();
+// startFavorite();
 filterOn();
 
 export { params, pageFilter, cardsHandler, workoutHandler };

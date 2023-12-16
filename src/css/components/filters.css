@@ -160,8 +160,14 @@
   font-size: 16px;
   padding-bottom: 4px;
   cursor: pointer;
+  transition: var(--transition-time) var(--transition-effect);
+}
+
+.filters__item:hover,
+.filters__item:focus {
+  border-bottom: 3px solid var(--secondary-black-text-color)
 }
 
 .filters__item.active {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--primary-black-color)
 }
