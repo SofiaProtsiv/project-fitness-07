@@ -6,7 +6,7 @@ function showInitialCards(data) {
     .map(
       ({ filter, name, imgURL }) =>
         `
-        <a class="exercise-cards__gallery-link js-card" data-card-name="${name}" href="">
+        <li class="exercise-cards__gallery-link js-card" data-card-name="${name}">
             <div class="exercise-cards__gallery-card">
                 
                 <img class="exercise-cards__gallery-image"  src="${imgURL}" alt="${
@@ -17,11 +17,11 @@ function showInitialCards(data) {
                     <p class="exercise-cards__parag-filter">${filter}</p>
                 </div>
             </div>
-        </a>
+        </li>
         `
     )
     .join('');
-        //<div class="exercise-cards__gradient"></div>
+  //<div class="exercise-cards__gradient"></div>
   cards.insertAdjacentHTML('beforeend', initialCardsLayout);
 }
 
@@ -30,7 +30,7 @@ function showWorkoutCards(data) {
     .map(
       ({ _id, bodyPart, name, target, burnedCalories, time, rating }) =>
         `
-        <a class="workout-cards__gallery-link js-workout-card" data-id="${_id}"  href="">
+        <li class="workout-cards__gallery-link js-workout-card" data-id="${_id}">
             <div class="workout-cards__gallery-card" >
                 <div class="workout-cards__first-line-wrapper">
                     <p class="workout-cards__parag-workout">Workout</p>
@@ -62,7 +62,7 @@ function showWorkoutCards(data) {
                     <p class="workout-cards__parag-target-result">${target}<p>
                 </div>
             </div>
-        </a>
+          </li>
         `
     )
     .join('');
@@ -75,8 +75,8 @@ function showFavoriteCards(data) {
     .map(
       ({ _id, bodyPart, name, target, burnedCalories, time }) =>
         `
-        <a class="favori-cards__gallery-link" href="">
-            <div class="favorite-cards__gallery-card" data-id="${_id}">
+        <li class="favorite-cards__gallery-link" data-id="${_id}">
+            <div class="favorite-cards__gallery-card">
                 <div class="favorite-cards__first-line-wrapper">
                     <p class="favorite-cards__parag-workout">favorite</p>
                     <svg class="favorite-cards__icon-trash">
@@ -102,7 +102,7 @@ function showFavoriteCards(data) {
                     Target: <span class="favorite-cards__span-text">${target} min<span></p>
                 </div>
             </div>
-        </a>
+          </li>
         `
     )
     .join('');

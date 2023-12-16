@@ -7,7 +7,6 @@ export const toggleFavoriteStatus = async function (exercise) {
 
     if (isFavoriteValue) {
       // Видалити об'єкт зі списку улюблених
-
       const response = await favoritesDB.remove(_id);
       console.log(`Object with _id ${_id} removed from favorites.`);
 

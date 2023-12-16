@@ -10,14 +10,13 @@ import {
   checkWorkoutParams,
   getFiltersFromPage
 } from './cards-service';
-import { addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag} from './class-worker';
+import { addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag } from './class-worker';
 import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
-import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory } from '../filters';
 
@@ -58,6 +57,7 @@ async function cardsHandler() {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
+        // console.log("here")
         addFavoriteClass();
         deleteWorkoutClass();
         data = await favoritesDB.get();
@@ -107,9 +107,9 @@ async function cardsHandler() {
     }
   } catch (error) {
     console.log('Error: ', error);
-    if (pageFilter.endPoint === 1){
+    if (pageFilter.endPoint === 1) {
       addStringFavoriteParagEmpty();
-    } else{
+    } else {
       addStringEmptyParag();
     }
     unhiddenEmptyParag();
@@ -145,7 +145,7 @@ function targetHandler(evt) {
   cardsHandler();
 }
 
-function changeToValidUrl(string){
+function changeToValidUrl(string) {
   return string.includes(" ") ? string.replace(" ", "%20") : string;
 }
 
@@ -202,4 +202,4 @@ async function workoutHandler(evt) {
   }
 }
 
-export { params, pageFilter, cardsHandler };
+export { params, pageFilter, cardsHandler, workoutHandler };
