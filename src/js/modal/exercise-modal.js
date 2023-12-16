@@ -158,7 +158,7 @@ const closeModalExercise = () => {
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 
-  const toggleID = 'modalExercise';
+  const toggleID = 'js-toggle-favorit';
   try {
     const toggleBtn = document.getElementById(toggleID);
     toggleBtn.removeEventListener('click', toggleFavoritEvent);
@@ -193,4 +193,4 @@ backdropRef.addEventListener('click', event => {
   }
 });
 
-export { openModalExercise, btnBoxRender };
+export { openModalExercise, btnBoxRender, closeModalExercise };

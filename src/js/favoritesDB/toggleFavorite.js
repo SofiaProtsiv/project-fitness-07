@@ -1,4 +1,6 @@
 import { toggleFavoriteStatus } from '.';
+import { removeElFromFavorites } from '../exercises-cards-service/favorites-engine';
+import { closeModalExercise } from '../modal/exercise-modal';
 
 export const toggleFavorit = exercise => {
   const toggleID = 'js-toggle-favorit';
@@ -11,6 +13,11 @@ export const toggleFavorit = exercise => {
     async event => {
       const whereIsAddToFavorit = await toggleFavoriteStatus(exercise);
       reRenderFavoritToggleBtn(whereIsAddToFavorit, toggleFavoritBtn);
+    
+      if (window.location.pathname.includes("favorites")) {
+        closeModalExercise()
+        removeElFromFavorites(exercise)
+      }
     }
   );
 
