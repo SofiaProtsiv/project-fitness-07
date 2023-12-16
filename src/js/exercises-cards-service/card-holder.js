@@ -10,12 +10,15 @@ import {
   checkWorkoutParams,
   getFiltersFromPage
 } from './cards-service';
-import { addWorkoutClass, deleteWorkoutClass } from './class-changer';
+import { addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag} from './class-worker';
 import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
+import adaptHeight from './height-adapter-js';
+import { update } from 'lodash';
+import { updateViewPort } from './update-view-port';
 import { setActiveCategory } from '../filters';
 
 window.addEventListener('resize', cardsHandler);
@@ -49,17 +52,21 @@ async function cardsHandler() {
   let data;
   let connection;
   getFiltersFromPage(params, pageFilter);
+  hiddenEmptyParag();
+  adaptHeight(pageFilter.endPoint, updateViewPort());
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
-        //Тут повинна бути логіка отримання даних з позначкою фейворітс
-
+        addFavoriteClass();
+        deleteWorkoutClass();
+        data = await favoritesDB.get();
         showFavoriteCards(data);
         break;
       // If the endpoint has /exercise do the next
       case 2:
         addWorkoutClass();
+        deleteFavoriteClass();
         connection = checkWorkoutParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -79,6 +86,7 @@ async function cardsHandler() {
       // If the endpoint has /filter do the next
       case 3:
         deleteWorkoutClass();
+        deleteFavoriteClass();
         connection = checkExerciseParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -99,6 +107,12 @@ async function cardsHandler() {
     }
   } catch (error) {
     console.log('Error: ', error);
+    if (pageFilter.endPoint === 1){
+      addStringFavoriteParagEmpty();
+    } else{
+      addStringEmptyParag();
+    }
+    unhiddenEmptyParag();
   }
 }
 
