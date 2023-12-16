@@ -11,11 +11,13 @@ export const mobileToggle = function () {
   refs.toggleMobileMenuBTN.addEventListener('click', toggleMobileMenu);
   refs.mobileMenu.addEventListener('click', toggleMobileMenu);
   refs.loginBTN.addEventListener('click', closeMobileMenuOpenLogForm);
-  refs.closeLogFormEL.addEventListener('click', closeMobileLoginForm);
   refs.mobileMenuContent.addEventListener('click', function (event) {
     event.stopPropagation();
   });
-
+  
+  if (!window.location.pathname.includes("favorites")) {
+    refs.closeLogFormEL.addEventListener('click', closeMobileLoginForm);
+}
   function closeMobileMenuOpenLogForm() {
     const burger = document.getElementById('MobileBTN');
     const loginForm = document.querySelector('.authModal__backdrop');
