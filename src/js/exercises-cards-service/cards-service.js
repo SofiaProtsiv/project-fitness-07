@@ -97,16 +97,24 @@ function getData(promise) {
   });
 }
 
-function getFiltersFromPage(params){
-    const filters = document.querySelector(".filters__list .active");
-
-    if (filters) {
-        const id = filters.id;
-        params.filter = id.includes("-") ? (id.charAt(0).toUpperCase()
-         + id.slice(1)).replace("-", '%20')
-        : id.charAt(0).toUpperCase() + id.slice(1);
-    } else {
-        console.error("No child elements found in filters.");
-    }
+function getFiltersFromPage(params, pageFilter){
+  const filters = document.querySelector(".filters__list .active");
+  if (filters) {
+      const id = filters.id.includes("-") ? (filters.id.charAt(0).toUpperCase()
+      + filters.id.slice(1)).replace("-", '%20')
+     : filters.id.charAt(0).toUpperCase() + filters.id.slice(1);;
+      if (id != params.filter || params.filter === ""){
+        params.filter = id;
+        for (const key in params) {
+          if (key !== 'filter') {
+              params[key] = "";
+          }
+      }
+        pageFilter.currentPage = 1;
+        pageFilter.endPoint = 3;
+      }
+  } else {
+      console.error("No child elements found in filters.");
+  }
 }
 export {getData, getConnection, checkExerciseParams, checkWorkoutParams, areParamsDifferent, calculateObjects, getFiltersFromPage};
