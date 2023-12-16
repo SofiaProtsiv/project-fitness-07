@@ -132,7 +132,8 @@
   }
 
   @media (1440px<=width) {
-    width: 444px;
+    width: 100%;
+    max-width: 444px;
   }
 }
 
@@ -159,6 +160,7 @@
   @media (1440px<=width) {
     width: 100%;
     max-width: 444px;
+    margin-top: 0;
   }
 }
 
