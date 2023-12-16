@@ -17,7 +17,7 @@ export default class ApiService {
     this.rating = null;
     this.email = '';
     this.review = '';
-    this.limit = 1;
+    this.limit = '';
     this.filter = "Body%20parts";
   }
 
@@ -119,12 +119,15 @@ export default class ApiService {
   set id(newExerciseId) {
     return (this.exerciseId = newExerciseId);
   }
+
   get numberOfPages() {
     return this.maxPages;
   }
+
   get page() {
     return this.pageCounter;
   }
+  
   set page(newPage) {
     return (this.pageCounter = newPage);
   }
@@ -136,6 +139,7 @@ export default class ApiService {
   set query(newQuery) {
     return (this.searchQuery = newQuery);
   }
+
   get musclesFeature() {
     return this.muscles;
   }
