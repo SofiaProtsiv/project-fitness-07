@@ -114,7 +114,10 @@ function getFiltersFromPage(params, pageFilter){
         pageFilter.endPoint = 3;
       }
   } else {
-      console.error("No child elements found in filters.");
+      if (pageFilter.endPoint != 1){
+        console.error("No child elements found in filters.");
+      }
   }
 }
+
 export {getData, getConnection, checkExerciseParams, checkWorkoutParams, areParamsDifferent, calculateObjects, getFiltersFromPage};
