@@ -1,9 +1,7 @@
 import { updateViewPort } from './update-view-port';
-import { addMarkupToHtml, createCardsSkeleton } from '../createSkeleton/index.js';
-
+import { createCardsSkeleton, addMarkupToHtml } from '../createSkeleton/index.js';
 
 const list = document.querySelector('.js-cards');
-const workoutList = document.querySelector('.workout-cards__wrapper');
 
 //It`s looking what endpoint and viewSize is, then give a number of cards to show
 function calculateObjects(endPoint, viewSize) {
