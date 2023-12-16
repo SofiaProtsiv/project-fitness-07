@@ -67,11 +67,9 @@
   height: auto;
   border-radius: 30px;
 
-
   @media (768px <=width) {
     border-radius: 60px;
   }
-
 }
 
 .hero__hashtags-wrap {
