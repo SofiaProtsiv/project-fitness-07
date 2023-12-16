@@ -1,5 +1,6 @@
 import ApiService from "../api-service";
-import {  pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
+import { params, pageFilter, cardsHandler} from "../exercises-cards-service/card-holder";
+import _ from 'lodash';
 
 const inputEl = document.querySelector(".search__input");
 const categoriesListEl = document.querySelector(".filters__list")
@@ -37,12 +38,13 @@ function handleCategories(e) {
 [...categoriesListEl.children].forEach((item) => {
   item.classList.remove("active")
   })
-  
+
   categoryEl.classList.add("active")
   
   pageFilter.currentPage = 1;
   cardsHandler();
 }
+const debouncedHandleInput = _.debounce(handleInput, 500);
 
-inputEl.addEventListener("input", handleInput)
+inputEl.addEventListener("input", debouncedHandleInput);
 categoriesListEl.addEventListener("click", handleCategories)
