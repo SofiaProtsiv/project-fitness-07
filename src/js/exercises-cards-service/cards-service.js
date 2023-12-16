@@ -106,6 +106,9 @@ function getFiltersFromPage(params, pageFilter) {
     }
   } else {
     console.error('No child elements found in filters.');
+      if (pageFilter.endPoint != 1){
+        console.error("No child elements found in filters.");
+      }
   }
 }
 
