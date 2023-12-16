@@ -80,7 +80,7 @@ const changeForm = () => {
   authForm.elements.name.toggleAttribute('required');
 };
 
-export const checkCurrentUser = async () => {
+const checkCurrentUser = async () => {
   await db.auth().onAuthStateChanged(user => {
     if (user) {
       // userName.textContent = user.displayName;
@@ -110,7 +110,7 @@ export const checkCurrentUser = async () => {
   });
 };
 
-export const handleSignOut = async () => {
+const handleSignOut = async () => {
   await signOut();
   btnLogOut.forEach(el => {
     el.classList.add('hidden');
