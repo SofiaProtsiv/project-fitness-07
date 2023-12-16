@@ -29,6 +29,10 @@
   @media (768px<=width) {
     padding: 40px;
   }
+
+  @media (1440px<=width) {
+    width: 100%;
+  }
 }
 
 .favorites__quotes__icon_wrapper {
@@ -144,15 +148,24 @@
 .favorites__quotes__img {
   width: 100%;
   max-width: 336px;
-  height: auto;
 
   @media (768px<=width) {
-    max-width: 100%;
+    width: 100%;
+  }
+
+  @media (1440px<=width) {
+    width: 100%;
+    max-width: 239px;
+    /* height: 141px; */
+    /* align-self: stretch; */
   }
 }
 
 .favorites__quotes__img_img {
   border-radius: 20px;
+  /* height: 100%; */
+  /* object-fit: cover; */
+  width: 100%;
 }
 
 .favorites__quotes__workout_container {
