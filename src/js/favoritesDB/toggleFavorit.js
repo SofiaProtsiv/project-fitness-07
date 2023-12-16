@@ -1,22 +1,18 @@
 import { toggleFavoriteStatus } from '.';
-import { btnBoxRender } from '../modal/exercise-modal';
 
-// Приклад виклику функції
 export const toggleFavorit = exercise => {
-  const toggleClass = 'js-toggle-favorit';
-  const toggleBtn = document.getElementById(toggleClass);
+  const toggleID = 'js-toggle-favorit';
+  const toggleBtn = document.getElementById(toggleID);
 
-  toggleBtn.addEventListener('click', handleToggleFavorite);
-};
+  toggleBtn.addEventListener('click', async event => {
+    const isOK = await toggleFavoriteStatus(exercise);
 
-const handleToggleFavorite = async event => {
-  try {
-    const isFavorite = await toggleFavoriteStatus(exercise);
-    console.log(isFavorite);
-    if (isFavorite) {
-      btnBoxRender(isFavorite);
-    }
-  } catch (error) {
-    console.error(error);
-  }
+    const text = !isOK ? 'Add to favorites' : 'Remove from favorites';
+    const iconId = !isOK ? 'icon-heart' : 'icon-trash';
+
+    toggleBtn.innerHTML = `<span id="js-toggle-favorit-text">${text}</span>
+       <svg id="js-toggle-favorit-image" class="btn-icon">
+            <use href="/images/icons-sprite.svg#${iconId}" />
+          </svg>`;
+  });
 };

@@ -157,12 +157,18 @@ const closeModalExercise = () => {
   document.body.style.overflow = 'visible';
 };
 
-const openModalExercise = exercise => {
+const openModalExercise = async exercise => {
+  const { _id } = exercise;
+
+  exercise.isFavorite = await favoritesDB.idIsFavorite(_id);
   renderModal(exercise);
+
   backdropRef.classList.add('open');
   modalRef.classList.add('open');
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
+
+  toggleFavorit(exercise);
 };
 
 document.addEventListener('keydown', event => {
@@ -178,46 +184,3 @@ backdropRef.addEventListener('click', event => {
 });
 
 export { openModalExercise, btnBoxRender };
-
-// TODO: remove lines
-// ! --------------------------------- Testing -------------------------------- */
-
-const navHeaderUsername = document.querySelector('.header__user');
-
-const markupTestBtn = `
-  <button class="button" type="button" data-modal="modal-exercise">
-    Show exercise
-  </button>`;
-
-navHeaderUsername.insertAdjacentHTML('beforeend', markupTestBtn);
-
-const btnOpenModalExerciseRef = document.querySelector('[data-modal]');
-
-const exercise = {
-  _id: '64f389465ae26083f39b17a2',
-  bodyPart: 'waist',
-  equipment: 'body weight',
-  gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0001.gif',
-  name: '3/4 sit-up',
-  target: 'abs',
-  description:
-    "This refers to your core muscles, which include the rectus abdominis, obliques, and transverse abdominis. They're essential for maintaining posture, stability, and generating force in many movements. Exercises that target the abs include crunches, leg raises, and planks.",
-  rating: 3.61,
-  burnedCalories: 220,
-  time: 3,
-  popularity: 8322,
-  isFavorite: true,
-};
-
-export const showModal = async function () {
-  // const { _id } = exercise;
-  // const isFavoriteValue = await favoritesDB.idIsFavorite(_id);
-  // console.log(isFavoriteValue, _id);
-  // openModalExercise({ ...exercise, isFavorite: isFavoriteValue });
-  // toggleFavorit(exercise);
-  openModalExercise(exercise);
-};
-
-btnOpenModalExerciseRef.addEventListener('click', event => {
-  showModal();
-});
