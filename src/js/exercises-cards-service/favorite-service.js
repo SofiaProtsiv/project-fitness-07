@@ -25,6 +25,7 @@ async function removeHandler({ target }){
       throw new Error('Exercise not found!');
     }
 
+
     openModalExercise(exercise);
   } catch (error) {
     console.error(error);
