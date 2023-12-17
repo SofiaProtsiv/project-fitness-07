@@ -12,6 +12,7 @@ import { favoritesDB, toggleFavoriteStatus } from '../favoritesDB';
 import { ratingWindow } from '../rating-modal/rating-modal';
 import { openModal as openAuthModal } from '../auth-modal';
 import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
+import { removeElFromFavorites } from '../exercises-cards-service/favorite-service';
 
 const backdropRef = document.querySelector('.backdrop');
 const modalRef = document.querySelector('.modalExercise');
@@ -219,6 +220,10 @@ const onToggleFavorite = async event => {
 
   const { target } = event;
   try {
+    if (window.location.pathname.includes('favorites')) {
+      closeModalExercise();
+      removeElFromFavorites(openedExercise);
+    }
     const isFavorite = await toggleFavoriteStatus(openedExercise);
     target.removeEventListener('click', onToggleFavorite);
     btnBoxRender(isFavorite);
