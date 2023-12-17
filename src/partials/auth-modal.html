@@ -1,28 +1,33 @@
-<div class="authModal__backdrop">
-  <div class="authModal__content">
-    <span class="authModal__button-close">&times;</span>
-    <p class="authForm__title">Registration</p>
-    <form class="authForm">
-      <div class="authForm__fieldset username">
-        <label for="name"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="name" required />
-      </div>
-
-      <div class="authForm__fieldset">
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required />
-      </div>
-
-      <div class="authForm__fieldset">
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required />
-      </div>
-
-      <button class="authForm__button-submit" type="submit">Submit</button>
-    </form>
-    <div class="action__container">
-      <p class="action__text">Already have account?</p>
-      <button class="action__button" data-action="reg">Log in</button>
+<div class="authModal__content">
+  <svg class="x-button js-modal-exit">
+    <use href="/images/icons-sprite.svg#icon-cross"></use>
+  </svg>
+  <p class="authForm__title">Registration</p>
+  <form class="authForm">
+    <div class="authForm__fieldset username">
+      <label for="name"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="name" required />
     </div>
+
+    <div class="authForm__fieldset">
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required />
+    </div>
+
+    <div class="authForm__fieldset">
+      <label for="password"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        required
+      />
+    </div>
+
+    <button class="authForm__button-submit" type="submit">Submit</button>
+  </form>
+  <div class="action__container">
+    <p class="action__text">Already have account?</p>
+    <button class="action__button" data-action="reg">Log in</button>
   </div>
 </div>
