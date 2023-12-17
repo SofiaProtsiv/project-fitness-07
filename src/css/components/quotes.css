@@ -94,7 +94,7 @@
 }
 
 .quotes__text {
-  color: rgba(244, 244, 244, 0.60);
+  color: var(--white-text-opacity-sixty-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;
@@ -139,6 +139,7 @@
 
 .quotes__img_img {
   border-radius: 20px;
+  width: 100%;
 }
 
 .quotes__workout_container {
@@ -213,7 +214,7 @@
 }
 
 .quotes__workout_sub {
-  color: rgba(36, 36, 36, 0.60);
+  color: var(--black-text-opacity-sixty-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;

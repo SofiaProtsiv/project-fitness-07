@@ -1,12 +1,16 @@
 <header class="header container">
   <div>
     <a href="./index.html" aria-label="Your Energy">
-      <img
+      <!-- <img
+        class="header-logo"
         src="/images/logo.svg"
         alt="Your Energy Logo"
         width="132"
         height="24"
-      />
+      /> -->
+      <svg class="header-logo">
+        <use href="/images/icons-sprite.svg#icon-logo"></use>
+      </svg>
     </a>
   </div>
   <!--Start Desktop Nav -->
@@ -77,7 +81,7 @@
               <use href="/images/icons-sprite.svg#icon-moon"></use>
             </svg>
             <svg class="switch-icon-sun">
-              <use href="/images/icons-sprite.svg#icon-sun"></use>
+              <use href="/images/icons-sprite.svg#icon-switcher-sun"></use>
             </svg>
           </label>
         </span>
