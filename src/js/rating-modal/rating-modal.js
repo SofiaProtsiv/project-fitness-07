@@ -1,5 +1,7 @@
+import { doc } from "firebase/firestore";
+
 const modalConfig = {
-  exersiseId: '64f389465ae26083f39b17a2', //id for test
+  exercise: {},
   ratingText: 'Rating',
   iconStar: '/images/icons-sprite.svg#icon-star',
   ratingMax: 5,
@@ -13,6 +15,8 @@ const modalConfig = {
 const feedbackForm = document.querySelector('form.modal-form');
 const rootRatingModal = document.querySelector('.rating-modal-window');
 const closeBtn = document.querySelector('.rating-close');
+const submitBtn = document.querySelector('.feedback-submit');
+const modalValidateText = document.querySelector(".modal-email-validate");
 
 const createRatingMarkup = () => {
   const starsArray = [];
@@ -58,8 +62,9 @@ const ratingInputs = document.querySelectorAll('.rating-stars input');
 const ratingCount = document.querySelector('.rating-count');
 
 const closeRatingModal = () => {
-  if (modalConfig.beforeClose) {
-    modalConfig.beforeClose();
+    modalValidateText.classList.add(".full_hidden");
+  if (modalConfig.afterClose) {
+    modalConfig.afterClose(modalConfig.exercise);
   }
   ratingInputs.forEach(input => {
     input.removeEventListener('change', handleRatingChange);
@@ -71,6 +76,8 @@ const closeRatingModal = () => {
   if (modalConfig.afterClose) {
     modalConfig.afterClose();
   }
+
+  ratingCount.innerHTML = "0.0";
 };
 
 const openRatingModal = () => {
@@ -83,6 +90,7 @@ const openRatingModal = () => {
 };
 
 closeBtn.addEventListener('click', closeRatingModal);
+submitBtn.addEventListener('click', closeRatingModal);
 
 rootRatingModal.addEventListener('click', e => {
   if (e.target === rootRatingModal) {
