@@ -196,3 +196,17 @@
 .hidden {
   display: none;
 }
+
+.auth-modal__form__message {
+  font-family: var(--primary-fontfont-family);
+  color: var(--rating-color-active);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+}
+
+.authForm__button-submit:disabled {
+  cursor: not-allowed;
+}

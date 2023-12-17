@@ -22,26 +22,30 @@
   </head>
 
   <body>
-    <load ="partials/header.html" />
-    <load ="partials/mobileMenu.html" />
+    <div class="content-wrapper hide">
+      <load ="partials/header.html" />
+      <load ="partials/mobileMenu.html" />
 
-    <main>
-      <section class="exercises">
-        <div class="container">
-          <div class="exercises__wrapper">
-            <load ="partials/exercises-cards.html" />
-            <load ="partials/favorites-quotes.html" />
+      <main>
+        <section class="favorites">
+          <div class="container">
+            <h1 class="favorites__head1">Favorites</h1>
+            <div class="exercises__wrapper">
+              <load ="partials/exercises-cards.html" />
+              <load ="partials/favorites-quotes.html" />
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <div class="backdrop">
-      <load ="partials/exercise-modal.html" />
-      <load ="partials/auth-modal.html" />
+      <div class="backdrop">
+        <load ="partials/exercise-modal.html" />
+        <load ="partials/auth-modal.html" />
+      </div>
+
+      <load ="partials/rating-modal.html" />
     </div>
-
-    <load ="partials/rating-modal.html" />
+    <load ="partials/loader.html" />
 
     <script type="module" src="./favorites.js"></script>
   </body>
