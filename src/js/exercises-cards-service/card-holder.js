@@ -26,9 +26,10 @@ import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
+import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
-import { setActiveCategory, filterOn } from '../filters';
-// import { startFavorite} from './favorites-engine.js';
+import { setActiveCategory, filterOn} from '../filters';
+import { startFavorite} from './favorites-engine.js';
 import scrollUpToSection from '../helpers/scroll-up.js';
 
 import { isEmpty } from 'lodash';
@@ -70,7 +71,6 @@ async function cardsHandler() {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
-        // console.log("here")
         addFavoriteClass();
         deleteWorkoutClass();
         data = await favoritesDB.get();
@@ -126,7 +126,9 @@ async function cardsHandler() {
     }
   } catch (error) {
     console.log('Error: ', error);
-    if (pageFilter.endPoint === 1) {
+    cleanerCardWrapper();
+    cleanerPages();
+    if (pageFilter.endPoint === 1){
       addStringFavoriteParagEmpty();
     } else {
       addStringEmptyParag();
@@ -223,7 +225,7 @@ async function workoutHandler(evt) {
   }
 }
 
-// startFavorite();
+startFavorite(); // add or remove
 filterOn();
 
 export { params, pageFilter, cardsHandler, workoutHandler };
