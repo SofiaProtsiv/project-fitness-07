@@ -111,14 +111,17 @@
     <!-- ADDED THEME SWITCHER HERE -->
     <li>
       <div class="toggle-switch">
-        <p>Light</p>
         <span>
           <label class="switch" aria-label="theme switch">
             <input class="theme-switch" type="checkbox" />
-            <span class="slider round"></span>
+            <svg class="switch-icon-moon">
+              <use href="/images/icons-sprite.svg#icon-moon"></use>
+            </svg>
+            <svg class="switch-icon-sun">
+              <use href="/images/icons-sprite.svg#icon-sun"></use>
+            </svg>
           </label>
         </span>
-        <p>Dark</p>
       </div>
     </li>
   </ul>
