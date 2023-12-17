@@ -1,7 +1,9 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 const modalConfig = {
-  exersiseId: '64f389465ae26083f39b17a2', //id for test
+  exercise: {},
   ratingText: 'Rating',
-  iconStar: '/images/icons-sprite.svg#icon-star',
+  iconStar: `${BASE_URL}images/icons-sprite.svg#icon-star`,
   ratingMax: 5,
   closeKeyBoardBtn: 'Escape',
   beforeOpen: null,
@@ -13,6 +15,7 @@ const modalConfig = {
 const feedbackForm = document.querySelector('form.modal-form');
 const rootRatingModal = document.querySelector('.rating-modal-window');
 const closeBtn = document.querySelector('.rating-close');
+const modalValidateText = document.querySelector('.modal-email-validate');
 
 const createRatingMarkup = () => {
   const starsArray = [];
@@ -53,13 +56,17 @@ const handleRatingChange = event => {
   ratingCount.innerHTML = event.target.value;
 };
 
+const onReset = () => {
+  ratingCount.innerHTML = '0.0';
+};
+
 feedbackForm.insertAdjacentHTML('afterbegin', createRatingMarkup());
 const ratingInputs = document.querySelectorAll('.rating-stars input');
 const ratingCount = document.querySelector('.rating-count');
 
 const closeRatingModal = () => {
-  if (modalConfig.beforeClose) {
-    modalConfig.beforeClose();
+  if (modalConfig.afterClose) {
+    modalConfig.afterClose(modalConfig.exercise);
   }
   ratingInputs.forEach(input => {
     input.removeEventListener('change', handleRatingChange);
@@ -71,6 +78,9 @@ const closeRatingModal = () => {
   if (modalConfig.afterClose) {
     modalConfig.afterClose();
   }
+
+  ratingCount.innerHTML = '0.0';
+  feedbackForm.reset();
 };
 
 const openRatingModal = () => {
@@ -83,6 +93,7 @@ const openRatingModal = () => {
 };
 
 closeBtn.addEventListener('click', closeRatingModal);
+feedbackForm.addEventListener('reset', onReset);
 
 rootRatingModal.addEventListener('click', e => {
   if (e.target === rootRatingModal) {

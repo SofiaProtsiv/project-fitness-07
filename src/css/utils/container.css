@@ -93,15 +93,13 @@
   gap: 20px;
 }
 
-section,
-.header__nav {
+section {
   transform: translateY(100px);
   opacity: 0;
   transition: opacity 500ms var(--transition-effect);
 }
 
-section.appear,
-.header__nav.appear {
+section.appear {
   opacity: 1;
   transform: translateY(0);
 }

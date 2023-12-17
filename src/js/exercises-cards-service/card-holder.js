@@ -21,13 +21,14 @@ import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
-import { update } from 'lodash';
+import _ from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory, filterOn} from '../filters';
 import scrollUpToSection from '../helpers/scroll-up.js';
 
+import { isEmpty } from 'lodash';
 
-window.addEventListener('resize', cardsHandler);
+window.addEventListener('resize', _.debounce(cardsHandler, 1000));
 const DESKTOP_WIDTH = 1440;
 
 //Default parameteres for search
@@ -49,7 +50,6 @@ const listen = {
   pageLinks: null,
   workoutLinks: null,
 };
-
 
 //There are 3 endpoints: 1 - favorites, 2 - exercises (target of search), 3 - filter
 
@@ -85,7 +85,7 @@ async function cardsHandler() {
       case 2:
         addWorkoutClass();
         deleteFavoriteClass();
-        scrollUpToSection(".exercises")
+        scrollUpToSection('.exercises');
         connection = checkWorkoutParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -95,8 +95,8 @@ async function cardsHandler() {
           viewPort
         );
         data = await getData(connection);
-        if (data.length === 0){
-          throw new Error("No data");
+        if (data.length === 0) {
+          throw new Error('No data');
         }
         cleanerCardWrapper();
         cleanerPages();
@@ -154,6 +154,7 @@ function listenCards() {
 function targetHandler(evt) {
   const result = checkCard(evt);
   setActiveCategory(result);
+  setActiveCategory(result);
   changeToValidUrl(result);
   if (result != null || undefined || NaN)
     if (params.filter === 'Muscles') {
@@ -172,7 +173,7 @@ function targetHandler(evt) {
 }
 
 function changeToValidUrl(string) {
-  return string.includes(" ") ? string.replace(" ", "%20") : string;
+  return string.includes(' ') ? string.replace(' ', '%20') : string;
 }
 
 function listenPages() {
@@ -219,11 +220,11 @@ async function workoutHandler(evt) {
     apiService.id = exerciseId;
     const exercise = await apiService.fetchExerciseById();
 
-    if (!exercise) {
+    if (isEmpty(exercise)) {
       throw new Error('Exercise not found!');
     }
 
-    exercise.isFavorite = favoritesDB.getObjectById(exerciseId);
+    exercise.isFavorite = await favoritesDB.idIsFavorite(exerciseId);
     openModalExercise(exercise);
   } catch (error) {
     console.error(error);
@@ -243,4 +244,3 @@ export function startEngine(){
 startEngine();
 
 export { params, pageFilter, cardsHandler, workoutHandler };
-
