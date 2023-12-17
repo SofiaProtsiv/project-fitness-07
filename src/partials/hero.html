@@ -36,12 +36,25 @@
       <source srcset="/images/hero/women--d-1376.jpg 1376w, /images/hero/women--d-2752.jpg 2752w"
         media="(min-width: 1440px)" sizes="1376px" type="image/jpeg" />
 
-      <img class="hero__img" src="/images/hero/women--d-1376.jpg" alt="Two women doing yoga" width="1376" />
+      <img class="hero__img" src="/images/hero/women--d-1376.jpg"
+        srcset="/images/hero/women--d-1376.jpg, /images/hero/women--d-2752.jpg 2x" alt="Two women doing yoga"
+        width="1376" />
     </picture>
 
     <div class="hero__hashtags-wrap">
-      <img class="hero__hashtags-image" src="/images/hero/legs-img1x.jpg"
-        srcset="/images/hero/legs-img1x.jpg, /images/hero/legs-img2x.jpg 2x" alt="photo of women legs in yoga pose" />
+      <picture>
+        <source srcset="/images/hero/legs--d-168.avif 168w, /images/hero/legs--d-336.avif 336w"
+          media="(min-width: 1440px)" sizes="168px" type="image/avif" />
+        <source srcset="/images/hero/legs--d-168.webp 168w, /images/hero/legs--d-336.webp 336w"
+          media="(min-width: 1440px)" sizes="168px" type="image/webp" />
+        <source srcset="/images/hero/legs--d-168.jpg 168w, /images/hero/legs--d-336.jpg 336w"
+          media="(min-width: 1440px)" sizes="168px" type="image/jpeg" />
+
+        <img class="hero__hashtags-image" src="/images/hero/legs--d-168.jpg"
+          srcset="/images/hero/legs--d-168.jpg, /images/hero/legs--d-336.jpg 2x" alt="photo of women legs in yoga pose"
+          width="168" />
+      </picture>
     </div>
+
   </div>
 </section>
