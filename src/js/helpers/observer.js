@@ -1,4 +1,4 @@
-const header = document.querySelectorAll('.header__nav')
+const header = document.querySelectorAll('.header__nav');
 const sections = document.querySelectorAll('section');
 
 const lasyLoad = targets => {
@@ -9,7 +9,6 @@ const lasyLoad = targets => {
 
   const onEntry = (entries, observer) => {
     entries.forEach(({ isIntersecting, target }) => {
-
       if (isIntersecting) {
         target.classList.add('appear');
         observer.unobserve(target);
@@ -22,8 +21,7 @@ const lasyLoad = targets => {
   targets.forEach(target => sectionsObserver.observe(target));
 };
 
-
 // lasyLoad(header)
 setTimeout(() => {
   lasyLoad(sections);
-}, 250)
+}, 250);

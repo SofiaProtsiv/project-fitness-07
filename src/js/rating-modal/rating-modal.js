@@ -1,7 +1,9 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 const modalConfig = {
   exercise: {},
   ratingText: 'Rating',
-  iconStar: '/images/icons-sprite.svg#icon-star',
+  iconStar: `${BASE_URL}images/icons-sprite.svg#icon-star`,
   ratingMax: 5,
   closeKeyBoardBtn: 'Escape',
   beforeOpen: null,
