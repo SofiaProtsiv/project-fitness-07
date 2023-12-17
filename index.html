@@ -14,11 +14,11 @@
     <title>Your Energy</title>
 
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/index-355194f8.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-7743d0ec.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-bf563208.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-69abb0f5.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/index-16db4eaa.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-4def2f99.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-84035929.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-927b62d2.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-2db6783c.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-03c6b1f7.css">
   </head>
 
   <body>
@@ -189,20 +189,42 @@
     <form class="authForm">
       <div class="authForm__fieldset username">
         <label for="name"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="name" required />
+        <input type="text" placeholder="Enter Username" name="name" />
+        <p
+          class="auth-modal__form__message js__auth-modal__name__message hidden"
+        >
+          ⚠️ Name must contain at least 3 letters
+        </p>
       </div>
 
       <div class="authForm__fieldset">
         <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required />
+        <input type="text" placeholder="Enter Email" name="email" />
+        <p
+          class="auth-modal__form__message js__auth-modal__email__message hidden"
+        >
+          ⚠️ Email has wrong format
+        </p>
       </div>
 
       <div class="authForm__fieldset">
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required />
+        <input type="password" placeholder="Enter Password" name="password" />
+        <p
+          class="auth-modal__form__message js__auth-modal__password__message hidden"
+        >
+          ⚠️ Password must contain at least 6 letters
+        </p>
       </div>
 
-      <button class="authForm__button-submit" type="submit">Submit</button>
+      <button
+        class="authForm__button-submit"
+        name="regSubmitBtn"
+        type="submit"
+        disabled
+      >
+        Submit
+      </button>
     </form>
     <div class="action__container">
       <p class="action__text">Already have account?</p>
@@ -210,6 +232,7 @@
     </div>
   </div>
 </div>
+
 
       <main>
         <section class="hero">
