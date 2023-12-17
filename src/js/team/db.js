@@ -59,8 +59,8 @@ export default [
   {
     name: 'Alex Smagin',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for creating: quotes component in home & favorites pages. This dynamic component delivers a fresh quote with its author daily.',
+    photo: `${BASE_URL}images/team/alex-smagin.jpg`,
     email: 'mailto:alexsmagin1@gmail.com',
     linkedin: 'https://www.linkedin.com/in/alex-smagin29/',
     github: 'https://github.com/Alexandrbig1',

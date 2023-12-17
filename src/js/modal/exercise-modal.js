@@ -8,6 +8,8 @@ import { starRating } from '../star-rating';
 
 import { toggleFavorit, favoritesDB } from '../favoritesDB';
 
+import { ratingWindow } from '../rating-modal/rating-modal';
+
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
 const closeButtonRef = modalRef.querySelector('.x-button');
@@ -19,10 +21,12 @@ const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
 let toggleFavoritEvent;
+let openedExercise = {};
 
 const renderModal = exercise => {
   const { gifUrl, name, rating, _id, isFavorite, description } = exercise;
   const details = getDetails(exercise);
+  openedExercise = exercise;
   // media
   imgWrapperRef.innerHTML = '';
   imgWrapperRef.insertAdjacentHTML('afterbegin', markupMedia(gifUrl, name));
@@ -40,7 +44,22 @@ const renderModal = exercise => {
   );
   // buttons
   btnBoxRender(isFavorite);
+
+  ratingWindow.modalConfig.afterClose = handleRatingClose;
+  document.querySelector(".js-give-rating").addEventListener("click", onGiveRatingClick);
 };
+
+const onGiveRatingClick = (event) => {
+  closeModalExercise();
+  ratingWindow.modalConfig.exercise = openedExercise;
+  ratingWindow.openRatingModal();
+}
+
+const handleRatingClose = () => {
+  document.querySelector(".js-give-rating").removeEventListener("click", onGiveRatingClick);
+  openModalExercise(openedExercise);
+}
+
 
 const getDetails = exercise => ({
   bodyPart: exercise.bodyPart,
@@ -110,7 +129,6 @@ const markupDetails = ({ burnedCalories, time, ...rest }) => {
 const markupDescription = text => {
   return `
     <p class="exercise_description">${text}</p>
-
   `;
 };
 

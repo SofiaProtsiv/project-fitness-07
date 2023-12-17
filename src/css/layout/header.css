@@ -178,3 +178,38 @@
   transform: rotate(-45deg);
   background: var(--primary-white-color);
 }
+
+/* ADDED THEME SWITCHER HERE */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+}
+
+.toggle-switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-icon-moon {
+  fill: var(--primary-black-color);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.switch-icon-sun {
+  display: none;
+  fill: var(--primary-black-color);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
