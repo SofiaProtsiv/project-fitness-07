@@ -6,19 +6,19 @@
   pointer-events: none;
   width: 100%;
   height: 100%;
-  transform: scale(0);
   background-color: var(--background-color);
   opacity: 0;
   overflow: auto;
   z-index: 100;
-  transition: opacity var(--transition-dur-and-func),
-    translate var(--transition-dur-and-func);
+  transition: opacity var(--transition-backdrop-delay),
+    visibility var(--transition-backdrop-delay);
 }
 
 .backdrop.open {
   visibility: visible;
   opacity: 1;
   transform: scale(1);
+  overflow: hidden;
   pointer-events: all;
 }
 

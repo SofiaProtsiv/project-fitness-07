@@ -11,6 +11,7 @@ import { favoritesDB, toggleFavoriteStatus } from '../favoritesDB';
 
 import { ratingWindow } from '../rating-modal/rating-modal';
 import { openModal as openAuthModal } from '../auth-modal';
+import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
 
 const backdropRef = document.querySelector('.backdrop');
 const modalRef = document.querySelector('.modalExercise');
@@ -183,8 +184,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
 };
 
 const closeModalExercise = () => {
-  backdropRef.classList.toggle('open');
-  modalRef.classList.toggle('open');
+  toggleModalClose(modalRef);
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 
@@ -203,8 +203,7 @@ const openModalExercise = async exercise => {
   exercise.isFavorite = await favoritesDB.idIsFavorite(_id);
   renderModal(exercise);
 
-  backdropRef.classList.toggle('open');
-  modalRef.classList.toggle('open');
+  toggleModalOpen(modalRef);
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
 };
@@ -215,6 +214,7 @@ const onToggleFavorite = async event => {
   if (!user) {
     closeModalExercise();
     openAuthModal();
+    return;
   }
 
   const { target } = event;

@@ -1,5 +1,5 @@
 .modalExercise {
-  position: relative;
+  position: absolute;
   visibility: visible;
   top: 50%;
   left: 50%;
@@ -16,8 +16,14 @@
   transition: transform var(--transition-dur-and-func);
   will-change: transform;
 
-  @media (768px <=width) {
-    padding: 32px;
+  @media (width < 768px) {
+    max-width: 335px;
+  }
+
+  @media (768px <= width) {
+    width: 704px;
+    display: flex;
+    column-gap: 32px;
   }
 
   @media (1440px <=width) {
@@ -29,20 +35,7 @@
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-
-  @media (width < 768px) {
-    max-width: 335px;
-  }
-
-  @media (768px <=width) {
-    width: 704px;
-    display: flex;
-    column-gap: 32px;
-  }
-
-  @media (1440px <=width) {
-    width: 708px;
-  }
+  height: auto;
 }
 
 .modalExercise__content {

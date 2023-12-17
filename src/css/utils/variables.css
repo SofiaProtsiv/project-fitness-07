@@ -29,6 +29,7 @@
   /* Transition properties */
   --transition-effect: linear;
   --transition-time: 300ms;
+  --transition-backdrop-delay: 600ms;
   --transition-dur-and-func: 300ms linear;
 
   /* Breakpoints */
