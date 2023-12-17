@@ -19,10 +19,10 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/favorites-f0102a4b.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-84035929.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-927b62d2.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/index-03c6b1f7.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/favorites-860802b1.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-91de2329.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-1b9a2713.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-2ef6745b.css">
   </head>
 
   <body>
@@ -122,7 +122,7 @@
   </div>
 </header>
 
-      <div class="backdrop is-hidden" data-mobile-menu>
+      <div class="backdrop-mobile is-hidden" data-mobile-menu>
   <div data-mobile-menu-content class="mobile__menu">
     <div></div>
     <nav class="mobile__nav">
@@ -183,57 +183,6 @@
         </a>
       </li>
     </ul>
-  </div>
-</div>
-
-      <div class="authModal__backdrop">
-  <div class="authModal__content">
-    <span class="authModal__button-close">&times;</span>
-    <p class="authForm__title">Registration</p>
-    <form class="authForm">
-      <div class="authForm__fieldset username">
-        <label for="name"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="name" />
-        <p
-          class="auth-modal__form__message js__auth-modal__name__message hidden"
-        >
-          ⚠️ Name must contain at least 3 letters
-        </p>
-      </div>
-
-      <div class="authForm__fieldset">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" />
-        <p
-          class="auth-modal__form__message js__auth-modal__email__message hidden"
-        >
-          ⚠️ Email has wrong format
-        </p>
-      </div>
-
-      <div class="authForm__fieldset">
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" />
-        <p
-          class="auth-modal__form__message js__auth-modal__password__message hidden"
-        >
-          ⚠️ Password must contain at least 6 letters
-        </p>
-      </div>
-
-      <button
-        class="authForm__button-submit"
-        name="regSubmitBtn"
-        type="submit"
-        disabled
-      >
-        Submit
-      </button>
-    </form>
-    <div class="action__container">
-      <p class="action__text">Already have account?</p>
-      <button class="action__button" data-action="reg">Log in</button>
-    </div>
   </div>
 </div>
 
@@ -329,7 +278,7 @@
         </section>
       </main>
 
-      <div class="js-backdrop">
+      <div class="backdrop">
         <div class="js-modal modalExercise" id="modal-exercise">
   <svg class="x-button js-modal-exit">
     <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
@@ -341,11 +290,65 @@
   </div>
 </div>
 
+        <div class="authModal__content">
+  <svg class="x-button js-modal-exit">
+    <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
+  </svg>
+  <p class="authForm__title">Registration</p>
+  <form class="authForm">
+    <div class="authForm__fieldset username">
+      <label for="name"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="name" required/>
+        <p
+          class="auth-modal__form__message js__auth-modal__name__message hidden"
+        >
+          ⚠️ Name must contain at least 3 letters
+        </p>
+    </div>
+
+      <div class="authForm__fieldset">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required/>
+        <p
+          class="auth-modal__form__message js__auth-modal__email__message hidden"
+        >
+          ⚠️ Email has wrong format
+        </p>
+      </div>
+
+      <div class="authForm__fieldset">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" />
+        <p
+          class="auth-modal__form__message js__auth-modal__password__message hidden"
+        >
+          ⚠️ Password must contain at least 6 letters
+        </p>
+      </div>
+
+      <button
+        class="authForm__button-submit"
+        name="regSubmitBtn"
+        type="submit"
+        disabled
+      >
+        Submit
+      </button>
+    </form>
+    <div class="action__container">
+      <p class="action__text">Already have account?</p>
+      <button class="action__button" data-action="reg">Log in</button>
+    </div>
+  </div>
+</div>
+
       </div>
 
       <div class="rating-modal-window">
   <div class="modal-content">
-    <button class="rating-close"></button>
+    <svg class="x-button js-modal-exit">
+      <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
+    </svg>
     <form class="modal-form">
       <div class="rating-inputs">
         <input
