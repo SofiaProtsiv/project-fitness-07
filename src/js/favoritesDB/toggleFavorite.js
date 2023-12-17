@@ -1,5 +1,5 @@
 import { toggleFavoriteStatus } from '.';
-import { removeElFromFavorites } from '../exercises-cards-service/favorites-engine';
+import { removeElFromFavorites } from '../exercises-cards-service/favorite-service';
 import { closeModalExercise } from '../modal/exercise-modal';
 
 export const toggleFavorit = exercise => {

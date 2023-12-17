@@ -1,5 +1,5 @@
-import { updateViewPort } from './update-view-port';
 import { createCardsSkeleton, addMarkupToHtml } from '../createSkeleton/index.js';
+import { favoritesDB } from '../favoritesDB/favoritesDB.js';
 
 const list = document.querySelector('.js-cards');
 
@@ -13,10 +13,10 @@ function calculateObjects(endPoint, viewSize) {
     addMarkupToHtml(list, createCardsSkeleton(12, list));
     return 12;
   } else if (viewSize < 768) {
-    if (endPoint == 1) {
-      addMarkupToHtml(list, createCardsSkeleton(10, list));
-      return 10;
-    } else if (endPoint == 2) {
+    if (endPoint === 1) {
+      addMarkupToHtml(list, createCardsSkeleton(8, list));
+      return 8;
+    } else if (endPoint === 2 || endPoint === 1) {
       addMarkupToHtml(list, createCardsSkeleton(8, list));
       return 8;
     }
@@ -57,19 +57,18 @@ function checkWorkoutParams(currentPage, endPoint, fetch, params, connection) {
   return connection;
 }
 
-function checkExerciseParams(currentPage, endPoint, fetch, params, connection) {
+function checkExerciseParams(currentPage, endPoint, fetch, params, connection, viewPort) {
   if (areParamsDifferent(params)) {
     fetch.filter = params.filter;
-    connection = getConnection(currentPage, endPoint, fetch).fetchMuscles();
+    connection = getConnection(currentPage, endPoint, fetch, viewPort).fetchMuscles();
   } else {
-    connection = getConnection(currentPage, endPoint, fetch).fetchMuscles();
+    connection = getConnection(currentPage, endPoint, fetch, viewPort).fetchMuscles();
   }
   return connection;
 }
 
-function getConnection(currentPage, endPoint, fetch) {
-  const viewSize = updateViewPort();
-  const perPage = calculateObjects(endPoint, viewSize);
+function getConnection(currentPage, endPoint, fetch, viewPort) {
+  const perPage = calculateObjects(endPoint, viewPort);
   fetch.pageCounter = currentPage;
   fetch.limit = perPage;
   return fetch;
@@ -107,6 +106,60 @@ function getFiltersFromPage(params, pageFilter) {
   }
 }
 
+async function getFavoriteData({currentPage, endPoint}, viewPort){
+  let totalPages = 1;
+  let result;
+  const maxCards = calculateObjects(endPoint, viewPort);
+  const favoriteData = localStorage.getItem('favoriteData');
+  const isDataOld = localStorage.getItem('isDataOld');
+  const storedData = isDataOld ? JSON.parse(isDataOld) : [];
+  console.log(storedData);
+  if (storedData || storedData.length === 1) {
+    try { 
+    const data = await favoritesDB.get();
+    console.log("current data: ", data);
+    result = sliceCardsPages(data, maxCards);
+    
+    localStorage.setItem('favoriteData', JSON.stringify(data));
+    if (favoriteData){
+      localStorage.setItem('isDataOld', JSON.stringify(false));
+    }
+    const currentData = reduceData(currentPage, result);
+    console.log("current page: ", favoriteData, isDataOld);
+
+    return { totalPages: result.totalPages, currentData: currentData };
+    } catch (error) {
+      console.log("Favorite data error: ", error);
+    }
+  } else {
+    const storedData = favoriteData ? JSON.parse(favoriteData) : [];
+    const result = sliceCardsPages(storedData, maxCards);
+    const currentData = reduceData(currentPage, result);
+    console.log("current data from array: ", currentData);
+    return { totalPages: result.totalPages, currentData: currentData };
+    }
+} 
+
+function sliceCardsPages(data, cardsToShow){
+  const length = data.length;
+  if (length <= cardsToShow){
+    return {totalPages: 1, slicedData: data};
+  } else if (length > cardsToShow){
+    const maxPages = Math.ceil(length / cardsToShow);
+    let slicedData = [];
+    for (let i = 0; i < maxPages; i++) {
+      const start = i * cardsToShow;
+      const end = (i + 1) * cardsToShow;
+      slicedData.push(data.slice(start, end));
+    }
+    return {totalPages: maxPages, slicedData: slicedData};
+  }
+}
+
+function reduceData(currentPage, {totalPages, slicedData}){
+  return totalPages === 1 ? slicedData : slicedData[currentPage - 1];
+}
+
 export {
   getData,
   getConnection,
@@ -115,4 +168,5 @@ export {
   areParamsDifferent,
   calculateObjects,
   getFiltersFromPage,
+  getFavoriteData
 };

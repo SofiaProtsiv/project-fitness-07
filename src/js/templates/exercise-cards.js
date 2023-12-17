@@ -21,7 +21,7 @@ function showInitialCards(data) {
         `
     )
     .join('');
-  //<div class="exercise-cards__gradient"></div>
+
   cards.insertAdjacentHTML('beforeend', initialCardsLayout);
 }
 
