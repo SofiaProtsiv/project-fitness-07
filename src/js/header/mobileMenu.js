@@ -5,6 +5,7 @@ export const mobileToggle = function () {
     mobileMenu: document.querySelector('[data-mobile-menu]'),
     mobileMenuContent: document.querySelector('[data-mobile-menu-content]'),
     loginBTN: document.querySelector('[data-login-btn]'),
+    closeLogFormEL: document.querySelector('.authModal__button-close'),
   };
 
   refs.toggleMobileMenuBTN.addEventListener('click', toggleMobileMenu);
@@ -13,7 +14,10 @@ export const mobileToggle = function () {
   refs.mobileMenuContent.addEventListener('click', function (event) {
     event.stopPropagation();
   });
-
+  
+  if (!window.location.pathname.includes("favorites")) {
+    refs.closeLogFormEL.addEventListener('click', closeMobileLoginForm);
+}
   function closeMobileMenuOpenLogForm() {
     const burger = document.getElementById('MobileBTN');
     const loginForm = document.querySelector('.authModal__backdrop');
@@ -21,6 +25,10 @@ export const mobileToggle = function () {
     refs.mobileMenu.classList.add('is-hidden');
     burger.classList.remove('active');
     loginForm.classList.add('open');
+  }
+  function closeMobileLoginForm() {
+    const loginForm = document.querySelector('.authModal__backdrop');
+    loginForm.classList.remove('open');
   }
 
   function toggleMobileMenu() {

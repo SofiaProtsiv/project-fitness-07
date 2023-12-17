@@ -80,25 +80,38 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  
-  @media (width < 375px){
-      height:auto;
-      gap: 32px;
+
+  @media (width < 375px) {
+    height: auto;
+    gap: 32px;
   }
 
-  @media (width >= 375px) and (width < 768px) {
-      height: 2236px;
-      gap: 32px;
+  @media (width >=375px) and (width < 768px) {
+    height: 2236px;
+    gap: 32px;
   }
 
   @media (width >=768px) and (width < 1440px) {
-      height: 1060px;
+    height: 1060px;
   }
 
 
   @media (width >=1440px) {
-      height: 1128px;
+    height: 1128px;
   }
 
 
+}
+
+section,
+.header__nav {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: opacity 500ms var(--transition-effect);
+}
+
+section.appear,
+.header__nav.appear {
+  opacity: 1;
+  transform: translateY(0);
 }

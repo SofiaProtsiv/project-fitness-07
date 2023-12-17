@@ -1,12 +1,21 @@
+// import { pageFilter,cardsHandler } from "./card-holder";
+
+// export function startFavorite(){
+//   if (window.location.href.includes("/favorite")){
+//     pageFilter.endPoint = 1;
+//     cardsHandler();
+//   } else{
+//     cardsHandler();
+//   }
+// }
+
+
 import ApiService from "../api-service";
 import { favoritesDB } from "../favoritesDB";
 import { openModalExercise } from "../modal/exercise-modal";
 import { showFavoriteCards } from "../templates/exercise-cards";
 import { addFavoriteClass, deleteWorkoutClass, } from "./class-worker";
-// import {pageFilter, cardsHandler} from './card-holder'
 
-// pageFilter.endPoint = 1
-// cardsHandler()
 const exercisesList = document.querySelector('.js-cards');
 
 setFavoritesCards()
@@ -24,8 +33,14 @@ if (exercisesList) {
   console.error("Element with class 'js-cards' not found for workout.");
 }
 
-async function workoutHandler(evt) {
-  const exerciseId = evt.target.closest("li").dataset.id;;
+async function workoutHandler({ target }) {
+
+  if (target.classList.contains("favorite-cards__icon-trash")) {
+    removeElFromFavoritesOnTrashBtn(target)
+    return
+  }
+
+  const exerciseId = target.closest("li").dataset.id;;
   if (!exerciseId) {
     return;
   }
@@ -45,3 +60,18 @@ async function workoutHandler(evt) {
     console.error(error);
   }
 }
+
+
+async function removeElFromFavoritesOnTrashBtn(el) {
+  const exerciseEl = el.closest("li")
+  const exerciseID = exerciseEl.dataset.id
+  exerciseEl.closest("li").remove();
+  favoritesDB.remove(exerciseID)
+}
+
+function removeElFromFavorites({ _id }) {
+  const exerciseEl = document.querySelector('.favorite-cards__gallery-link[data-id="' + _id + '"]');
+  exerciseEl.closest("li").remove();
+}
+
+export { removeElFromFavorites }
