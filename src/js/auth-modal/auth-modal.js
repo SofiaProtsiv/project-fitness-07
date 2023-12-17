@@ -34,7 +34,7 @@ const closeModal = () => {
   document.body.style.overflow = 'visible';
 };
 
-const openModal = () => {
+export const openModal = () => {
   authModal.classList.add('open');
   closeButton.addEventListener('click', closeModal);
   userButton.removeEventListener('click', openModal);

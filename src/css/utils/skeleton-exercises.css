@@ -1,13 +1,12 @@
 .card {
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   height: 225px;
   width: 335px;
   position: relative;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  padding: 20px;
   text-align: center;
 
   @media (width >= 768px) and (width < 1440px) {
