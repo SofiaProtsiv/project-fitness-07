@@ -19,10 +19,10 @@
       referrerpolicy="no-referrer"
     />
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/favorites-860802b1.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-91de2329.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-1b9a2713.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/index-2ef6745b.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/favorites-471185b8.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-a55b4bf9.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-f33852e0.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-a1ae2964.css">
   </head>
 
   <body>
@@ -30,12 +30,16 @@
       <header class="header container">
   <div>
     <a href="./index.html" aria-label="Your Energy">
-      <img
-        src="/project-fitness-07/images/logo.svg"
+      <!-- <img
+        class="header-logo"
+        src="/images/logo.svg"
         alt="Your Energy Logo"
         width="132"
         height="24"
-      />
+      /> -->
+      <svg class="header-logo">
+        <use href="/project-fitness-07/images/icons-sprite.svg#icon-logo"></use>
+      </svg>
     </a>
   </div>
   <!--Start Desktop Nav -->
@@ -106,7 +110,7 @@
               <use href="/project-fitness-07/images/icons-sprite.svg#icon-moon"></use>
             </svg>
             <svg class="switch-icon-sun">
-              <use href="/project-fitness-07/images/icons-sprite.svg#icon-sun"></use>
+              <use href="/project-fitness-07/images/icons-sprite.svg#icon-switcher-sun"></use>
             </svg>
           </label>
         </span>
@@ -191,19 +195,7 @@
         <section class="favorites">
           <div class="container">
             <h1 class="favorites__head1">Favorites</h1>
-            <div class="exercises__wrapper">
-              <section class="exercise-cards__section workout-favorite-height">
-  <div class="exercise-cards__container">
-    <ul class="exercise-cards__wrapper js-cards">
-      <p class="exercise-cards__parag-empty">
-        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises
-        that you
-        like to your favorites for easier access in the future.
-      </p>
-    </ul>
-    <div class="exercise-cards__guard js-pages"></div>
-  </div>
-</section>
+            <div class="favorites__exercises__wrapper">
               <aside class="favorites__quotes__wrapper">
   <div class="favorites__quotes__container">
     <div class="favorites__quotes__icon_wrapper">
@@ -217,7 +209,7 @@
         <svg class="favorites__quotes__quote_icon">
           <use
             href="/project-fitness-07/images/icons-sprite.svg#icon-quotes"
-            aria-label="quotes"
+            aria-label="quotes-icon"
           ></use>
         </svg>
       </div>
@@ -273,6 +265,18 @@
   </div>
 </aside>
 
+              <section class="exercise-cards__section workout-favorite-height">
+  <div class="exercise-cards__container">
+    <ul class="exercise-cards__wrapper js-cards">
+      <p class="exercise-cards__parag-empty">
+        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises
+        that you
+        like to your favorites for easier access in the future.
+      </p>
+    </ul>
+    <div class="exercise-cards__guard js-pages"></div>
+  </div>
+</section>
             </div>
           </div>
         </section>

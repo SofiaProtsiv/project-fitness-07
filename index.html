@@ -14,11 +14,11 @@
     <title>Your Energy</title>
 
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/index-bfaa105e.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-91de2329.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-1b9a2713.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-e7e410b6.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/index-2ef6745b.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-c7cd8d76.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-a55b4bf9.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-f33852e0.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-f16a9ddb.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-a1ae2964.css">
   </head>
 
   <body>
@@ -26,12 +26,16 @@
       <header class="header container">
   <div>
     <a href="./index.html" aria-label="Your Energy">
-      <img
-        src="/project-fitness-07/images/logo.svg"
+      <!-- <img
+        class="header-logo"
+        src="/images/logo.svg"
         alt="Your Energy Logo"
         width="132"
         height="24"
-      />
+      /> -->
+      <svg class="header-logo">
+        <use href="/project-fitness-07/images/icons-sprite.svg#icon-logo"></use>
+      </svg>
     </a>
   </div>
   <!--Start Desktop Nav -->
@@ -102,7 +106,7 @@
               <use href="/project-fitness-07/images/icons-sprite.svg#icon-moon"></use>
             </svg>
             <svg class="switch-icon-sun">
-              <use href="/project-fitness-07/images/icons-sprite.svg#icon-sun"></use>
+              <use href="/project-fitness-07/images/icons-sprite.svg#icon-switcher-sun"></use>
             </svg>
           </label>
         </span>
@@ -188,7 +192,10 @@
   <div class="container hero__container">
     <div class="hero__text-wrap">
       <div class="hero__title-wrap">
-        <img class="hero__icon" src="/project-fitness-07/images/hero/sun.svg" alt="icon of sun" />
+        <!-- <img class="hero__icon" src="/images/hero/sun.svg" alt="icon of sun" /> -->
+        <svg class="hero__icon">
+          <use href="/project-fitness-07/images/icons-sprite.svg#icon-sun"></use>
+        </svg>
         <h1 class="hero__title">
           Get <span class="hero__title--span">Body</span> in <br />
           shape, Stay healthy
@@ -358,7 +365,7 @@
         <svg class="quotes__quote_icon">
           <use
             href="/project-fitness-07/images/icons-sprite.svg#icon-quotes"
-            aria-label="icon quotes"
+            aria-label="quotes-icon"
           ></use>
         </svg>
       </div>
