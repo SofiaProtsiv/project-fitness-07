@@ -1,7 +1,14 @@
-// import {pageFilter, cardsHandler} from './card-holder'
+// import { pageFilter,cardsHandler } from "./card-holder";
 
-// pageFilter.endPoint = 1
-// cardsHandler()
+// export function startFavorite(){
+//   if (window.location.href.includes("/favorite")){
+//     pageFilter.endPoint = 1;
+//     cardsHandler();
+//   } else{
+//     cardsHandler();
+//   }
+// }
+
 
 import ApiService from "../api-service";
 import { favoritesDB } from "../favoritesDB";
