@@ -11,7 +11,11 @@
   --secondary-black-text-color: rgba(36, 36, 36, 0.5);
   --secondary-white-text-color: rgba(244, 244, 244, 0.5);
   --black-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
-  --white-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
+  --black-text-opacity-sixty-color: rgba(36, 36, 36, 0.60);
+  --white-text-opacity-fourty-color: rgba(244, 244, 244, 0.4);
+  --white-text-opacity-sixty-color: rgba(244, 244, 244, 0.60);
+  --white-text-opacity-twenty-color: rgba(244, 244, 244, 0.20);
+  --black-text-opacity-twenty-color: rgba(36, 36, 36, 0.20);
   --black-gradient-cards: rgba(17, 17, 17, 0.50);
   --rating-color-active: #eea10c;
   --modal-black-color: rgba(36, 36, 36, 1);
@@ -49,27 +53,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body.dark {
-  --primary-black-color: #f4f4f4;
-  --primary-background-color: #242424;
-  --primary-white-color: #242424;
-  --secondary-black-text-color: rgba(244, 244, 244, 0.5);
-  --secondary-white-text-color: rgba(36, 36, 36, 0.5);
-  --black-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
-  --white-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
-  --black-gradient-cards: rgba(17, 17, 17, 0.50);
-  --rating-color-active: #eea10c;
-  --modal-black-color: rgba(36, 36, 36, 1);
-  --modal-alpha-background: rgba(4, 4, 4, 0.4);
-  --rating-color-active: #EEA10C;
-  --rating-color-inactive: rgba(244, 244, 244, 0.2);
-  --pagination-color-inactive: #d4d4d4;
-  --error-color: rgb(255, 0, 0);
-  /* --white-color: #ffffff; */
-  --white-color: #000;
-  --footer-text-color: #c6cdd1;
-}
-
 /* ADDED THEME SWITCHER HERE */
 
 body.dark {
@@ -78,8 +61,12 @@ body.dark {
   --primary-white-color: #242424;
   --secondary-black-text-color: rgba(244, 244, 244, 0.5);
   --secondary-white-text-color: rgba(36, 36, 36, 0.5);
-  --black-text-opacity-fourty-color: rgba(244, 244, 244, 0.5);
+  --black-text-opacity-fourty-color: rgba(244, 244, 244, 0.4);
   --white-text-opacity-fourty-color: rgba(36, 36, 36, 0.4);
+  --black-text-opacity-sixty-color: rgba(244, 244, 244, 0.60);
+  --white-text-opacity-sixty-color: rgba(36, 36, 36, 0.60);
+  --white-text-opacity-twenty-color: rgba(36, 36, 36, 0.20);
+  --black-text-opacity-twenty-color: rgba(244, 244, 244, 0.20);
   --black-gradient-cards: rgba(17, 17, 17, 0.50);
   --rating-color-active: #eea10c;
   --modal-black-color: rgba(36, 36, 36, 1);
@@ -88,7 +75,6 @@ body.dark {
   --rating-color-inactive: rgba(244, 244, 244, 0.2);
   --pagination-color-inactive: #d4d4d4;
   --error-color: rgb(255, 0, 0);
-  /* --white-color: #ffffff; */
   --white-color: #000;
-  --footer-text-color: #c6cdd1;
+  --footer-text-color: #495057;
 }
