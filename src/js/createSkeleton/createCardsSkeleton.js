@@ -1,14 +1,14 @@
 export function createCardsSkeleton(amount, element) {
   let skeleton = '';
   for (let i = 0; i < amount; i += 1) {
-    if (element.classList.contains('workout-cards__wrapper')) {
+    if (element.classList.contains('workout-cards__wrapper') || element.classList.contains('favorite-cards__wrapper')) {
       skeleton += `
       <li class='workouts__skeleton-loader'>
         <div class='svg-container'>
           <svg
             role="img"
             width="100%"
-            height="141"
+            height="135"
             aria-labelledby="loading-aria"
             viewBox="0 0 405 141"
             preserveAspectRatio="none"
