@@ -24,11 +24,12 @@ async function handlerFormSubmit(ev) {
       let ratingCheckedEl = Array.from(subscribeForm.ratings).find(
         rating => rating.dataset.dataChecked
       );
+      const { _id } = ratingWindow.modalConfig.exercise;
 
       fetch.rating = parseInt(ratingCheckedEl.value);
       fetch.email = email;
       fetch.review = subscribeForm.validateEmailMessage.value;
-      fetch.exerciseId = ratingWindow.modalConfig.exersiseId;
+      fetch.exerciseId = _id;
       await fetch.addRating();
       subscribeForm.validateEmailMessage.textContent =
         '✅ Thank you for you subscription';
@@ -64,6 +65,12 @@ async function handlerFormSubmit(ev) {
       'validate-form-message_warning'
     );
   }
+
+  setTimeout(() => {
+      subscribeForm.validateEmailMessage.classList.add(
+          'full_hidden'
+        );
+  }, 2000);
 }
 
 subscribeForm.emailInput.addEventListener('input', handlerEmailInput);

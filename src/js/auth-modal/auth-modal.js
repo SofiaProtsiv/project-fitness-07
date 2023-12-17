@@ -10,7 +10,7 @@ const usernameFieldset = document.querySelector('.authForm__fieldset.username');
 const title = document.querySelector('.authForm__title');
 
 const headerGroup = document.querySelectorAll('.header__nav-authorized');
-const authLinkEl = document.querySelectorAll(".header__nav__item.auth")
+const authLinkEl = document.querySelectorAll('.header__nav__item.auth');
 const btnLogOut = document.querySelectorAll('.header__logout_btn');
 
 // const headerGroupMobile = document.querySelector(".mobile__nav-authorized")
@@ -27,7 +27,7 @@ const closeModal = () => {
   document.body.style.overflow = 'visible';
 };
 
-const openModal = () => {
+export const openModal = () => {
   authModal.classList.add('open');
   closeButton.addEventListener('click', closeModal);
   userButton.removeEventListener('click', openModal);
@@ -87,23 +87,23 @@ const checkCurrentUser = async () => {
       // userName.classList.remove('hidden');
       authLinkEl.forEach(el => {
         el.classList.add('hidden');
-      })
+      });
       btnLogOut.forEach(el => {
         el.classList.add('visible');
-      })
+      });
       headerGroup.forEach(el => {
         el.classList.add('visible');
-      })
+      });
     } else {
       authLinkEl.forEach(el => {
         el.classList.remove('hidden');
-      })
+      });
       btnLogOut.forEach(el => {
         el.classList.remove('visible');
-      })
+      });
       headerGroup.forEach(el => {
         el.classList.remove('visible');
-      })
+      });
     }
   });
 };
@@ -112,9 +112,9 @@ const handleSignOut = async () => {
   await signOut();
   btnLogOut.forEach(el => {
     el.classList.add('hidden');
-  })
+  });
 
-  window.location.pathname = '/project-fitness-07/'
+  window.location.pathname = '/project-fitness-07/';
   // userName.classList.add('hidden');
 };
 
@@ -123,7 +123,7 @@ authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
 btnLogOut.forEach(el => {
   el.addEventListener('click', handleSignOut);
-})
+});
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
