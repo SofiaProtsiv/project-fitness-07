@@ -9,32 +9,27 @@ import {
   checkExerciseParams,
   checkWorkoutParams,
   getFiltersFromPage,
+  getFavoriteData
 } from './cards-service';
-import {
-  addWorkoutClass,
-  deleteWorkoutClass,
-  addFavoriteClass,
-  deleteFavoriteClass,
-  hiddenEmptyParag,
-  unhiddenEmptyParag,
-  addStringFavoriteParagEmpty,
-  addStringEmptyParag,
-} from './class-worker';
+import { addWorkoutClass, deleteWorkoutClass,
+   addFavoriteClass, deleteFavoriteClass,
+    hiddenEmptyParag, unhiddenEmptyParag,
+     addStringFavoriteParagEmpty, addStringEmptyParag } from './class-worker';
 import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
-import { update } from 'lodash';
+import _ from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory, filterOn} from '../filters';
-import { startFavorite} from './favorites-engine.js';
 import scrollUpToSection from '../helpers/scroll-up.js';
 
 import { isEmpty } from 'lodash';
 
-window.addEventListener('resize', cardsHandler);
+window.addEventListener('resize', _.debounce(cardsHandler, 1000));
+const DESKTOP_WIDTH = 1440;
 
 //Default parameteres for search
 let params = {
@@ -62,21 +57,29 @@ async function cardsHandler() {
   const element = document.querySelector('.exercise-cards__section');
   element.offsetHeight;
   const fetch = new ApiService();
+  const viewPort = updateViewPort();
   let data;
   let connection;
   getFiltersFromPage(params, pageFilter);
   hiddenEmptyParag();
-  adaptHeight(pageFilter.endPoint, updateViewPort());
+  adaptHeight(pageFilter.endPoint, viewPort);
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
         addFavoriteClass();
         deleteWorkoutClass();
-        data = await favoritesDB.get();
+        data = await getFavoriteData(pageFilter, viewPort);
+        
         cleanerCardWrapper();
         cleanerPages();
-        showFavoriteCards(data);
+        console.log(data.currentData);
+        showFavoriteCards(data.currentData);
+        if (viewPort < DESKTOP_WIDTH){
+          showPages(pageFilter.currentPage, data.totalPages);
+        };
+        
+        listenPages(pageFilter.endPoint);
         break;
       // If the endpoint has /exercise do the next
       case 2:
@@ -88,7 +91,8 @@ async function cardsHandler() {
           pageFilter.endPoint,
           fetch,
           params,
-          connection
+          connection,
+          viewPort
         );
         data = await getData(connection);
         if (data.length === 0) {
@@ -111,7 +115,8 @@ async function cardsHandler() {
           pageFilter.endPoint,
           fetch,
           params,
-          connection
+          connection,
+          viewPort
         );
         data = await getData(connection);
         cleanerCardWrapper();
@@ -182,11 +187,12 @@ function listenPages() {
 
 function pagesHandler(evt) {
   const clickedPage = checkPage(evt);
-  scrollUpToSection('.exercises');
+  console.log("clicked page:", clickedPage);
+  scrollUpToSection(window.location.href.includes("/favorites") ? ".favorites":".exercises");
   if (
-    (pageFilter.currentPage != clickedPage && clickedPage != null) ||
+    (pageFilter.currentPage != clickedPage) && (clickedPage != null ||
     undefined ||
-    NaN
+    NaN)
   ) {
     pageFilter.currentPage = +clickedPage;
     cardsHandler();
@@ -225,7 +231,16 @@ async function workoutHandler(evt) {
   }
 }
 
-startFavorite(); // add or remove
-filterOn();
+
+export function startEngine(){
+  if (window.location.href.includes("/favorite")){
+    pageFilter.endPoint = 1;
+    cardsHandler();
+  } else{
+    filterOn();
+  }
+}
+
+startEngine();
 
 export { params, pageFilter, cardsHandler, workoutHandler };
