@@ -23,7 +23,7 @@ const lasyLoad = targets => {
 };
 
 
-lasyLoad(header)
+// lasyLoad(header)
 setTimeout(() => {
   lasyLoad(sections);
 }, 250)
