@@ -6,7 +6,7 @@ import './js/header';
 import './js/filters';
 import './js/quotes';
 import './js/rating-modal';
-import './js/modal/exercise-modal';
+import './js/exercise-modal';
 import './js/exercises-cards-service/card-holder';
 import './js/loader';
 import './js/helpers/observer';

@@ -1,8 +1,17 @@
 import { createUser, signIn, signOut, db } from '../firebase-service';
+import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
+import isEmailRight from '../helpers/email-checker';
 
+const authFormMessages = {
+  name: document.querySelector('.js__auth-modal__name__message'),
+  email: document.querySelector('.js__auth-modal__email__message'),
+  password: document.querySelector('.js__auth-modal__password__message'),
+};
+
+const backdropRef = document.querySelector('.backdrop');
 const userButton = document.querySelector('.header__auth_btn');
-const authModal = document.querySelector('.authModal__backdrop');
-const closeButton = document.querySelector('.authModal__button-close');
+const authModal = document.querySelector('.authModal__content');
+const closeButton = document.querySelector('.authModal__content .x-button');
 const authForm = document.querySelector('.authForm');
 const actionText = document.querySelector('.action__text');
 const btnChangeForm = document.querySelector('.action__button');
@@ -21,14 +30,14 @@ const btnLogOut = document.querySelectorAll('.header__logout_btn');
 let isRegMode = true;
 
 const closeModal = () => {
-  authModal.classList.remove('open');
+  toggleModalClose(authModal);
   closeButton.removeEventListener('click', closeModal);
   userButton.addEventListener('click', openModal);
   document.body.style.overflow = 'visible';
 };
 
 export const openModal = () => {
-  authModal.classList.add('open');
+  toggleModalOpen(authModal);
   closeButton.addEventListener('click', closeModal);
   userButton.removeEventListener('click', openModal);
   document.body.style.overflow = 'hidden';
@@ -40,6 +49,30 @@ const resetForm = () => {
 
 const handleSubmit = async event => {
   event.preventDefault();
+
+  if (
+    !authForm.elements.name.value ||
+    authForm.elements.name.value.length < 3
+  ) {
+    authFormMessages.name.classList.remove('hidden');
+    return;
+  }
+
+  if (
+    !authForm.elements.email.value ||
+    !isEmailRight(authForm.elements.email.value)
+  ) {
+    authFormMessages.email.classList.remove('hidden');
+    return;
+  }
+
+  if (
+    !authForm.elements.password.value ||
+    authForm.elements.password.value.length < 6
+  ) {
+    authFormMessages.password.classList.remove('hidden');
+    return;
+  }
 
   const formData = [...authForm.elements].reduce((formData, element) => {
     if (element.name) {
@@ -54,6 +87,7 @@ const handleSubmit = async event => {
 
   await signIn(formData);
   resetForm();
+  authForm.elements.regSubmitBtn.disabled = true;
   // const currentUserName = (await db.auth().currentUser)?.displayName;
   // userName.textContent = currentUserName;
   closeModal();
@@ -131,10 +165,42 @@ document.addEventListener('keydown', event => {
   }
 });
 
-authModal.addEventListener('click', event => {
+backdropRef.addEventListener('click', event => {
   if (event.target === authModal) {
     closeModal();
   }
 });
 
 checkCurrentUser();
+
+authForm.elements.name.addEventListener('focus', handlerNameFocus);
+
+function handlerNameFocus() {
+  authFormMessages.name.classList.add('hidden');
+}
+
+authForm.elements.email.addEventListener('focus', handlerEmailFocus);
+
+function handlerEmailFocus() {
+  authFormMessages.email.classList.add('hidden');
+}
+
+authForm.elements.password.addEventListener('focus', handlerPasswordFocus);
+
+function handlerPasswordFocus() {
+  authFormMessages.password.classList.add('hidden');
+}
+
+authForm.elements.name.addEventListener('input', handlerInputData);
+
+authForm.elements.email.addEventListener('input', handlerInputData);
+
+authForm.elements.password.addEventListener('input', handlerInputData);
+
+function handlerInputData() {
+  authForm.elements.name.value &&
+  authForm.elements.email.value &&
+  authForm.elements.password.value
+    ? (authForm.elements.regSubmitBtn.disabled = false)
+    : (authForm.elements.regSubmitBtn.disabled = true);
+}
