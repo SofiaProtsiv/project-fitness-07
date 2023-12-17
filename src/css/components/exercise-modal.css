@@ -1,6 +1,10 @@
 .modalExercise {
-  display: none;
   position: relative;
+  visibility: visible;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 20px;
@@ -9,9 +13,8 @@
   background-color: var(--primary-black-color);
   border-radius: 20px;
   z-index: 500;
-  transform: scale(0, 0);
-  transition: transform var(--transition-dur-and-func),
-    opacity var(--transition-dur-and-func);
+  transition: transform var(--transition-dur-and-func);
+  will-change: transform;
 
   @media (768px <=width) {
     padding: 32px;
@@ -23,10 +26,9 @@
 }
 
 .modalExercise.open {
-  display: block;
   visibility: visible;
-  transform: scale(1, 1);
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 
   @media (width < 768px) {
     max-width: 335px;
