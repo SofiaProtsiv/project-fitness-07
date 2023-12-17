@@ -8,20 +8,31 @@ import {
   getData,
   checkExerciseParams,
   checkWorkoutParams,
-  getFiltersFromPage
+  getFiltersFromPage,
 } from './cards-service';
-import { addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag } from './class-worker';
+import {
+  addWorkoutClass,
+  deleteWorkoutClass,
+  addFavoriteClass,
+  deleteFavoriteClass,
+  hiddenEmptyParag,
+  unhiddenEmptyParag,
+  addStringFavoriteParagEmpty,
+  addStringEmptyParag,
+} from './class-worker';
 import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../modal/exercise-modal';
 import adaptHeight from './height-adapter.js';
+import { update } from 'lodash';
 import { updateViewPort } from './update-view-port';
 import { setActiveCategory, filterOn} from '../filters';
-// import { startFavorite} from './favorites-engine.js';
+import { startFavorite} from './favorites-engine.js';
 import scrollUpToSection from '../helpers/scroll-up.js';
 
+import { isEmpty } from 'lodash';
 
 window.addEventListener('resize', cardsHandler);
 
@@ -45,8 +56,6 @@ const listen = {
   workoutLinks: null,
 };
 
-
-
 //There are 3 endpoints: 1 - favorites, 2 - exercises (target of search), 3 - filter
 
 async function cardsHandler() {
@@ -62,7 +71,6 @@ async function cardsHandler() {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
-        // console.log("here")
         addFavoriteClass();
         deleteWorkoutClass();
         data = await favoritesDB.get();
@@ -74,7 +82,7 @@ async function cardsHandler() {
       case 2:
         addWorkoutClass();
         deleteFavoriteClass();
-        scrollUpToSection(".exercises")
+        scrollUpToSection('.exercises');
         connection = checkWorkoutParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -83,8 +91,8 @@ async function cardsHandler() {
           connection
         );
         data = await getData(connection);
-        if (data.length === 0){
-          throw new Error("No data");
+        if (data.length === 0) {
+          throw new Error('No data');
         }
         cleanerCardWrapper();
         cleanerPages();
@@ -118,6 +126,8 @@ async function cardsHandler() {
     }
   } catch (error) {
     console.log('Error: ', error);
+    cleanerCardWrapper();
+    cleanerPages();
     if (pageFilter.endPoint === 1){
       addStringFavoriteParagEmpty();
     } else {
@@ -139,6 +149,7 @@ function listenCards() {
 function targetHandler(evt) {
   const result = checkCard(evt);
   setActiveCategory(result);
+  setActiveCategory(result);
   changeToValidUrl(result);
   if (result != null || undefined || NaN)
     if (params.filter === 'Muscles') {
@@ -157,7 +168,7 @@ function targetHandler(evt) {
 }
 
 function changeToValidUrl(string) {
-  return string.includes(" ") ? string.replace(" ", "%20") : string;
+  return string.includes(' ') ? string.replace(' ', '%20') : string;
 }
 
 function listenPages() {
@@ -171,7 +182,7 @@ function listenPages() {
 
 function pagesHandler(evt) {
   const clickedPage = checkPage(evt);
-  scrollUpToSection(".exercises")
+  scrollUpToSection('.exercises');
   if (
     (pageFilter.currentPage != clickedPage && clickedPage != null) ||
     undefined ||
@@ -203,20 +214,18 @@ async function workoutHandler(evt) {
     apiService.id = exerciseId;
     const exercise = await apiService.fetchExerciseById();
 
-    if (!exercise) {
+    if (isEmpty(exercise)) {
       throw new Error('Exercise not found!');
     }
 
-    exercise.isFavorite = favoritesDB.getObjectById(exerciseId);
+    exercise.isFavorite = await favoritesDB.idIsFavorite(exerciseId);
     openModalExercise(exercise);
   } catch (error) {
     console.error(error);
   }
 }
 
-
-// startFavorite();
+startFavorite(); // add or remove
 filterOn();
 
 export { params, pageFilter, cardsHandler, workoutHandler };
-

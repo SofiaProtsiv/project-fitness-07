@@ -90,7 +90,6 @@ function getFiltersFromPage(params, pageFilter) {
   const filters = document.querySelector('.filters__list .active');
 
   if (filters) {
-    console.log(filters);
     const id = filters.id.includes('-') ? (filters.id.charAt(0).toUpperCase()
         + filters.id.slice(1)).replace('-', '%20')
       : filters.id.charAt(0).toUpperCase() + filters.id.slice(1);

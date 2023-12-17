@@ -54,12 +54,20 @@ function showWorkoutCards(data) {
                     <h3 class="workout-cards__head3-name">${name}</h3>
                 </div>
                 <div class="workout-cards__third-line-wrapper">
-                    <p class="workout-cards__parag-burned-calories">Burned calories:</p>
-                    <p class="workout-cards__parag-burned-calories-result">${burnedCalories} / ${time} min<p>
-                    <p class="workout-cards__parag-body-part">Body part:</p>
-                    <p class="workout-cards__parag-body-part-result">${bodyPart}<p>
-                    <p class="workout-cards__parag-target">Target:</p>
-                    <p class="workout-cards__parag-target-result">${target}<p>
+                  <ul class="workout-cards__list-info">
+                    <li class="workout-cards__list-point">
+                      <p class="workout-cards__parag-burned-calories">Burned calories:</p>
+                      <p class="workout-cards__parag-burned-calories-result">${burnedCalories} / ${time} min<p>
+                    </li>
+                    <li class="workout-cards__list-point">
+                      <p class="workout-cards__parag-body-part">Body part:</p>
+                      <p class="workout-cards__parag-body-part-result">${bodyPart}<p>
+                    </li>
+                    <li class="workout-cards__list-point">
+                      <p class="workout-cards__parag-target">Target:</p>
+                      <p class="workout-cards__parag-target-result">${target}<p>
+                    </li>
+                  </ul>
                 </div>
             </div>
           </li>
@@ -96,12 +104,20 @@ function showFavoriteCards(data) {
                     <h3 class="favorite-cards__head3-name">${name}</h3>
                 </div>
                 <div class="favorite-cards__third-line-wrapper">
-                  <p class="favorite-cards__parag-burned-calories">Burned calories:</p>
-                  <p class="favorite-cards__parag-burned-calories-result">${burnedCalories} / ${time} min<p>
-                  <p class="favorite-cards__parag-body-part">Body part:</p>
-                  <p class="favorite-cards__parag-body-part-result">${bodyPart}<p>
-                  <p class="favorite-cards__parag-target">Target:</p>
-                  <p class="favorite-cards__parag-target-result">${target}<p>
+                  <ul class="favorite-cards__list-info">
+                    <li class="favorite-cards__list-point">
+                      <p class="favorite-cards__parag-burned-calories">Burned calories:</p>
+                      <p class="favorite-cards__parag-burned-calories-result">${burnedCalories} / ${time} min<p>
+                    </li>
+                    <li class="favorite-cards__list-point">
+                      <p class="favorite-cards__parag-body-part">Body part:</p>
+                      <p class="favorite-cards__parag-body-part-result">${bodyPart}<p>
+                    </li>
+                    <li class="favorite-cards__list-point">
+                      <p class="favorite-cards__parag-target">Target:</p>
+                      <p class="favorite-cards__parag-target-result">${target}<p>
+                    </li>
+                  </ul>
                 </div>
             </div>
           </li>

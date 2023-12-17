@@ -71,24 +71,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-white-color);
   top: 14px;
   right: 14px;
   width: 24px;
   height: 24px;
   cursor: pointer;
+  stroke: var(--primary-background-color);
   transition: transform var(--transition-time) var(--transition-effect),
-    color var(--transition-time) var(--transition-effect);
+    stroke var(--transition-time) var(--transition-effect);
 
   @media (768px <=width) {
     width: 28px;
-    font-size: 32px;
+    height: 28px;
+    font-size: 28px;
+    line-height: 1;
   }
 }
 
 .x-button:hover {
-  transform: rotate(-90deg) scale(1.5, 1.5);
-  color: var(--rating-color-active);
+  transform: rotate(-90deg) scale(1.2, 1.2);
+  stroke: var(--rating-color-active);
 }
 
 .x-button:active {

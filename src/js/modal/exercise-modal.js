@@ -6,7 +6,11 @@ import {
 
 import { starRating } from '../star-rating';
 
-import { toggleFavorit, favoritesDB } from '../favoritesDB';
+import { db } from '../firebase-service';
+import { favoritesDB, toggleFavoriteStatus } from '../favoritesDB';
+
+import { ratingWindow } from '../rating-modal/rating-modal';
+import { openModal as openAuthModal } from '../auth-modal';
 
 const backdropRef = document.querySelector('.js-backdrop');
 const modalRef = document.querySelector('.modalExercise');
@@ -19,10 +23,14 @@ const BASE_URL = import.meta.env.BASE_URL;
 const MAX_RATING = 5;
 
 let toggleFavoritEvent;
+let openedExercise = {};
 
 const renderModal = exercise => {
   const { gifUrl, name, rating, _id, isFavorite, description } = exercise;
   const details = getDetails(exercise);
+  openedExercise = exercise;
+
+  modalRef.setAttribute('data-id', _id);
   // media
   imgWrapperRef.innerHTML = '';
   imgWrapperRef.insertAdjacentHTML('afterbegin', markupMedia(gifUrl, name));
@@ -40,6 +48,24 @@ const renderModal = exercise => {
   );
   // buttons
   btnBoxRender(isFavorite);
+
+  ratingWindow.modalConfig.afterClose = handleRatingClose;
+  document
+    .querySelector('.js-give-rating')
+    .addEventListener('click', onGiveRatingClick);
+};
+
+const onGiveRatingClick = event => {
+  closeModalExercise();
+  ratingWindow.modalConfig.exercise = openedExercise;
+  ratingWindow.openRatingModal();
+};
+
+const handleRatingClose = () => {
+  document
+    .querySelector('.js-give-rating')
+    .removeEventListener('click', onGiveRatingClick);
+  openModalExercise(openedExercise);
 };
 
 const getDetails = exercise => ({
@@ -58,6 +84,11 @@ const btnBoxRender = (isFavorite = false) => {
     ? buttonBoxRef.insertAdjacentHTML('beforeend', markupRemoveFavoritesBtn())
     : buttonBoxRef.insertAdjacentHTML('beforeend', markupAddFavoritesBtn());
   buttonBoxRef.insertAdjacentHTML('beforeend', markupGiveRatingBtn());
+
+  const btnToggle = buttonBoxRef.querySelector('.js-toggle-favorite');
+  const btnOpenModalRating = buttonBoxRef.querySelector('.js-give-rating');
+
+  btnToggle.addEventListener('click', onToggleFavorite);
 };
 
 const markupTitle = title => {
@@ -110,7 +141,6 @@ const markupDetails = ({ burnedCalories, time, ...rest }) => {
 const markupDescription = text => {
   return `
     <p class="exercise_description">${text}</p>
-
   `;
 };
 
@@ -145,7 +175,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
   }
 
   return `
-    <button id="js-toggle-favorit" type="button" class="button ${className}">
+    <button id="js-toggle-favorite" type="button" class="button ${className}">
       <span>${text}</span>
       ${iconId ? iconMarkup : ''}
     </button>
@@ -158,7 +188,7 @@ const closeModalExercise = () => {
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 
-  const toggleID = 'js-toggle-favorit';
+  const toggleID = 'js-toggle-favorite';
   try {
     const toggleBtn = document.getElementById(toggleID);
     toggleBtn.removeEventListener('click', toggleFavoritEvent);
@@ -177,8 +207,24 @@ const openModalExercise = async exercise => {
   modalRef.classList.add('open');
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
+};
 
-  toggleFavoritEvent = toggleFavorit(exercise);
+const onToggleFavorite = async event => {
+  const user = db.auth().currentUser;
+
+  if (!user) {
+    closeModalExercise();
+    openAuthModal();
+  }
+
+  const { target } = event;
+  try {
+    const isFavorite = await toggleFavoriteStatus(openedExercise);
+    target.removeEventListener('click', onToggleFavorite);
+    btnBoxRender(isFavorite);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 document.addEventListener('keydown', event => {
