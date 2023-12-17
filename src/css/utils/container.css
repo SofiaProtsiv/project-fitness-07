@@ -40,12 +40,15 @@
 }
 
 .favorites{
-
-  @media (768px<=width) {
-    padding: 64px 0 100px;
+  @media (width < 768px) {
+    padding: 84px 20px 80px 20px;
   }
 
-  @media (1440px<=width) {
+  @media (width >=768px) and (width < 1440px) {
+    padding: 100px 32px 100px 32px;
+  }
+
+  @media (width >= 1440px) {
     padding: 90px 32px 63px 32px;
   }
 }

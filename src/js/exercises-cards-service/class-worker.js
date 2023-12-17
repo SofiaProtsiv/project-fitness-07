@@ -1,36 +1,51 @@
-const cards = document.querySelector(".exercise-cards__wrapper");
-const emptyParag = document.querySelector(".exercise-cards__parag-empty");
-const DEFAULT_STRING_FAVORITE = "It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.";
-const DEFAULT_STRING = "Sorry, but we don`t have anything for you with such filter. Please try another search";
+const classes = {
+    exerciseWrapper: "js-cards",
+    workoutWrapper: "workout-cards__wrapper",
+    favoriteWrapper: "favorite-cards__wrapper",
+    visuallyHidden: "visually-hidden",
+    emptyParag: "exercise-cards__parag-empty",
+    emptyWrapper: "exercise-cards__wrapper-empty"
 
-function addWorkoutClass(){
-    cards.classList.add("workout-cards__wrapper");
 }
-
-function deleteWorkoutClass(){
-    cards.classList.remove("workout-cards__wrapper");
-}
-
-function addFavoriteClass(){
-    cards.classList.add("favorite-cards__wrapper");
-}
-
-function deleteFavoriteClass(){
-    cards.classList.remove("favorite-cards__wrapper");
-}
-
-function hiddenEmptyParag(){
-    emptyParag.classList.add("visually-hidden");
+const defaultStrings = {
+    stringHome: `
+                <p class="exercise-cards__parag-empty">
+                    Sorry, but we don't have anything for you with such filter. Please try another search
+                </p>`,
+    stringFavorite: `<p class="exercise-cards__parag-empty">
+                        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises
+                        that you
+                        like to your favorites for easier access in the future.
+                    </p>`,
 }
 
-function unhiddenEmptyParag(){
-    emptyParag.classList.remove("visually-hidden");
+function addInnerOfElement(string, element){
+    const tag = document.querySelector("." + element);
+    if(tag){
+        tag.innerHTML = string;
+    } else {
+        console.log(element + " do not exist");
+    }
+   
 }
 
-function addStringFavoriteParagEmpty(){
-    emptyParag.innerHTML = DEFAULT_STRING_FAVORITE;
+function addClass(string, element){
+    const tag = document.querySelector("." + element);
+    if(tag){
+        tag.classList.add(string);
+    } else {
+        console.log(element + " do not exist");
+    };
 }
-function addStringEmptyParag(){
-    emptyParag.innerHTML = DEFAULT_STRING;
+
+function deleteClass(string, element){
+    const tag = document.querySelector("." + element);
+    if (tag) {
+        tag.classList.remove(string);
+    } else {
+        console.log(element + " do not exist");
+    }
 }
-export {addWorkoutClass, deleteWorkoutClass, addFavoriteClass, deleteFavoriteClass, hiddenEmptyParag, unhiddenEmptyParag, addStringFavoriteParagEmpty, addStringEmptyParag, emptyParag};
+
+export {classes, defaultStrings,
+     addInnerOfElement, addClass, deleteClass};

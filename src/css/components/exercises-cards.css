@@ -39,6 +39,7 @@
         grid-auto-rows: 225px;
         row-gap: 32px;
         column-gap: 16px;
+        align-items: center;
     }
 
 
@@ -152,6 +153,43 @@
 .exercise-cards__parag-filter {
     text-align: center;
     color: var(--white-text-opacity-fourty-color);
+}
+
+.exercise-cards__wrapper-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exercise-cards__parag-empty{
+    text-align: center;
+    font-family: var(--primary-fontfont-family);
+    font-style: normal;
+    font-weight: 400;
+    
+
+    @media (width < 375px) {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+
+    @media (width >=375px) and (width < 768px) {
+        width: 318px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+
+    @media (width >=768px) and (width < 1440px) {
+        width: 554px;
+        font-size: 18px;
+        line-height: 1.33;
+    }
+
+    @media (width >=1440px) {
+        width: 554px;
+        font-size: 18px;
+        line-height: 1.33;
+    }
 }
 
 /* WORKOUT LAYOUT*/
@@ -390,6 +428,13 @@
 
     @media (width >=768px) and (width < 1440px) {
         width: 32px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @media (width >=1440px) {
+        width: 50px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

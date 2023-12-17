@@ -43,16 +43,16 @@ function areParamsDifferent(params) {
   return false;
 }
 
-function checkWorkoutParams(currentPage, endPoint, fetch, params, connection) {
+function checkWorkoutParams(currentPage, endPoint, fetch, params, connection, viewPort) {
   if (areParamsDifferent(params)) {
     fetch.bodyPart = params.bodypart;
     fetch.searchQuery = params.keyword;
     fetch.muscles = params.muscles;
     fetch.equipment = params.equipment;
-    connection = getConnection(currentPage, endPoint, fetch).fetchFilteredExercises();
+    connection = getConnection(currentPage, endPoint, fetch, viewPort).fetchFilteredExercises();
   } else {
 
-    connection = getConnection(currentPage, endPoint, fetch).fetchExercise();
+    connection = getConnection(currentPage, endPoint, fetch, viewPort).fetchExercise();
   }
   return connection;
 }
@@ -107,17 +107,14 @@ function getFiltersFromPage(params, pageFilter) {
 }
 
 async function getFavoriteData({currentPage, endPoint}, viewPort){
-  let totalPages = 1;
   let result;
   const maxCards = calculateObjects(endPoint, viewPort);
   const favoriteData = localStorage.getItem('favoriteData');
   const isDataOld = localStorage.getItem('isDataOld');
   const storedData = isDataOld ? JSON.parse(isDataOld) : [];
-  console.log(storedData);
   if (storedData || storedData.length === 1) {
     try { 
     const data = await favoritesDB.get();
-    console.log("current data: ", data);
     result = sliceCardsPages(data, maxCards);
     
     localStorage.setItem('favoriteData', JSON.stringify(data));
@@ -125,7 +122,6 @@ async function getFavoriteData({currentPage, endPoint}, viewPort){
       localStorage.setItem('isDataOld', JSON.stringify(false));
     }
     const currentData = reduceData(currentPage, result);
-    console.log("current page: ", favoriteData, isDataOld);
 
     return { totalPages: result.totalPages, currentData: currentData };
     } catch (error) {
@@ -135,7 +131,6 @@ async function getFavoriteData({currentPage, endPoint}, viewPort){
     const storedData = favoriteData ? JSON.parse(favoriteData) : [];
     const result = sliceCardsPages(storedData, maxCards);
     const currentData = reduceData(currentPage, result);
-    console.log("current data from array: ", currentData);
     return { totalPages: result.totalPages, currentData: currentData };
     }
 } 
