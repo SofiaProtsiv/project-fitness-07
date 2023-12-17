@@ -131,7 +131,6 @@ function showFavoriteCards(data) {
     .join('');
 
   cards.innerHTML = favoriteCardsLayout;
-  // cards.insertAdjacentHTML('beforeend', favoriteCardsLayout);
 }
 
 function cleanerCardWrapper() {
