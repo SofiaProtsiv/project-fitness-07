@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favourites</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon.svg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <script type="module" crossorigin src="/project-fitness-07/assets/favorites-5903bf67.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-d7b77e2a.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-79e9b59a.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-41101c84.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favourites</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.svg" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <script type="module" crossorigin src="/project-fitness-07/assets/favorites-26f9c800.js"></script>
-  <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-a401897d.js">
-  <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-cf190e82.js">
-  <link rel="stylesheet" href="/project-fitness-07/assets/index-5c71883f.css">
-</head>
-
-<body>
-  <header class="header container">
+  <body>
+    <header class="header container">
   <div>
     <a href="./index.html" aria-label="Your Energy">
       <img
@@ -113,7 +121,7 @@
   </div>
 </header>
 
-  <div class="backdrop is-hidden" data-mobile-menu>
+    <div class="backdrop is-hidden" data-mobile-menu>
   <div data-mobile-menu-content class="mobile__menu">
     <div></div>
     <nav class="mobile__nav">
@@ -177,12 +185,40 @@
   </div>
 </div>
 
+    <div class="authModal__backdrop">
+  <div class="authModal__content">
+    <span class="authModal__button-close">&times;</span>
+    <p class="authForm__title">Registration</p>
+    <form class="authForm">
+      <div class="authForm__fieldset username">
+        <label for="name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="name" required />
+      </div>
 
-  <main>
-    <section class="exercises">
-      <div class="container">
-        <div class="exercises__wrapper">
-          <section class="exercise-cards__section workout-favorite-height">
+      <div class="authForm__fieldset">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required />
+      </div>
+
+      <div class="authForm__fieldset">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required />
+      </div>
+
+      <button class="authForm__button-submit" type="submit">Submit</button>
+    </form>
+    <div class="action__container">
+      <p class="action__text">Already have account?</p>
+      <button class="action__button" data-action="reg">Log in</button>
+    </div>
+  </div>
+</div>
+
+    <main>
+      <section class="exercises">
+        <div class="container">
+          <div class="exercises__wrapper">
+            <section class="exercise-cards__section workout-favorite-height">
   <div class="exercise-cards__container">
     <ul class="exercise-cards__wrapper js-cards">
       <p class="exercise-cards__parag-empty">
@@ -194,7 +230,7 @@
     <div class="exercise-cards__guard js-pages"></div>
   </div>
 </section>
-          <aside class="favorites__quotes__wrapper">
+            <aside class="favorites__quotes__wrapper">
   <div class="favorites__quotes__container">
     <div class="favorites__quotes__icon_wrapper">
       <svg class="favorites__quotes__logo_icon" aria-label="running icon">
@@ -263,16 +299,16 @@
   </div>
 </aside>
 
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <div class="js-backdrop">
-    <div class="js-modal modalExercise" id="modal-exercise">
-  <div class="x-button js-modal-exit">
-    <span>&times;</span>
-  </div>
+    <div class="js-backdrop">
+      <div class="js-modal modalExercise" id="modal-exercise">
+  <svg class="x-button js-modal-exit">
+    <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
+  </svg>
   <div class="modalExercise__img-wrapper"></div>
   <div class="modalExercise__content">
     <div class="exercise-content"></div>
@@ -280,9 +316,9 @@
   </div>
 </div>
 
-  </div>
-            
-  <div class="rating-modal-window">
+    </div>
+
+    <div class="rating-modal-window">
   <div class="modal-content">
     <button class="rating-close"></button>
     <form class="modal-form">
@@ -312,8 +348,7 @@
   </div>
 </div>
 
-    
-  
-</body>
 
+    
+  </body>
 </html>
