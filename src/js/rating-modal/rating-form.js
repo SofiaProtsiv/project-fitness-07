@@ -65,6 +65,12 @@ async function handlerFormSubmit(ev) {
       'validate-form-message_warning'
     );
   }
+
+  setTimeout(() => {
+      subscribeForm.validateEmailMessage.classList.add(
+          'full_hidden'
+        );
+  }, 2000);
 }
 
 subscribeForm.emailInput.addEventListener('input', handlerEmailInput);

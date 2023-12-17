@@ -1,5 +1,3 @@
-import { doc } from "firebase/firestore";
-
 const modalConfig = {
   exercise: {},
   ratingText: 'Rating',
@@ -15,8 +13,7 @@ const modalConfig = {
 const feedbackForm = document.querySelector('form.modal-form');
 const rootRatingModal = document.querySelector('.rating-modal-window');
 const closeBtn = document.querySelector('.rating-close');
-const submitBtn = document.querySelector('.feedback-submit');
-const modalValidateText = document.querySelector(".modal-email-validate");
+const modalValidateText = document.querySelector('.modal-email-validate');
 
 const createRatingMarkup = () => {
   const starsArray = [];
@@ -57,12 +54,15 @@ const handleRatingChange = event => {
   ratingCount.innerHTML = event.target.value;
 };
 
+const onReset = () => {
+  ratingCount.innerHTML = '0.0';
+};
+
 feedbackForm.insertAdjacentHTML('afterbegin', createRatingMarkup());
 const ratingInputs = document.querySelectorAll('.rating-stars input');
 const ratingCount = document.querySelector('.rating-count');
 
 const closeRatingModal = () => {
-    modalValidateText.classList.add(".full_hidden");
   if (modalConfig.afterClose) {
     modalConfig.afterClose(modalConfig.exercise);
   }
@@ -77,7 +77,8 @@ const closeRatingModal = () => {
     modalConfig.afterClose();
   }
 
-  ratingCount.innerHTML = "0.0";
+  ratingCount.innerHTML = '0.0';
+  feedbackForm.reset();
 };
 
 const openRatingModal = () => {
@@ -90,7 +91,7 @@ const openRatingModal = () => {
 };
 
 closeBtn.addEventListener('click', closeRatingModal);
-submitBtn.addEventListener('click', closeRatingModal);
+feedbackForm.addEventListener('reset', onReset);
 
 rootRatingModal.addEventListener('click', e => {
   if (e.target === rootRatingModal) {
