@@ -38,12 +38,12 @@ async function removeElFromFavoritesOnTrashBtn(el) {
   exerciseEl.closest("li").remove();
   favoritesDB.remove(exerciseID);
   localStorage.setItem('isDataOld', JSON.stringify(true));
-  console.log('that is from service');
 }
 
 function removeElFromFavorites({ _id }) {
   const exerciseEl = document.querySelector('.favorite-cards__gallery-link[data-id="' + _id + '"]');
   exerciseEl.closest("li").remove();
+  localStorage.setItem('isDataOld', JSON.stringify(true));
 }
 
 if (exercisesList) {
