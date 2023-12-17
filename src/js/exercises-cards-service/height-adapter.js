@@ -7,7 +7,6 @@ export default function adaptHeight(endPoint, viewPort){
         section.style.height = "487px";
     } else if (viewPort > 768 && endPoint != 3){
         section.style.height = "833px";
-        console.log(section.style.height);
     }  
     else {
         section.style.height = "";
