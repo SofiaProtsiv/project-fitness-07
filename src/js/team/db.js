@@ -42,7 +42,7 @@ export default [
     name: 'Ilya Bondarchuk',
     role: 'Front-End Developer',
     desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    photo: 'https://i.imgur.com/xmyjNiC.jpg',
     email: 'mailto:hmlbond@gmail.com',
     linkedin: 'https://www.linkedin.com/in/ilyabondarchuk/',
     github: 'https://github.com/cod3provider',
