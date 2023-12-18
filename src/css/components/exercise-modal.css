@@ -1,8 +1,10 @@
 .modalExercise {
   position: relative;
-  visibility: visible;
+  visibility: hidden;
+
   left: 50%;
   transform: translate(-50%, 0) scale(0);
+  height: 0;
 
   padding-top: 40px;
   padding-bottom: 40px;
@@ -28,7 +30,6 @@
 
   @media (1440px <=width) {
     position: absolute;
-    visibility: visible;
     top: 50%;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -44,6 +45,7 @@
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, 0) scale(1);
+  height: auto;
 
   @media (1440px <= width) {
     transform: translate(-50%, -50%) scale(1);
@@ -177,7 +179,6 @@
 }
 
 .modalExercise .btn-icon {
-
   stroke: var(--plain-black-color);
 }
 
