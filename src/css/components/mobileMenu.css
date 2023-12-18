@@ -1,15 +1,21 @@
 .backdrop-mobile {
+  visibility: visible;
+  opacity: 1;
   z-index: 900;
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
+
   background: var(--primary-black-color);
-  opacity: 1;
-  visibility: visible;
   pointer-events: initial;
   transition: opacity var(--transition-effect), var(--transition-time);
+
+  @media (768px <=width) {
+    display: none;
+  }
 }
 
 .backdrop-mobile.is-hidden {
