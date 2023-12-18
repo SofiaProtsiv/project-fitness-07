@@ -101,7 +101,6 @@
     color: var(--primary-black-color);
     background-color: var(--primary-white-color);
   }
-
 }
 
 .header__social__list {
@@ -214,7 +213,6 @@
   height: 24px;
   cursor: pointer;
   margin-left: -16px;
-
 }
 
 .switch-icon-sun {
@@ -224,7 +222,6 @@
   height: 24px;
   cursor: pointer;
   margin-left: -16px;
-
 }
 
 .header-logo {
