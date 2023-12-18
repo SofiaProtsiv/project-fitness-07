@@ -4,8 +4,8 @@ export default [
   {
     name: 'Sofia Protsiv',
     role: 'Team Lead',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for the final result',
+    photo: `${BASE_URL}images/team/sofia-protsiv.jpeg`,
     email: 'mailto:prochivsofia@gmail.com',
     linkedin: 'https://www.linkedin.com/in/sofia-protsiv-9743a6201/',
     github: 'https://github.com/SofiaProtsiv',
@@ -13,8 +13,8 @@ export default [
   {
     name: 'Olga Lukianets',
     role: 'Scrum Master',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for the implementation of the block with filters',
+    photo: `${BASE_URL}images/team/olga-lukianets.jpeg`,
     email: 'mailto:olgalukianets7@gmail.com',
     linkedin: 'https://www.linkedin.com/in/olga-lukianets/',
     github: 'https://github.com/Liasique',
@@ -23,8 +23,8 @@ export default [
   {
     name: 'Nikita Zeleniak',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for the development of the service API and header for desktop and mobile',
+    photo: `${BASE_URL}images/team/nikita-zeleniak.jpeg`,
     email: 'mailto:Zelenyaknikita0927@gmail.com',
     linkedin: 'https://www.linkedin.com/in/zeleniak-nikita/',
     github: 'https://github.com/NikitaZelenyak',
@@ -41,7 +41,7 @@ export default [
   {
     name: 'Ilya Bondarchuk',
     role: 'Front-End Developer',
-    desc: '',
+    desc: 'Responsible for the development of the hero section, implementation of the loader and skeleton',
     photo: 'https://i.imgur.com/xmyjNiC.jpg',
     email: 'mailto:hmlbond@gmail.com',
     linkedin: 'https://www.linkedin.com/in/ilyabondarchuk/',
@@ -87,8 +87,8 @@ export default [
   {
     name: 'Vladyslav Mykhalytsky',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for the functionality of adding a rating',
+    photo: `${BASE_URL}images/team/vladyslav-mykhalytskyi.jpeg`,
     email: 'mailto:vmykhali666@gmail.com',
     linkedin: 'https://www.linkedin.com/in/vladyslav-mykhalytskyi-b42250185/',
     github: 'https://github.com/vmykhali666',
