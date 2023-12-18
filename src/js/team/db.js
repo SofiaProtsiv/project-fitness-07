@@ -68,10 +68,10 @@ export default [
   {
     name: 'Artur Didur',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for creating: cards and pagination in home & favorites pages, which dynamically changes the cards depending on user choice.',
+    photo: `${BASE_URL}images/team/artur-didur.jpg`,
     email: 'mailto:didur.art@gmail.com',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/artur-didur-257a57204/',
     github: 'https://github.com/Art-of-D',
   },
   {

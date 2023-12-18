@@ -7,8 +7,8 @@ function checkCard(evt){
     const cardElement = target.closest('.js-card');
     if(cardElement){
         return cardElement.dataset.cardName
-    }else{
-        console.log("Can not read name", cardElement);
+    } else{
+        return;
     }
 }
 
@@ -30,7 +30,11 @@ function checkWorkoutCard(evt){
         return;
     }
     const cardElement = target.closest('.js-workout-card');
-    return cardElement.dataset.id;
+    if (cardElement){
+        return cardElement.dataset.id;
+    } else{
+        return;
+    }
 }
 
 export {checkCard, checkPage, checkWorkoutCard};
