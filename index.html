@@ -14,11 +14,11 @@
     <title>Your Energy</title>
 
     
-    <script type="module" crossorigin src="/project-fitness-07/assets/index-8332232e.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-466d5433.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-bee50982.js">
-    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-34f001f5.js">
-    <link rel="stylesheet" href="/project-fitness-07/assets/index-f5d4b204.css">
+    <script type="module" crossorigin src="/project-fitness-07/assets/index-c547d646.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-df689a48.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/observer-2c8367e5.js">
+    <link rel="modulepreload" crossorigin href="/project-fitness-07/assets/index-a06d6b16.js">
+    <link rel="stylesheet" href="/project-fitness-07/assets/index-570bedeb.css">
   </head>
 
   <body>
@@ -493,14 +493,14 @@
 </div>
 
         <div class="authModal__content">
-  <svg class="x-button js-modal-exit">
-    <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
-  </svg>
-  <p class="authForm__title">Registration</p>
-  <form class="authForm">
-    <div class="authForm__fieldset username">
-      <label for="name"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="name" required/>
+    <svg class="authModal__button-close x-button">
+      <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
+    </svg>
+    <p class="authForm__title">Registration</p>
+    <form class="authForm">
+      <div class="authForm__fieldset username">
+        <label for="name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="name" />
         <p
           class="auth-modal__form__message js__auth-modal__name__message hidden"
         >
@@ -541,43 +541,38 @@
       <p class="action__text">Already have account?</p>
       <button class="action__button" data-action="reg">Log in</button>
     </div>
-  </div>
 </div>
 
+        <div class="rating-modal-content">
+  <svg class="rating-close x-button">
+    <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
+  </svg>
+  <form class="modal-form">
+    <div class="rating-inputs">
+      <input
+        class="modal-form-email base-input"
+        name="email"
+        type="text"
+        placeholder="Email"
+        formnovalidate=""
+      />
+      <p class="modal-email-validate validate-form-message full_hidden"></p>
+      <textarea
+        rows="3"
+        class="feedback-textarea base-textarea"
+        name="feedback"
+        placeholder="Your feedback"
+      ></textarea>
+    </div>
+    <input
+      class="feedback-submit base-submit"
+      type="submit"
+      value="Send"
+    />
+  </form>
+</div>
       </div>
     </div>
-    <div class="rating-modal-window">
-  <div class="modal-content">
-    <svg class="x-button js-modal-exit">
-      <use href="/project-fitness-07/images/icons-sprite.svg#icon-cross"></use>
-    </svg>
-    <form class="modal-form">
-      <div class="rating-inputs">
-        <input
-          class="modal-form-email base-input"
-          name="email"
-          type="text"
-          placeholder="Email"
-          formnovalidate=""
-        />
-        <p class="modal-email-validate validate-form-message full_hidden"></p>
-        <textarea
-          rows="3"
-          class="feedback-textarea base-textarea"
-          name="feedback"
-          placeholder="Your feedback"
-        ></textarea>
-      </div>
-      <input
-        class="feedback-submit base-submit"
-        type="submit"
-        value="Send"
-        disabled
-      />
-    </form>
-  </div>
-</div>
-
     <div class='loader'>
   <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="loader__wrap">
     <div class="wheel"></div>
