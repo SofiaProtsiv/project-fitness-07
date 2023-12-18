@@ -10,13 +10,13 @@ import { db } from '../firebase-service';
 import { favoritesDB, toggleFavoriteStatus } from '../favoritesDB';
 
 import { ratingWindow } from '../rating-modal/rating-modal';
-import { openModal as openAuthModal } from '../auth-modal';
+import { authModalWindow } from '../auth-modal';
 import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
 import { removeElFromFavorites } from '../exercises-cards-service/favorite-service';
 
 const backdropRef = document.querySelector('.backdrop');
 const modalRef = document.querySelector('.modalExercise');
-const closeButtonRef = modalRef.querySelector('.x-button');
+const closeButtonRef = modalRef.querySelector('.js-modal-exit');
 const imgWrapperRef = modalRef.querySelector('.modalExercise__img-wrapper');
 const contentWrapperRef = modalRef.querySelector('.exercise-content');
 const buttonBoxRef = modalRef.querySelector('.button-box');
@@ -50,15 +50,31 @@ const renderModal = exercise => {
   );
   // buttons
   btnBoxRender(isFavorite);
-
-  ratingWindow.modalConfig.afterClose = handleRatingClose;
-  document
-    .querySelector('.js-give-rating')
-    .addEventListener('click', onGiveRatingClick);
 };
 
+const handleClose = event => {
+  if (event.key === 'Escape') {
+    closeModalExercise();
+  }
+};
+
+const handleCloseOnBackdrop = event => {
+  if (event.target === backdropRef) {
+    closeModalExercise();
+  }
+}
+
 const onGiveRatingClick = event => {
+  const user = db.auth().currentUser;
+
   closeModalExercise();
+  if (!user) {
+    //need to set exercise obj, to avoid it we can create ModalWindowManager that will manage all modals
+    authModalWindow.modalConfig.exercise = openedExercise;
+    authModalWindow.modalConfig.afterClose = openModalExercise;
+    authModalWindow.openModal(openedExercise);
+    return;
+  }
   ratingWindow.modalConfig.exercise = openedExercise;
   ratingWindow.openRatingModal();
 };
@@ -91,6 +107,10 @@ const btnBoxRender = (isFavorite = false) => {
   const btnOpenModalRating = buttonBoxRef.querySelector('.js-give-rating');
 
   btnToggle.addEventListener('click', onToggleFavorite);
+  ratingWindow.modalConfig.afterClose = handleRatingClose;
+  document
+    .querySelector('.js-give-rating')
+    .addEventListener('click', onGiveRatingClick);
 };
 
 const markupTitle = title => {
@@ -193,6 +213,8 @@ const closeModalExercise = () => {
   try {
     const toggleBtn = document.getElementById(toggleID);
     toggleBtn.removeEventListener('click', toggleFavoritEvent);
+    document.removeEventListener('keydown', handleClose);
+    backdropRef.removeEventListener('click', handleCloseOnBackdrop);
   } catch (error) {
     console.error(`${toggleID} not found!`);
   }
@@ -207,6 +229,8 @@ const openModalExercise = async exercise => {
   toggleModalOpen(modalRef);
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', handleClose);
+  backdropRef.addEventListener('click', handleCloseOnBackdrop);
 };
 
 const onToggleFavorite = async event => {
@@ -214,7 +238,10 @@ const onToggleFavorite = async event => {
 
   if (!user) {
     closeModalExercise();
-    openAuthModal();
+    //need to set exercise obj, to avoid it we can create ModalWindowManager that will manage all modals
+    authModalWindow.modalConfig.exercise = openedExercise;
+    authModalWindow.modalConfig.afterClose = openModalExercise;
+    authModalWindow.openModal(openedExercise);
     return;
   }
 
@@ -231,17 +258,5 @@ const onToggleFavorite = async event => {
     console.error(error);
   }
 };
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeModalExercise();
-  }
-});
-
-backdropRef.addEventListener('click', event => {
-  if (event.target === backdropRef) {
-    closeModalExercise();
-  }
-});
 
 export { openModalExercise, btnBoxRender, closeModalExercise };

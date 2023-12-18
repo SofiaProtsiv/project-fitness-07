@@ -9,6 +9,18 @@ const authFormMessages = {
 };
 
 const backdropRef = document.querySelector('.backdrop');
+/**
+ * Represent a additional config object for modal window.
+ * @param {string} exercise required if subscribe on before/after
+ */
+const modalConfig = {
+  exercise: {},
+  beforeOpen: null,
+  afterOpen: null,
+  beforeClose: null,
+  afterClose: null,
+};
+
 const userButton = document.querySelector('.header__auth_btn');
 const authModal = document.querySelector('.authModal__content');
 const closeButton = document.querySelector('.authModal__content .x-button');
@@ -30,17 +42,38 @@ const btnLogOut = document.querySelectorAll('.header__logout_btn');
 let isRegMode = true;
 
 const closeModal = () => {
+  if (modalConfig.beforeClose) {
+    modalConfig.beforeClose(modalConfig.exercise);
+    modalConfig.beforeClose = null;
+  }
   toggleModalClose(authModal);
   closeButton.removeEventListener('click', closeModal);
   userButton.addEventListener('click', openModal);
   document.body.style.overflow = 'visible';
+  if (modalConfig.afterClose) {
+    modalConfig.afterClose(modalConfig.exercise);
+    modalConfig.afterClose = null;
+  }
+  backdropRef.removeEventListener('click', handleCloseOnBackdrop);
+  document.removeEventListener('keydown', handleCloseOnEscape);
 };
 
-export const openModal = () => {
+const openModal = () => {
+  if (modalConfig.beforeOpen) {
+    modalConfig.beforeOpen(modalConfig.exercise);
+    modalConfig.beforeOpen = null;
+  }
   toggleModalOpen(authModal);
   closeButton.addEventListener('click', closeModal);
   userButton.removeEventListener('click', openModal);
   document.body.style.overflow = 'hidden';
+  if (modalConfig.afterOpen) {
+    modalConfig.afterOpen(modalConfig.exercise);
+    modalConfig.afterOpen = null;
+  }
+
+  backdropRef.addEventListener('click', handleCloseOnBackdrop);
+  document.addEventListener('keydown', handleCloseOnEscape);
 };
 
 const resetForm = () => {
@@ -142,6 +175,18 @@ const checkCurrentUser = async () => {
   });
 };
 
+const handleCloseOnEscape = event => {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+};
+
+const handleCloseOnBackdrop = event => {
+  if (event.target === authModal) {
+      closeModal();
+  }
+}
+
 const handleSignOut = async () => {
   await signOut();
   btnLogOut.forEach(el => {
@@ -157,18 +202,6 @@ authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
 btnLogOut.forEach(el => {
   el.addEventListener('click', handleSignOut);
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-});
-
-backdropRef.addEventListener('click', event => {
-  if (event.target === authModal) {
-    closeModal();
-  }
 });
 
 checkCurrentUser();
@@ -204,3 +237,8 @@ function handlerInputData() {
     ? (authForm.elements.regSubmitBtn.disabled = false)
     : (authForm.elements.regSubmitBtn.disabled = true);
 }
+
+export const authModalWindow = {
+  modalConfig,
+  openModal,
+};
