@@ -60,7 +60,7 @@
 }
 
 .rating-star:hover,
-.rating-star:hover ~ label {
+.rating-star:hover~label {
   fill: var(--rating-color-active);
 }
 
@@ -72,7 +72,7 @@
   cursor: pointer;
 }
 
-.rating-stars input:checked ~ label {
+.rating-stars input:checked~label {
   fill: var(--rating-color-active);
 }
 
@@ -110,7 +110,8 @@
   right: 14px;
   width: 28px;
   height: 28px;
-  background-color: var(--modal-black-color);
+  stroke: var(--plain-white-color);
+  /* background-color: var(--plain-white-color); */
 }
 
 .rating-close::before,

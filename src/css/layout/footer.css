@@ -5,7 +5,7 @@
 .footer__logo__icon {
   width: 132px;
   height: 24px;
-  fill: var(--primary-black-color);
+  fill: var(--footer-maintext-color);
 }
 
 .footer__box {
@@ -46,7 +46,7 @@
 .footer__social__icon {
   width: 40px;
   height: 40px;
-  fill: var(--primary-black-color);
+  fill: var(--footer-maintext-color);
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--rating-color-inactive);
@@ -62,12 +62,12 @@
 
 .footer__social__icon:hover,
 .footer__social__icon:focus {
-  background-color: var(--primary-background-color);
+  background-color: var(--footer-maintext-color);
   fill: var(--primary-black-color);
 }
 
 .footer__main__header {
-  color: var(--primary-black-color);
+  color: var(--footer-maintext-color);
   font-family: var(--primary-fontfont-family);
   font-size: 38px;
   font-style: normal;
@@ -109,7 +109,7 @@
 }
 
 .footer__form__header {
-  color: var(--primary-black-color);
+  color: var(--footer-maintext-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;
@@ -128,7 +128,7 @@
   padding: 12px 14px;
   border-radius: 30px;
   outline: none;
-  border: 1px solid var(--primary-background-color);
+  border: 1px solid var(--footer-maintext-color);
   transition-property: border-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
@@ -178,7 +178,7 @@
   line-height: 18px;
   padding: 12px 14px;
   border-radius: 30px;
-  border: 1px solid var(--primary-background-color);
+  border: 1px solid var(--footer-maintext-color);
   transition-property: color, background-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
@@ -187,7 +187,7 @@
 /* .footer__form__btn:hover,
 .footer__form__btn:focus {
   color: var(--primary-black-color);
-  background-color: var(--primary-background-color);
+  background-color: var(  --footer-maintext-color);
 } */
 
 .footer__privacy__box {
@@ -195,7 +195,7 @@
   align-items: end;
   justify-content: space-between;
   margin-top: 120px;
-  color: var(--footer-text-color);
+  color: var(--footer-subtext-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;

@@ -7,51 +7,51 @@
 /* INITIAL EXERCISE LAYOUT*/
 .exercise-cards__wrapper {
 
-    @media (width < 375px) {
-        height: auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        margin-left: 20px;
-        margin-right: 20px;
-        row-gap: 20px;
-    }
+  @media (width < 375px) {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-right: 20px;
+    row-gap: 20px;
+  }
 
-    @media (width >=375px) and (width < 768px) {
-        height: 2185px;
-        width: 335px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin-left: auto;
-        margin-right: auto;
-        row-gap: 20px;
-    }
+  @media (width >=375px) and (width < 768px) {
+    height: 2185px;
+    width: 335px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    row-gap: 20px;
+  }
 
-    @media (width >=768px) and (width < 1440px) {
-        height: 996px;
-        display: grid;
-        width: 705px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-auto-rows: 225px;
-        row-gap: 32px;
-        column-gap: 16px;
-        align-items: center;
-    }
+  @media (width >=768px) and (width < 1440px) {
+    height: 996px;
+    display: grid;
+    width: 705px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 225px;
+    row-gap: 32px;
+    column-gap: 16px;
+    align-items: center;
+  }
 
 
-    @media (width >=1440px) {
-        height: 1064px;
-        display: grid;
-        width: 900px;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        grid-auto-rows: 242px;
-        row-gap: 32px;
-        column-gap: 16px;
-    }
+  @media (width >=1440px) {
+    height: 1064px;
+    display: grid;
+    width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 242px;
+    row-gap: 32px;
+    column-gap: 16px;
+  }
 }
 
 .exercise-cards__gallery-link {
@@ -154,41 +154,43 @@
   color: rgba(244, 244, 244, 0.60);
 }
 
-.exercise-cards__wrapper-empty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.exercise-cards__wrapper-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-.exercise-cards__parag-empty{
-    text-align: center;
-    font-family: var(--primary-fontfont-family);
-    font-style: normal;
-    font-weight: 400;
-    
 
-    @media (width < 375px) {
-        width: 100%;
-        font-size: 14px;
-        line-height: 1.28;
-    }
+.exercise-cards__parag-empty {
+  text-align: center;
+  font-family: var(--primary-fontfont-family);
+  font-style: normal;
+  font-weight: 400;
 
-    @media (width >=375px) and (width < 768px) {
-        width: 318px;
-        font-size: 14px;
-        line-height: 1.28;
-    }
 
-    @media (width >=768px) and (width < 1440px) {
-        width: 554px;
-        font-size: 18px;
-        line-height: 1.33;
-    }
+  @media (width < 375px) {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.28;
+  }
 
-    @media (width >=1440px) {
-        width: 554px;
-        font-size: 18px;
-        line-height: 1.33;
-    }
+  @media (width >=375px) and (width < 768px) {
+    width: 318px;
+    font-size: 14px;
+    line-height: 1.28;
+  }
+
+  @media (width >=768px) and (width < 1440px) {
+    width: 554px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  @media (width >=1440px) {
+    width: 554px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
 }
 
 /* WORKOUT LAYOUT*/
@@ -302,42 +304,43 @@
 }
 
 .workout-cards__head3-name {
-    margin-left: 16px;
-    width: 100%;
-    font-style: normal;
-    font-weight: 400;
-    @media (width < 375px) {
-        font-size: 20px;
-        line-height: 1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+  margin-left: 16px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
 
-    }
+  @media (width < 375px) {
+    font-size: 20px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-    @media (width >=375px) and (width < 768px) {
-        font-size: 20px;
-        line-height: 1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  }
 
-    @media (width >=768px) and (width < 1440px) {
-        font-size: 24px;
-        line-height: 1.33;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  @media (width >=375px) and (width < 768px) {
+    font-size: 20px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    @media (width >=1440px) {
-        font-size: 24px;
-        line-height: 1.33;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  @media (width >=768px) and (width < 1440px) {
+    font-size: 24px;
+    line-height: 1.33;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (width >=1440px) {
+    font-size: 24px;
+    line-height: 1.33;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .workout-cards__head3-name::first-letter {
@@ -348,56 +351,57 @@
   display: flex;
   width: 312px;
 
-    @media (width < 375px){
-        width: 100%;
-    }
+  @media (width < 375px) {
+    width: 100%;
+  }
 
   @media (width >=1440px) {
     width: 100%;
   }
 }
 
-.workout-cards__list-info{
-    display: flex;
-    margin-top: 8px;
+.workout-cards__list-info {
+  display: flex;
+  margin-top: 8px;
+  width: 100%;
+
+  @media (width < 375px) {
+    line-height: 1;
+    gap: 8px;
     width: 100%;
-    @media (width < 375px) {
-        line-height: 1;
-        gap: 8px;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;   
-    }
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-    @media (width >=375px) and (width < 768px) {
-        gap: 10px;
-    }
+  @media (width >=375px) and (width < 768px) {
+    gap: 10px;
+  }
 
-    @media (width >=768px) and (width < 1440px) {
-        gap: 10px;
-    }
+  @media (width >=768px) and (width < 1440px) {
+    gap: 10px;
+  }
 
-    @media (width >=1440px) {
-        gap: 16px;
-    }
-    
+  @media (width >=1440px) {
+    gap: 16px;
+  }
+
 }
 
 .workout-cards__list-point {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
 
-    @media (width < 375px) {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; 
-    }
+  @media (width < 375px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .workout-cards__parag-burned-calories,
@@ -409,35 +413,35 @@
 .workout-cards__parag-burned-calories-result,
 .workout-cards__parag-body-part-result,
 .workout-cards__parag-target-result {
-    color: var(--primary-black-color);
-    margin-left: 4px;
+  color: var(--primary-black-color);
+  margin-left: 4px;
 
-    @media (width < 375px) {
-        width: 100%;
-        margin-left: 0px;
-        text-align: center;
-    }
+  @media (width < 375px) {
+    width: 100%;
+    margin-left: 0px;
+    text-align: center;
+  }
 
-    @media (width >=375px) and (width < 768px) {
-        width: 32px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  @media (width >=375px) and (width < 768px) {
+    width: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    @media (width >=768px) and (width < 1440px) {
-        width: 32px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  @media (width >=768px) and (width < 1440px) {
+    width: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    @media (width >=1440px) {
-        width: 50px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  @media (width >=1440px) {
+    width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 }
 
