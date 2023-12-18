@@ -77,8 +77,8 @@ export default [
   {
     name: 'Yuriy Staynov',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Responsible for exercise modal window and common styles for all modal windows (backdrop, transitions etc.)',
+    photo: `https://imagedelivery.net/mt3p7ofMGq4rq6eZNqRFdw/449e49ff-9bcf-4312-e830-414b39df7900/public`,
     email: 'mailto:yuriystaynov@gmail.com',
     linkedin: 'https://www.linkedin.com/in/yuriy-staynov-8a2832219/',
     github: 'https://github.com/Yuriy-St',
