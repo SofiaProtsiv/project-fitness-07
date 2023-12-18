@@ -9,7 +9,7 @@
   background-color: var(--background-color);
   opacity: 0;
   overflow: auto;
-  z-index: 100;
+  z-index: 1000;
   backdrop-filter: blur(3px);
   transition: opacity var(--transition-backdrop-delay),
     visibility var(--transition-backdrop-delay);

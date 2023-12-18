@@ -62,7 +62,7 @@ const handleCloseOnBackdrop = event => {
   if (event.target === backdropRef) {
     closeModalExercise();
   }
-}
+};
 
 const onGiveRatingClick = event => {
   const user = db.auth().currentUser;
@@ -215,6 +215,7 @@ const closeModalExercise = () => {
     toggleBtn.removeEventListener('click', toggleFavoritEvent);
     document.removeEventListener('keydown', handleClose);
     backdropRef.removeEventListener('click', handleCloseOnBackdrop);
+    setTimeout(() => (modalRef.style.display = 'none'), 1000);
   } catch (error) {
     console.error(`${toggleID} not found!`);
   }
@@ -226,6 +227,7 @@ const openModalExercise = async exercise => {
   exercise.isFavorite = await favoritesDB.idIsFavorite(_id);
   renderModal(exercise);
 
+  modalRef.style.display = '';
   toggleModalOpen(modalRef);
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
