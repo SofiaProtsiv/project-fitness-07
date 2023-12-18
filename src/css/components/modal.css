@@ -18,8 +18,11 @@
   visibility: visible;
   opacity: 1;
   transform: scale(1);
-  overflow: hidden;
   pointer-events: all;
+
+  @media (768px <=width) {
+    overflow: hidden;
+  }
 }
 
 .x-button {
