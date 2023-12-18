@@ -11,7 +11,7 @@
   }
 }
 
-.backdrop-mobile:not(.is-hidden) + .header {
+.backdrop-mobile:not(.is-hidden)+.header {
   position: fixed;
   left: 50%;
   transform: translate(-50%);
@@ -19,7 +19,7 @@
 }
 
 .header__nav {
-  background-color: var(--primary-black-color);
+  background-color: var(--header-background);
   border-radius: 60px;
 
   @media (width < 768px) {
@@ -57,13 +57,13 @@
 }
 
 .header__nav__link.active {
-  color: var(--primary-black-color);
-  background-color: var(--primary-white-color);
+  color: var(--primary-white-color);
+  background-color: var(--primary-black-color);
 }
 
 .header__nav__item button {
   background-color: transparent;
-  color: var(--primary-white-color);
+  color: var(--primary-black-color);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.2;

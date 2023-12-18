@@ -1,11 +1,11 @@
 .page__footer {
-  background-color: var(--primary-black-color);
+  background-color: var(--footer-background);
 }
 
 .footer__logo__icon {
   width: 132px;
   height: 24px;
-  fill: var(--primary-background-color);
+  fill: var(--primary-black-color);
 }
 
 .footer__box {
@@ -46,7 +46,7 @@
 .footer__social__icon {
   width: 40px;
   height: 40px;
-  fill: var(--primary-background-color);
+  fill: var(--primary-black-color);
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--rating-color-inactive);
@@ -67,7 +67,7 @@
 }
 
 .footer__main__header {
-  color: var(--primary-background-color);
+  color: var(--primary-black-color);
   font-family: var(--primary-fontfont-family);
   font-size: 38px;
   font-style: normal;
@@ -109,7 +109,7 @@
 }
 
 .footer__form__header {
-  color: var(--primary-background-color);
+  color: var(--primary-black-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;

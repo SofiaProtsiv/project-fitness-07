@@ -10,6 +10,7 @@
   opacity: 0;
   overflow: auto;
   z-index: 100;
+  backdrop-filter: blur(3px);
   transition: opacity var(--transition-backdrop-delay),
     visibility var(--transition-backdrop-delay);
 }
@@ -35,7 +36,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
-  stroke: var(--primary-background-color);
+  stroke: var(--primary-black-color);
   transition: transform var(--transition-time) var(--transition-effect),
     stroke var(--transition-time) var(--transition-effect);
 

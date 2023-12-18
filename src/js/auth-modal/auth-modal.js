@@ -84,8 +84,8 @@ const handleSubmit = async event => {
   event.preventDefault();
 
   if (
-    !authForm.elements.name.value ||
-    authForm.elements.name.value.length < 3
+    isRegMode &&
+    (!authForm.elements.name.value || authForm.elements.name.value.length < 3)
   ) {
     authFormMessages.name.classList.remove('hidden');
     return;
@@ -232,9 +232,13 @@ authForm.elements.email.addEventListener('input', handlerInputData);
 authForm.elements.password.addEventListener('input', handlerInputData);
 
 function handlerInputData() {
-  authForm.elements.name.value &&
-  authForm.elements.email.value &&
-  authForm.elements.password.value
+  (isRegMode &&
+    authForm.elements.name.value &&
+    authForm.elements.email.value &&
+    authForm.elements.password.value) ||
+  (!isRegMode &&
+    authForm.elements.email.value &&
+    authForm.elements.password.value)
     ? (authForm.elements.regSubmitBtn.disabled = false)
     : (authForm.elements.regSubmitBtn.disabled = true);
 }

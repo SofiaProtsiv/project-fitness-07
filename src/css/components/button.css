@@ -6,7 +6,7 @@
   column-gap: 8px;
   row-gap: 8px;
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     flex-direction: row;
   }
 }
@@ -21,23 +21,23 @@
   padding-bottom: 12px;
   padding-right: 18px;
   padding-left: 18px;
-  color: var(--primary-black-color);
-  background-color: var(--primary-background-color);
+  color: var(--primary-white-color);
+  background-color: var(--primary-black-color);
   border-radius: 30px;
   flex-grow: 1;
-  border: 1px solid var(--primary-background-color);
+  border: 1px solid var(--primary-black-color);
   transition: background-color var(--transition-dur-and-func),
     color var(--transition-dur-and-func);
 }
 
 .button:hover,
 .button:focus {
-  background-color: var(--primary-black-color);
-  color: var(--primary-background-color);
+  background-color: var(--primary-white-color);
+  color: var(--primary-black-color);
 }
 
 .button .text {
-  @media (768px <= width) {
+  @media (768px <=width) {
     font-size: 16px;
     line-height: 1.5;
   }
@@ -45,7 +45,7 @@
 
 .button.ghost {
   background-color: transparent;
-  color: var(--primary-background-color);
+  color: var(--primary-black-color);
   flex-grow: 0;
   transition: background-color var(--transition-dur-and-func),
     color var(--transition-dur-and-func);
@@ -53,18 +53,18 @@
 
 .button.ghost:hover,
 .button.ghost:focus {
-  background-color: var(--primary-background-color);
-  color: var(--primary-black-color);
+  background-color: var(--primary-black-color);
+  color: var(--primary-white-color);
 }
 
 .btn-icon {
   width: 18px;
   height: 18px;
   fill: transparent;
-  stroke: var(--primary-black-color);
+  stroke: var(--primary-white-color);
   transition: stroke var(--transition-dur-and-func);
 
-  @media (768px <= width) {
+  @media (768px <=width) {
     width: 20px;
     height: 20px;
   }
@@ -72,5 +72,5 @@
 
 .button:hover .btn-icon,
 .button:focus .btn-icon {
-  stroke: var(--primary-background-color);
+  stroke: var(--primary-black-color);
 }

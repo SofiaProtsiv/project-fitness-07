@@ -115,6 +115,7 @@
   padding: 12px 14px;
   border-radius: 30px;
   border: 1px solid var(--primary-black-color);
+  color: var(--primary-black-color);
   outline: none;
   background-color: transparent;
   transition-property: border;
@@ -133,6 +134,10 @@
 .search__input:focus,
 .search__input:active {
   border: 1px solid var(--rating-color-active);
+}
+
+.search__icon {
+  stroke: var(--primary-black-color);
 }
 
 .filters__list {
