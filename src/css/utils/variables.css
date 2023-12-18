@@ -26,9 +26,11 @@
   --error-color: rgb(255, 0, 0);
   --white-color: #ffffff;
   --footer-text-color: #c6cdd1;
+  --footer-background: #242424;
+  --header-background: #f4f4f4;
 
   /* Backdrop */
-  --background-color: rgba(18, 20, 23, 0.4);
+  --background-color: rgba(18, 20, 23, 0.5);
 
   /* Transition properties */
   --transition-effect: linear;
@@ -71,11 +73,16 @@ body.dark {
   --black-gradient-cards: rgba(17, 17, 17, 0.50);
   --rating-color-active: #eea10c;
   --modal-black-color: rgba(36, 36, 36, 1);
-  --modal-alpha-background: rgba(4, 4, 4, 0.4);
+  --modal-alpha-background: rgba(4, 4, 4, 0.6);
   --rating-color-active: #eea10c;
   --rating-color-inactive: rgba(244, 244, 244, 0.2);
   --pagination-color-inactive: #d4d4d4;
   --error-color: rgb(255, 0, 0);
-  --white-color: #000;
-  --footer-text-color: #495057;
+  --white-color: #1b1b1b;
+  --footer-background: #1b1b1b;
+  --footer-text-color: #c6cdd1;
+  --modal-background: #1b1b1b;
+  --header-background: #1b1b1b;
+  --loader-background-color: #3d3d3d;
+  --loader-highlight-color: #1b1b1b;
 }
