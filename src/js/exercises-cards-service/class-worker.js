@@ -24,7 +24,7 @@ function addInnerOfElement(string, element){
     if(tag){
         tag.innerHTML = string;
     } else {
-        console.log(element + " do not exist");
+        return;
     }
    
 }
@@ -34,7 +34,7 @@ function addClass(string, element){
     if(tag){
         tag.classList.add(string);
     } else {
-        console.log(element + " do not exist");
+        return;
     };
 }
 
@@ -43,7 +43,7 @@ function deleteClass(string, element){
     if (tag) {
         tag.classList.remove(string);
     } else {
-        console.log(element + " do not exist");
+        return;
     }
 }
 

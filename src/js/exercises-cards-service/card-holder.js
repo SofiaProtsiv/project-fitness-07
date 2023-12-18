@@ -130,7 +130,6 @@ async function cardsHandler() {
         break;
     }
   } catch (error) {
-    console.log('Error: ', error);
     cleanerCardWrapper();
     cleanerPages();
     addClass(classes.emptyWrapper, classes.exerciseWrapper);
@@ -202,7 +201,7 @@ function pagesHandler(evt) {
 function listenWorkoutCards() {
   listen.workoutLinks = document.querySelector('.js-cards');
   if (listen.workoutLinks) {
-    listen.workoutLinks.addEventListener('click', _.debounce(workoutHandler, 300));
+    listen.workoutLinks.addEventListener('click', workoutHandler);
   } else {
     console.error("Element with class 'js-cards' not found for workout.");
   }
