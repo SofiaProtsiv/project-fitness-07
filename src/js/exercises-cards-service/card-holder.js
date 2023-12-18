@@ -11,10 +11,8 @@ import {
   getFiltersFromPage,
   getFavoriteData
 } from './cards-service';
-import { addWorkoutClass, deleteWorkoutClass,
-   addFavoriteClass, deleteFavoriteClass,
-    hiddenEmptyParag, unhiddenEmptyParag,
-     addStringFavoriteParagEmpty, addStringEmptyParag } from './class-worker';
+import { classes, defaultStrings,
+  addInnerOfElement, addClass, deleteClass } from './class-worker';
 import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
@@ -61,19 +59,21 @@ async function cardsHandler() {
   let data;
   let connection;
   getFiltersFromPage(params, pageFilter);
-  hiddenEmptyParag();
+  addClass(classes.visuallyHidden, classes.emptyParag);
+  deleteClass(classes.emptyWrapper, classes.exerciseWrapper);
   adaptHeight(pageFilter.endPoint, viewPort);
   try {
     switch (pageFilter.endPoint) {
       // If the endpoint has /favorites do the next
       case 1:
-        addFavoriteClass();
-        deleteWorkoutClass();
+        addClass(classes.favoriteWrapper, classes.exerciseWrapper);
+        deleteClass(classes.workoutWrapper, classes.exerciseWrapper);
         data = await getFavoriteData(pageFilter, viewPort);
-        
+        if(data.currentData.length < 1){
+          throw new Error("No data");
+        }
         cleanerCardWrapper();
         cleanerPages();
-        console.log(data.currentData);
         showFavoriteCards(data.currentData);
         if (viewPort < DESKTOP_WIDTH){
           showPages(pageFilter.currentPage, data.totalPages);
@@ -83,8 +83,8 @@ async function cardsHandler() {
         break;
       // If the endpoint has /exercise do the next
       case 2:
-        addWorkoutClass();
-        deleteFavoriteClass();
+        deleteClass(classes.favoriteWrapper, classes.exerciseWrapper);  
+        addClass(classes.workoutWrapper, classes.exerciseWrapper);
         scrollUpToSection('.exercises');
         connection = checkWorkoutParams(
           pageFilter.currentPage,
@@ -95,8 +95,8 @@ async function cardsHandler() {
           viewPort
         );
         data = await getData(connection);
-        if (data.length === 0) {
-          throw new Error('No data');
+        if(data.length < 1){
+          throw new Error("No data");
         }
         cleanerCardWrapper();
         cleanerPages();
@@ -108,8 +108,8 @@ async function cardsHandler() {
         break;
       // If the endpoint has /filter do the next
       case 3:
-        deleteWorkoutClass();
-        deleteFavoriteClass();
+        deleteClass(classes.workoutWrapper, classes.exerciseWrapper);
+        deleteClass(classes.favoriteWrapper, classes.exerciseWrapper);
         connection = checkExerciseParams(
           pageFilter.currentPage,
           pageFilter.endPoint,
@@ -133,12 +133,13 @@ async function cardsHandler() {
     console.log('Error: ', error);
     cleanerCardWrapper();
     cleanerPages();
-    if (pageFilter.endPoint === 1){
-      addStringFavoriteParagEmpty();
+    addClass(classes.emptyWrapper, classes.exerciseWrapper);
+    if (pageFilter.endPoint != 1){
+      addInnerOfElement(defaultStrings.stringHome, classes.exerciseWrapper);
     } else {
-      addStringEmptyParag();
+      addInnerOfElement(defaultStrings.stringFavorite, classes.exerciseWrapper);
     }
-    unhiddenEmptyParag();
+    deleteClass(classes.visuallyHidden, classes.emptyParag);
   }
 }
 
@@ -153,7 +154,6 @@ function listenCards() {
 
 function targetHandler(evt) {
   const result = checkCard(evt);
-  setActiveCategory(result);
   setActiveCategory(result);
   changeToValidUrl(result);
   if (result != null || undefined || NaN)
@@ -202,7 +202,7 @@ function pagesHandler(evt) {
 function listenWorkoutCards() {
   listen.workoutLinks = document.querySelector('.js-cards');
   if (listen.workoutLinks) {
-    listen.workoutLinks.addEventListener('click', workoutHandler);
+    listen.workoutLinks.addEventListener('click', _.debounce(workoutHandler, 300));
   } else {
     console.error("Element with class 'js-cards' not found for workout.");
   }
@@ -230,7 +230,6 @@ async function workoutHandler(evt) {
     console.error(error);
   }
 }
-
 
 export function startEngine(){
   if (window.location.href.includes("/favorite")){

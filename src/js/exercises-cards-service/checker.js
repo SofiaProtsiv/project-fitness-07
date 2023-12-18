@@ -5,7 +5,11 @@ function checkCard(evt){
         return;
     }
     const cardElement = target.closest('.js-card');
-    return cardElement.dataset.cardName;
+    if(cardElement){
+        return cardElement.dataset.cardName
+    }else{
+        console.log("Can not read name", cardElement);
+    }
 }
 
 function checkPage(evt){
