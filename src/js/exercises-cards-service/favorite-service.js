@@ -1,11 +1,12 @@
 import ApiService from '../api-service';
 import { favoritesDB } from '../favoritesDB';
 import { openModalExercise } from '../exercise-modal';
+import { addClass, addInnerOfElement, classes, defaultStrings } from './class-worker';
 
 const exercisesList = document.querySelector('.js-cards');
 
 async function removeHandler({ target }) {
-  if (target.classList.contains('favorite-cards__icon-trash')) {
+  if (target.classList.contains('favorite-cards__trash-btn')) {
     removeElFromFavoritesOnTrashBtn(target);
     return;
   }
@@ -37,12 +38,22 @@ async function removeElFromFavoritesOnTrashBtn(el) {
   exerciseEl.closest('li').remove();
   favoritesDB.remove(exerciseID);
   localStorage.setItem('isDataOld', JSON.stringify(true));
+
+    if (exercisesList.children.length === 0) {
+    addClass(classes.emptyWrapper, classes.exerciseWrapper);
+     addInnerOfElement(defaultStrings.stringFavorite, classes.exerciseWrapper);
+}
 }
 
 function removeElFromFavorites({ _id }) {
   const exerciseEl = document.querySelector('.favorite-cards__gallery-link[data-id="' + _id + '"]');
   exerciseEl.closest("li").remove();
   localStorage.setItem('isDataOld', JSON.stringify(true)); //?
+  if (exercisesList.children.length === 0) {
+    addClass(classes.emptyWrapper, classes.exerciseWrapper);
+     addInnerOfElement(defaultStrings.stringFavorite, classes.exerciseWrapper);
+}
+  
 }
 
 if (exercisesList) {

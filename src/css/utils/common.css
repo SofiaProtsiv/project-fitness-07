@@ -19,7 +19,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #929292;
+  background-color: var(--primary-white-color);
 }
 
 .visually-hidden {
@@ -86,8 +86,8 @@ body::-webkit-scrollbar-track {
 }
 
 .base-submit {
-  color: var(--secondary-white-text-color);
-  background-color: var(--primary-black-color);
+  color: var(--secondary-black-text-color);
+  background-color: var(--primary-white-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;
@@ -95,10 +95,11 @@ body::-webkit-scrollbar-track {
   line-height: 18px;
   padding: 12px 14px;
   border-radius: 30px;
-  border: 1px solid #f4f4f4;
+  border: 1px solid var(--primary-black-color);
   transition-property: color, background-color;
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-effect);
+  cursor: pointer;
 
   @media (768px<=width) {
     font-size: 16px;
@@ -134,8 +135,8 @@ body::-webkit-scrollbar-track {
 
 .base-submit:hover,
 .base-submit:focus {
-  color: var(--primary-black-color);
-  background-color: var(--primary-background-color);
+  color: var(--primary-white-color);
+  background-color: var(--primary-black-color);
 }
 
 .base-textarea:hover,

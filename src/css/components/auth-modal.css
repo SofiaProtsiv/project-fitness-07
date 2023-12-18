@@ -10,7 +10,7 @@
   padding: 40px;
   border: 1px solid #888;
   color: var(--secondary-black-text-color);
-  background-color: var(--modal-background);
+  background-color: var(--primary-white-color);
 
   transition: transform var(--transition-dur-and-func);
 }
@@ -72,11 +72,11 @@
 
 .authForm__button-submit {
   margin: 20px 0 0 0;
-  color: var(--primary-black-color);
+  color: var(--primary-white-color);
   border: none;
   cursor: pointer;
   width: 100%;
-  background: var(--primary-white-color);
+  background: var(--primary-black-color);
   font-size: 16px;
   line-height: 1.5;
   padding: 12px;

@@ -1,5 +1,5 @@
 /* FAVORITE LAYOUT*/
-.favorites__head1{
+.favorites__head1 {
     font-family: var(--primary-fontfont-family);
     font-size: 44px;
     font-style: normal;
@@ -14,6 +14,7 @@
         letter-spacing: -0.035em;
         margin-bottom: 20px;
     }
+
     @media (width >=375px) and (width < 768px) {
         font-size: 28px;
         line-height: 1.36;
@@ -46,6 +47,7 @@
         margin-right: auto;
         row-gap: 20px;
     }
+
     @media (width >=768px) and (width < 1440px) {
         grid-template-columns: repeat(auto-fit, minmax(344px, 1fr));
         grid-auto-rows: 141px;
@@ -61,7 +63,7 @@
         row-gap: 32px;
         column-gap: 16px;
         overflow-y: scroll;
-        
+        height: 100%;
     }
 }
 
@@ -127,11 +129,17 @@
     margin-right: 16px;
 }
 
+.favorite-cards__trash-btn {
+    background-color: transparent;
+    border: none;
+}
+
 .favorite-cards__icon-trash {
     margin-left: 2px;
     max-width: 18px;
     max-height: 18px;
     fill: var(--rating-color-active);
+    pointer-events: none;
 }
 
 .favorite-cards__parag-start {
@@ -142,6 +150,7 @@
     max-width: 16px;
     max-height: 16px;
     transform: rotate(90deg);
+    fill: var(--primary-black-color);
 }
 
 .favorite-cards__second-line-wrapper {
@@ -168,8 +177,9 @@
 .favorite-cards__head3-name {
     margin-left: 16px;
     font-style: normal;
-    font-weight: 400;  
+    font-weight: 400;
     width: 100%;
+
     @media (width < 375px) {
         font-size: 20px;
         line-height: 1;
@@ -211,7 +221,7 @@
     display: flex;
     width: 312px;
 
-    @media (width < 375px){
+    @media (width < 375px) {
         width: 100%;
     }
 
@@ -220,20 +230,21 @@
     }
 }
 
-.favorite-cards__list-info{
-    display: flex;  
+.favorite-cards__list-info {
+    display: flex;
     margin-top: 8px;
     width: 100%;
     gap: 8px;
-    @media (width < 375px){
+
+    @media (width < 375px) {
         width: 100%;
         flex-direction: column;
         align-items: center;
-        justify-content: center;    
+        justify-content: center;
     }
 }
 
-.favorite-cards__list-point{
+.favorite-cards__list-point {
     display: flex;
     align-items: center;
     font-size: 12px;
@@ -241,17 +252,17 @@
     font-weight: 400;
     line-height: 1.5;
 
-    @media (width < 375px){
+    @media (width < 375px) {
         width: 100%;
         flex-direction: column;
         align-items: center;
-        justify-content: center;    
+        justify-content: center;
     }
 }
 
 .favorite-cards__parag-burned-calories,
 .favorite-cards__parag-body-part,
-.favorite-cards__parag-target{
+.favorite-cards__parag-target {
     color: var(--black-text-opacity-fourty-color);
 }
 

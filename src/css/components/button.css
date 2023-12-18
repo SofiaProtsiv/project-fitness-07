@@ -45,16 +45,17 @@
 
 .button.ghost {
   background-color: transparent;
-  color: var(--primary-black-color);
+  color: var(--plain-white-color);
   flex-grow: 0;
+  border: 1px solid var(--plain-white-color);
   transition: background-color var(--transition-dur-and-func),
     color var(--transition-dur-and-func);
 }
 
 .button.ghost:hover,
 .button.ghost:focus {
-  background-color: var(--primary-black-color);
-  color: var(--primary-white-color);
+  background-color: var(--plain-white-color);
+  color: var(--plain-black-color);
 }
 
 .btn-icon {

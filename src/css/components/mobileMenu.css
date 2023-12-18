@@ -32,7 +32,7 @@
   width: 100%;
   height: 100%;
   padding: 20px;
-  background-color: var(--primary-black-color);
+  background-color: var(--mobile-menu-background);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .mobile__nav__link {
-  color: var(--primary-white-color);
+  color: var(--mobile-menu-text-color);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.2;
@@ -61,7 +61,7 @@
 .mobile__menu__social__icon {
   width: 40px;
   height: 40px;
-  fill: var(--primary-background-color);
+  fill: var(--mobile-menu-text-color);
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--rating-color-inactive);
