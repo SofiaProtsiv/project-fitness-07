@@ -6,9 +6,16 @@
   padding-bottom: 0 !important;
   position: relative;
 
-  @media (width > 768px) {
+  @media (768px < width) {
     padding-top: 28px;
   }
+}
+
+.backdrop-mobile:not(.is-hidden) + .header {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 901;
 }
 
 .header__nav {
