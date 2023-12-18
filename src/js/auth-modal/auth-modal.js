@@ -1,6 +1,8 @@
 import { createUser, signIn, signOut, db } from '../firebase-service';
 import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
 import isEmailRight from '../helpers/email-checker';
+import iziToast from 'izitoast'
+import 'iziToast/dist/css/iziToast.css'
 
 const authFormMessages = {
   name: document.querySelector('.js__auth-modal__name__message'),
@@ -33,11 +35,6 @@ const title = document.querySelector('.authForm__title');
 const headerGroup = document.querySelectorAll('.header__nav-authorized');
 const authLinkEl = document.querySelectorAll('.header__nav__item.auth');
 const btnLogOut = document.querySelectorAll('.header__logout_btn');
-
-// const headerGroupMobile = document.querySelector(".mobile__nav-authorized")
-// const authLinkMobileEl = document.querySelector('.mobile__nav__item.auth')
-// const btnLogOutMobile = document.querySelector('.mobile__nav__logout_btn');
-// const userName = document.querySelector('.header__username');
 
 let isRegMode = true;
 
@@ -115,16 +112,38 @@ const handleSubmit = async event => {
   }, {});
 
   if (isRegMode) {
-    await createUser(formData);
+    try {
+      await createUser(formData);
+    } catch (error) {
+      iziToast.error({
+        position: 'topRight',
+        message: `This email is already in use`,
+      });
+      return;
+    }
+
+    const currentUserName = (await db.auth().currentUser)?.displayName
+
+    iziToast.success({
+      title: '🤩',
+      position: 'topRight',
+      message: `Hello, ${currentUserName}`,
+    });
+
   }
 
   await signIn(formData);
   resetForm();
   authForm.elements.regSubmitBtn.disabled = true;
-  // const currentUserName = (await db.auth().currentUser)?.displayName;
-  // userName.textContent = currentUserName;
+  const currentUserName = (await db.auth().currentUser)?.displayName
+
+  iziToast.success({
+    position: 'topRight',
+    message: `Hello, ${currentUserName}`,
+  });
   closeModal();
 };
+
 
 const changeForm = () => {
   if (isRegMode) {
@@ -193,8 +212,15 @@ const handleSignOut = async () => {
     el.classList.add('hidden');
   });
 
-  window.location.pathname = '/project-fitness-07/';
-  // userName.classList.add('hidden');
+  iziToast.info({
+    position: 'topRight',
+    message: `Successfully log out!`,
+  });
+
+  setTimeout(() => {
+    window.location.pathname = '/project-fitness-07/';
+  }, 1000)
+
 };
 
 backdropRef.addEventListener('click', handleCloseOnBackdrop);
@@ -236,9 +262,9 @@ function handlerInputData() {
     authForm.elements.name.value &&
     authForm.elements.email.value &&
     authForm.elements.password.value) ||
-  (!isRegMode &&
-    authForm.elements.email.value &&
-    authForm.elements.password.value)
+    (!isRegMode &&
+      authForm.elements.email.value &&
+      authForm.elements.password.value)
     ? (authForm.elements.regSubmitBtn.disabled = false)
     : (authForm.elements.regSubmitBtn.disabled = true);
 }
