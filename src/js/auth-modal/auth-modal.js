@@ -21,7 +21,7 @@ const modalConfig = {
   afterClose: null,
 };
 
-const userButton = document.querySelector('.header__auth_btn');
+const loginButtons = document.querySelectorAll('.header__auth_btn');
 const authModal = document.querySelector('.authModal__content');
 const closeButton = document.querySelector('.authModal__content .x-button');
 const authForm = document.querySelector('.authForm');
@@ -48,7 +48,7 @@ const closeModal = () => {
   }
   toggleModalClose(authModal);
   closeButton.removeEventListener('click', closeModal);
-  userButton.addEventListener('click', openModal);
+  loginButtons.forEach(btn => btn.addEventListener('click', openModal));
   document.body.style.overflow = 'visible';
   if (modalConfig.afterClose) {
     modalConfig.afterClose(modalConfig.exercise);
@@ -65,7 +65,7 @@ const openModal = () => {
   }
   toggleModalOpen(authModal);
   closeButton.addEventListener('click', closeModal);
-  userButton.removeEventListener('click', openModal);
+  loginButtons.forEach(btn => btn.removeEventListener('click', openModal));
   document.body.style.overflow = 'hidden';
   if (modalConfig.afterOpen) {
     modalConfig.afterOpen(modalConfig.exercise);
@@ -183,9 +183,9 @@ const handleCloseOnEscape = event => {
 
 const handleCloseOnBackdrop = event => {
   if (event.target === authModal) {
-      closeModal();
+    closeModal();
   }
-}
+};
 
 const handleSignOut = async () => {
   await signOut();
@@ -197,7 +197,8 @@ const handleSignOut = async () => {
   // userName.classList.add('hidden');
 };
 
-userButton.addEventListener('click', openModal);
+backdropRef.addEventListener('click', handleCloseOnBackdrop);
+loginButtons.forEach(btn => btn.addEventListener('click', openModal));
 authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
 btnLogOut.forEach(el => {

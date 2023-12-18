@@ -4,6 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   max-width: 450px;
+  z-index: 1000;
 
   border-radius: 28px;
   padding: 40px;
@@ -18,7 +19,6 @@
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-  height: auto;
 }
 
 .authForm__title {
