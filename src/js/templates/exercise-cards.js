@@ -1,4 +1,7 @@
-import { addMarkupToHtml, createCardsSkeleton } from '../createSkeleton/index.js';
+import {
+  addMarkupToHtml,
+  createCardsSkeleton,
+} from '../createSkeleton/index.js';
 
 const cards = document.querySelector('.js-cards');
 const BASE_URL = import.meta.env.BASE_URL;
@@ -92,9 +95,11 @@ function showFavoriteCards(data) {
             <div class="favorite-cards__gallery-card">
                 <div class="favorite-cards__first-line-wrapper">
                     <p class="favorite-cards__parag-workout">Workout</p>
-                    <svg class="favorite-cards__icon-trash">
+<button class="favorite-cards__trash-btn" type="button">
+                      <svg class="favorite-cards__icon-trash">
                         <use href="${BASE_URL}images/icons-sprite.svg#icon-trash"></use>
                     </svg>
+</button>
                     <p class="favorite-cards__parag-start">Start</p>
                     <svg class="favorite-cards__icon-arrow-up">
                         <use href="${BASE_URL}images/icons-sprite.svg#icon-arrow-up"></use>
@@ -134,7 +139,7 @@ function showFavoriteCards(data) {
 }
 
 function cleanerCardWrapper() {
-  cards.innerHTML = "";
+  cards.innerHTML = '';
 }
 
 export {

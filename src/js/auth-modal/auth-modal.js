@@ -182,7 +182,7 @@ const handleCloseOnEscape = event => {
 };
 
 const handleCloseOnBackdrop = event => {
-  if (event.target === authModal) {
+  if (event.target.classList.contains("backdrop")) {
     closeModal();
   }
 };
