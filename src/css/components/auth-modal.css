@@ -1,29 +1,24 @@
-.authModal__backdrop {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: var(--background-color);
-}
-
-.authModal__backdrop.open {
-  display: block;
-}
-
 .authModal__content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
   max-width: 450px;
+
   border-radius: 28px;
-  margin: auto;
   padding: 40px;
   border: 1px solid #888;
   color: var(--secondary-white-text-color);
   background-color: var(--primary-black-color);
-  margin: 0 auto;
+
+  transition: transform var(--transition-dur-and-func);
+}
+
+.authModal__content.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  height: auto;
 }
 
 .authForm__title {

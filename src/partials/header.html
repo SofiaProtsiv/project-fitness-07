@@ -1,27 +1,23 @@
 <header class="header container">
   <div>
+
     <a href="./index.html" aria-label="Your Energy">
-      <img
-        src="/images/logo.svg"
-        alt="Your Energy Logo"
-        width="132"
-        height="24"
-      />
+      <span class="logo--visually-hidden">Your Energy</span>
+      <svg class="header-logo" width="132" height="24">
+        <use href="/images/icons-sprite.svg#icon-logo"></use>
+      </svg>
     </a>
+
   </div>
   <!--Start Desktop Nav -->
   <nav class="header__nav">
     <ul class="header__nav__list">
       <li class="header__nav__item active">
-        <a class="header__nav__link active" id="home" href="./index.html"
-          >Home</a
-        >
+        <a class="header__nav__link active" id="home" href="./index.html">Home</a>
       </li>
       <div class="header__nav-authorized">
         <li class="header__nav__item">
-          <a class="header__nav__link" id="favorites" href="./favorites.html"
-            >Favorites</a
-          >
+          <a class="header__nav__link" id="favorites" href="./favorites.html">Favorites</a>
         </li>
         <li class="header__nav__item">
           <button class="header__logout_btn" type="button">Log out</button>
@@ -35,33 +31,21 @@
 
   <ul class="header__social__list">
     <li>
-      <a
-        href="https://www.facebook.com/goITclub/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer">
         <svg class="header__social__icon" aria-label="Facebook icon">
           <use href="/images/icons-sprite.svg#icon-facebook"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a
-        href="https://www.instagram.com/goitclub/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer">
         <svg class="header__social__icon" aria-label="Instagram icon">
           <use href="/images/icons-sprite.svg#icon-instagram"></use>
         </svg>
       </a>
     </li>
     <li>
-      <a
-        href="https://www.youtube.com/c/GoIT"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer">
         <svg class="header__social__icon" aria-label="Youtube icon">
           <use href="/images/icons-sprite.svg#icon-youtube"></use>
         </svg>
@@ -77,7 +61,7 @@
               <use href="/images/icons-sprite.svg#icon-moon"></use>
             </svg>
             <svg class="switch-icon-sun">
-              <use href="/images/icons-sprite.svg#icon-sun"></use>
+              <use href="/images/icons-sprite.svg#icon-switcher-sun"></use>
             </svg>
           </label>
         </span>

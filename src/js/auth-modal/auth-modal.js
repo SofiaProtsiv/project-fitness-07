@@ -1,4 +1,5 @@
 import { createUser, signIn, signOut, db } from '../firebase-service';
+import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
 import isEmailRight from '../helpers/email-checker';
 
 const authFormMessages = {
@@ -7,6 +8,7 @@ const authFormMessages = {
   password: document.querySelector('.js__auth-modal__password__message'),
 };
 
+const backdropRef = document.querySelector('.backdrop');
 /**
  * Represent a additional config object for modal window.
  * @param {string} exercise required if subscribe on before/after
@@ -20,8 +22,8 @@ const modalConfig = {
 };
 
 const userButton = document.querySelector('.header__auth_btn');
-const authModal = document.querySelector('.authModal__backdrop');
-const closeButton = document.querySelector('.authModal__button-close');
+const authModal = document.querySelector('.authModal__content');
+const closeButton = document.querySelector('.authModal__content .x-button');
 const authForm = document.querySelector('.authForm');
 const actionText = document.querySelector('.action__text');
 const btnChangeForm = document.querySelector('.action__button');
@@ -40,6 +42,7 @@ const btnLogOut = document.querySelectorAll('.header__logout_btn');
 let isRegMode = true;
 
 const closeModal = () => {
+  toggleModalClose(authModal);
   if (modalConfig.beforeClose) {
     modalConfig.beforeClose(modalConfig.exercise);
     modalConfig.beforeClose = null;
@@ -57,6 +60,7 @@ const closeModal = () => {
 };
 
 const openModal = () => {
+  toggleModalOpen(authModal);
   if (modalConfig.beforeOpen) {
     modalConfig.beforeOpen(modalConfig.exercise);
     modalConfig.beforeOpen = null;
@@ -195,7 +199,7 @@ btnLogOut.forEach(el => {
   el.addEventListener('click', handleSignOut);
 });
 
-authModal.addEventListener('click', event => {
+backdropRef.addEventListener('click', event => {
   if (event.target === authModal) {
     closeModal();
   }

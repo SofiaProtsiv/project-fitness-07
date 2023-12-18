@@ -11,9 +11,10 @@ import { favoritesDB, toggleFavoriteStatus } from '../favoritesDB';
 
 import { ratingWindow } from '../rating-modal/rating-modal';
 import { authModalWindow } from '../auth-modal';
-import { removeElFromFavorites } from '../exercises-cards-service/favorite-service'
+import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
+import { removeElFromFavorites } from '../exercises-cards-service/favorite-service';
 
-const backdropRef = document.querySelector('.js-backdrop');
+const backdropRef = document.querySelector('.backdrop');
 const modalRef = document.querySelector('.modalExercise');
 const closeButtonRef = modalRef.querySelector('.js-modal-exit');
 const imgWrapperRef = modalRef.querySelector('.modalExercise__img-wrapper');
@@ -199,8 +200,7 @@ const markupButton = ({ text, iconId, className = '' }) => {
 };
 
 const closeModalExercise = () => {
-  backdropRef.classList.remove('open');
-  modalRef.classList.remove('open');
+  toggleModalClose(modalRef);
   closeButtonRef.removeEventListener('click', closeModalExercise);
   document.body.style.overflow = 'visible';
 
@@ -220,8 +220,7 @@ const openModalExercise = async exercise => {
   exercise.isFavorite = await favoritesDB.idIsFavorite(_id);
   renderModal(exercise);
 
-  backdropRef.classList.add('open');
-  modalRef.classList.add('open');
+  toggleModalOpen(modalRef);
   closeButtonRef.addEventListener('click', closeModalExercise);
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', handleClose);
@@ -240,11 +239,10 @@ const onToggleFavorite = async event => {
   }
 
   const { target } = event;
-  
   try {
-    if (window.location.pathname.includes("favorites")) {
-        closeModalExercise()
-        removeElFromFavorites(openedExercise)
+    if (window.location.pathname.includes('favorites')) {
+      closeModalExercise();
+      removeElFromFavorites(openedExercise);
     }
     const isFavorite = await toggleFavoriteStatus(openedExercise);
     target.removeEventListener('click', onToggleFavorite);

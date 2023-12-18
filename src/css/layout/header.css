@@ -101,12 +101,12 @@
     color: var(--primary-black-color);
     background-color: var(--primary-white-color);
   }
-
 }
 
 .header__social__list {
   display: flex;
   gap: 12px;
+  align-items: center;
 
   @media (width < 768px) {
     display: none;
@@ -183,13 +183,14 @@
 
 .switch {
   position: relative;
-  display: inline-block;
+  /* display: inline-block;
   width: 60px;
-  height: 30px;
+  height: 30px; */
 }
 
 .switch input {
   opacity: 0;
+  visibility: hidden;
 }
 
 .toggle-switch {
@@ -197,6 +198,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 50px;
+  padding: 6px;
+  transition: all 0.4s;
+}
+
+.toggle-switch:hover {
+  background-color: var(--black-text-opacity-twenty-color);
 }
 
 .switch-icon-moon {
@@ -204,6 +212,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-left: -16px;
 }
 
 .switch-icon-sun {
@@ -212,4 +221,11 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-left: -16px;
+}
+
+.header-logo {
+  fill: var(--primary-black-color);
+  width: 132px;
+  height: 24px;
 }

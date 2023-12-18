@@ -18,7 +18,7 @@ const modalConfig = {
 
 const feedbackForm = document.querySelector('form.modal-form');
 const rootRatingModal = document.querySelector('.rating-modal-window');
-const closeBtn = document.querySelector('.rating-close');
+const closeBtn = document.querySelector('.rating-modal-window .x-button');
 const modalValidateText = document.querySelector('.modal-email-validate');
 
 const createRatingMarkup = () => {
