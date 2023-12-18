@@ -2,7 +2,6 @@ import { createUser, signIn, signOut, db } from '../firebase-service';
 import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
 import isEmailRight from '../helpers/email-checker';
 import iziToast from 'izitoast'
-import 'iziToast/dist/css/iziToast.css'
 
 const authFormMessages = {
   name: document.querySelector('.js__auth-modal__name__message'),
