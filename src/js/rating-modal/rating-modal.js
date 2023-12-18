@@ -1,3 +1,5 @@
+import { toggleModalClose, toggleModalOpen } from '../helpers/toggleModal';
+
 const BASE_URL = import.meta.env.BASE_URL;
 
 /**
@@ -17,9 +19,9 @@ const modalConfig = {
 };
 
 const feedbackForm = document.querySelector('form.modal-form');
-const rootRatingModal = document.querySelector('.rating-modal-window');
-const closeBtn = document.querySelector('.rating-modal-window .x-button');
-const modalValidateText = document.querySelector('.modal-email-validate');
+const rootRatingModal = document.querySelector('.rating-modal-content');
+const closeBtn = document.querySelector('.rating-close');
+const backdropRef = document.querySelector('.backdrop');
 
 const createRatingMarkup = () => {
   const starsArray = [];
@@ -52,6 +54,12 @@ const handleClose = event => {
   }
 };
 
+const handleCloseOnBackdrop = event => {
+    if (event.target === rootRatingModal) {
+        closeRatingModal();
+    }
+}
+
 const handleRatingChange = event => {
   ratingInputs.forEach(input => {
     delete input.dataset.dataChecked;
@@ -76,10 +84,10 @@ const closeRatingModal = () => {
   ratingInputs.forEach(input => {
     input.removeEventListener('change', handleRatingChange);
   });
+  toggleModalClose(rootRatingModal);
 
-  rootRatingModal.classList.remove('open');
-  document.body.style.overflow = 'visible';
   document.removeEventListener('keydown', handleClose);
+  backdropRef.removeEventListener('click', handleCloseOnBackdrop);
   if (modalConfig.afterClose) {
     modalConfig.afterClose(modalConfig.exercise);
     modalConfig.afterClose = null;
@@ -94,9 +102,6 @@ const openRatingModal = () => {
     modalConfig.beforeOpen(modalConfig.exercise);
     modalConfig.beforeOpen = null;
   }
-  rootRatingModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', handleClose);
   ratingInputs.forEach(input => {
     input.addEventListener('change', handleRatingChange);
   });
@@ -104,16 +109,13 @@ const openRatingModal = () => {
     modalConfig.afterOpen(modalConfig.exercise);
     modalConfig.afterOpen = null;
   }
+  toggleModalOpen(rootRatingModal);
+  document.addEventListener('keydown', handleClose);
+  backdropRef.addEventListener('click', handleCloseOnBackdrop);
 };
 
 closeBtn.addEventListener('click', closeRatingModal);
 feedbackForm.addEventListener('reset', onReset);
-
-rootRatingModal.addEventListener('click', e => {
-  if (e.target === rootRatingModal) {
-    closeRatingModal();
-  }
-});
 
 export const ratingWindow = {
   modalConfig,

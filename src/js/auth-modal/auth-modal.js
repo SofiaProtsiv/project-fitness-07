@@ -42,12 +42,11 @@ const btnLogOut = document.querySelectorAll('.header__logout_btn');
 let isRegMode = true;
 
 const closeModal = () => {
-  toggleModalClose(authModal);
   if (modalConfig.beforeClose) {
     modalConfig.beforeClose(modalConfig.exercise);
     modalConfig.beforeClose = null;
   }
-  authModal.classList.remove('open');
+  toggleModalClose(authModal);
   closeButton.removeEventListener('click', closeModal);
   userButton.addEventListener('click', openModal);
   document.body.style.overflow = 'visible';
@@ -55,17 +54,16 @@ const closeModal = () => {
     modalConfig.afterClose(modalConfig.exercise);
     modalConfig.afterClose = null;
   }
-
-  document.removeEventListener('keydown', handleClose);
+  backdropRef.removeEventListener('click', handleCloseOnBackdrop);
+  document.removeEventListener('keydown', handleCloseOnEscape);
 };
 
 const openModal = () => {
-  toggleModalOpen(authModal);
   if (modalConfig.beforeOpen) {
     modalConfig.beforeOpen(modalConfig.exercise);
     modalConfig.beforeOpen = null;
   }
-  authModal.classList.add('open');
+  toggleModalOpen(authModal);
   closeButton.addEventListener('click', closeModal);
   userButton.removeEventListener('click', openModal);
   document.body.style.overflow = 'hidden';
@@ -74,7 +72,8 @@ const openModal = () => {
     modalConfig.afterOpen = null;
   }
 
-  document.addEventListener('keydown', handleClose);
+  backdropRef.addEventListener('click', handleCloseOnBackdrop);
+  document.addEventListener('keydown', handleCloseOnEscape);
 };
 
 const resetForm = () => {
@@ -176,11 +175,17 @@ const checkCurrentUser = async () => {
   });
 };
 
-const handleClose = event => {
+const handleCloseOnEscape = event => {
   if (event.key === 'Escape') {
     closeModal();
   }
 };
+
+const handleCloseOnBackdrop = event => {
+  if (event.target === authModal) {
+      closeModal();
+  }
+}
 
 const handleSignOut = async () => {
   await signOut();
@@ -197,12 +202,6 @@ authForm.addEventListener('submit', handleSubmit);
 btnChangeForm.addEventListener('click', changeForm);
 btnLogOut.forEach(el => {
   el.addEventListener('click', handleSignOut);
-});
-
-backdropRef.addEventListener('click', event => {
-  if (event.target === authModal) {
-    closeModal();
-  }
 });
 
 checkCurrentUser();
@@ -241,5 +240,5 @@ function handlerInputData() {
 
 export const authModalWindow = {
   modalConfig,
-  openModal
-}
+  openModal,
+};

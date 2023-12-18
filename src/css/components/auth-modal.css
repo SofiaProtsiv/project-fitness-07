@@ -32,13 +32,8 @@
 }
 
 .authModal__button-close {
-  margin-top: -15px;
   color: var(--primary-white-color);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
   cursor: pointer;
-  transition: color var(--transition-time) var(--transition-effect);
 }
 
 .authModal__button-close:hover,
