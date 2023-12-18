@@ -1,14 +1,14 @@
 .modalExercise {
-  position: absolute;
+  position: relative;
   visibility: visible;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, 0) scale(0);
 
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 20px;
   padding-left: 20px;
+  margin: 8px;
   color: var(--primary-white-color);
   background-color: var(--primary-black-color);
   border-radius: 20px;
@@ -27,6 +27,11 @@
   }
 
   @media (1440px <=width) {
+    position: absolute;
+    visibility: visible;
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
     width: 708px;
   }
 }
@@ -34,8 +39,11 @@
 .modalExercise.open {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  height: auto;
+  transform: translate(-50%, 0) scale(1);
+
+  @media (1440px <= width) {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .modalExercise__content {
