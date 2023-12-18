@@ -32,8 +32,8 @@ export default [
   {
     name: 'Mykhailo Startsev',
     role: 'Front-End Developer',
-    desc: '',
-    photo: `${BASE_URL}images/team/teammate1.jpg`,
+    desc: 'Developed an API for saving favorite cards in Firestore Database, implemented image optimization, and addressed website performance issues for optimal user experience.',
+    photo: `${BASE_URL}images/team/mykhailo-startsev.jpg`,
     email: 'mailto:m.a.startsev@gmail.com',
     linkedin: 'https://www.linkedin.com/in/m-startsev/',
     github: 'https://github.com/MStartsev',

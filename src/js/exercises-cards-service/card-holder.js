@@ -17,7 +17,7 @@ import ApiService from '../api-service';
 import { cleanerPages, showPages } from '../templates/pages';
 import { checkCard, checkWorkoutCard, checkPage } from './checker';
 import { favoritesDB } from '../favoritesDB';
-import { openModalExercise } from '../modal/exercise-modal';
+import { openModalExercise } from '../exercise-modal';
 import adaptHeight from './height-adapter.js';
 import _ from 'lodash';
 import { updateViewPort } from './update-view-port';

@@ -1,3 +1,5 @@
+import { addMarkupToHtml, createCardsSkeleton } from '../createSkeleton/index.js';
+
 const cards = document.querySelector('.js-cards');
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -8,7 +10,7 @@ function showInitialCards(data) {
         `
         <li class="exercise-cards__gallery-link js-card" data-card-name="${name}">
             <div class="exercise-cards__gallery-card">
-                
+
                 <img class="exercise-cards__gallery-image"  src="${imgURL}" alt="${
           filter + '-' + name
         }" loading="lazy" />
@@ -79,6 +81,9 @@ function showWorkoutCards(data) {
 }
 
 function showFavoriteCards(data) {
+  const lengthSkeletons = data.length;
+  addMarkupToHtml(cards, createCardsSkeleton(lengthSkeletons, cards));
+
   const favoriteCardsLayout = data
     .map(
       ({ _id, bodyPart, name, target, burnedCalories, time }) =>
@@ -125,7 +130,7 @@ function showFavoriteCards(data) {
     )
     .join('');
 
-  cards.insertAdjacentHTML('beforeend', favoriteCardsLayout);
+  cards.innerHTML = favoriteCardsLayout;
 }
 
 function cleanerCardWrapper() {

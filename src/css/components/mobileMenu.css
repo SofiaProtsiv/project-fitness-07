@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop-mobile {
   z-index: 900;
   position: fixed;
   top: 0px;
@@ -12,7 +12,7 @@
   transition: opacity var(--transition-effect), var(--transition-time);
 }
 
-.backdrop.is-hidden {
+.backdrop-mobile.is-hidden {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;

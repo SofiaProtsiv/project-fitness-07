@@ -88,6 +88,21 @@
   }
 }
 
+.favorites__exercises__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  @media (768px<=width) {
+    gap: 64px;
+  }
+
+  @media (1440px<=width) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
 .exercise-cards__container {
   width: 100%;
   display: flex;

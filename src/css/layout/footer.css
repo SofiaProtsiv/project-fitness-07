@@ -164,13 +164,13 @@
   color: rgb(30, 180, 30);
 }
 
-.footer__form__btn:disabled,
-.footer__form__btn:hover:disabled {
+.footer__form__btn:disabled {
   cursor: not-allowed;
 }
 
 .footer__form__btn {
   background-color: var(--primary-white-color);
+  color: var(--primary-black-color);
   font-family: var(--primary-fontfont-family);
   font-size: 14px;
   font-style: normal;

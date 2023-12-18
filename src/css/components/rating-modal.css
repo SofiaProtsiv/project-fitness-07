@@ -1,8 +1,15 @@
 .rating-modal-window {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   z-index: 501;
+
+  transform: scale(0);
+
   color: var(--secondary-white-text-color);
   font-family: var(--primary-fontfont-family);
   width: 100vw;
@@ -10,17 +17,17 @@
   background-color: var(--modal-alpha-background);
   padding: 20px;
 
+  transition: transform var(--transition-dur-and-func),
+    visibility var(--transition-dur-and-func);
+
   @media (768px<=width) {
     padding: 0px;
   }
 }
 
 .rating-modal-window.open {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   visibility: visible;
-  transform: scale(1, 1);
+  transform: scale(1);
   opacity: 1;
 }
 
