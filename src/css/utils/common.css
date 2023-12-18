@@ -29,6 +29,7 @@ body::-webkit-scrollbar-track {
 }
 
 .logo--visually-hidden {
+  visibility: hidden;
   width: 1px;
   height: 1px;
   white-space: nowrap;
