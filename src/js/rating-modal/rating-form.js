@@ -32,7 +32,7 @@ async function handlerFormSubmit(ev) {
       fetch.exerciseId = _id;
       await fetch.addRating();
       subscribeForm.validateEmailMessage.textContent =
-        '✅ Thank you for you subscription';
+        '✅ Thank you for you feedback';
       subscribeForm.validateEmailMessage.classList.remove(
         'full_hidden',
         'validate-form-message'

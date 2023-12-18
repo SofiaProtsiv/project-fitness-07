@@ -1,5 +1,9 @@
 const BASE_URL = import.meta.env.BASE_URL;
 
+/**
+ * Represent a additional config object for modal window.
+ * @param {string} exercise required if subscribe on before/after
+ */
 const modalConfig = {
   exercise: {},
   ratingText: 'Rating',
@@ -65,8 +69,9 @@ const ratingInputs = document.querySelectorAll('.rating-stars input');
 const ratingCount = document.querySelector('.rating-count');
 
 const closeRatingModal = () => {
-  if (modalConfig.afterClose) {
-    modalConfig.afterClose(modalConfig.exercise);
+  if (modalConfig.beforeClose) {
+    modalConfig.beforeClose(modalConfig.exercise);
+    modalConfig.beforeClose = null;
   }
   ratingInputs.forEach(input => {
     input.removeEventListener('change', handleRatingChange);
@@ -76,7 +81,8 @@ const closeRatingModal = () => {
   document.body.style.overflow = 'visible';
   document.removeEventListener('keydown', handleClose);
   if (modalConfig.afterClose) {
-    modalConfig.afterClose();
+    modalConfig.afterClose(modalConfig.exercise);
+    modalConfig.afterClose = null;
   }
 
   ratingCount.innerHTML = '0.0';
@@ -84,12 +90,20 @@ const closeRatingModal = () => {
 };
 
 const openRatingModal = () => {
+  if (modalConfig.beforeOpen) {
+    modalConfig.beforeOpen(modalConfig.exercise);
+    modalConfig.beforeOpen = null;
+  }
   rootRatingModal.classList.add('open');
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', handleClose);
   ratingInputs.forEach(input => {
     input.addEventListener('change', handleRatingChange);
   });
+  if (modalConfig.afterOpen) {
+    modalConfig.afterOpen(modalConfig.exercise);
+    modalConfig.afterOpen = null;
+  }
 };
 
 closeBtn.addEventListener('click', closeRatingModal);
