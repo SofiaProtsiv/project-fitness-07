@@ -21,7 +21,7 @@
   transform: scale(1);
   pointer-events: all;
 
-  @media (768px <=width) {
+  @media (1440px <=width) {
     overflow: hidden;
   }
 }
